@@ -1,4 +1,4 @@
-# OPEN TO WORK 🟢
+# OPEN2WORK 🟢
 
 > «Encantado de anunciar que estás a punto de perderlo todo.»
 
