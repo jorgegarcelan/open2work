@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Open to Work — tu carrera en IA, post a post</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" fill="%230A66C2"/><path d="M32 78 L48 60 L58 68 M58 68 L86 40" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M72 40 H86 V54" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M60 114 A54 54 0 0 1 6 60" stroke="%2346A758" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M60 114 A54 54 0 0 0 114 60" stroke="%2346A758" stroke-width="12" fill="none" stroke-linecap="round"/></svg>'>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F2EE; --card:#FFFFFF; --line:#E0DFDC; --line2:#D6D4D0;
+  --text:#1B1F23; --dim:#666666; --dim2:#8C8C8C;
+  --blue:#0A66C2; --blue2:#004182; --green:#0E8A5F; --red:#CC1016; --gold:#B7770D; --purple:#7A3FD1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Inter",-apple-system,sans-serif;font-size:14px;line-height:1.45;
+  -webkit-font-smoothing:antialiased}
+button{font-family:inherit;cursor:pointer}
+.num{font-variant-numeric:tabular-nums}
+
+/* ═══ LAYOUT ═══ */
+.wrap{max-width:1040px;margin:0 auto;padding:14px 12px 80px;
+  display:grid;grid-template-columns:280px 1fr;gap:16px;align-items:start}
+.rail{position:sticky;top:14px;display:flex;flex-direction:column;gap:12px}
+@media(max-width:820px){
+  .wrap{grid-template-columns:1fr;padding-top:10px}
+  .rail{position:static}
+  .railcards{display:grid;grid-template-columns:1fr;gap:12px}
+}
+
+/* ═══ TARJETAS BASE ═══ */
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+
+/* ═══ PERFIL (rail) ═══ */
+.pcover{height:56px;background:linear-gradient(120deg,#0A66C2,#5B8DEF 60%,#8AB4F8)}
+.pbody{padding:0 16px 14px;margin-top:-26px}
+.pavatar{width:60px;height:60px;border-radius:50%;background:#fff;border:3px solid #fff;
+  display:grid;place-items:center;font-weight:800;font-size:22px;color:#fff;
+  background:linear-gradient(135deg,#0A66C2,#004182)}
+.pname{font-weight:700;font-size:16.5px;margin-top:7px}
+.phead{font-size:12.5px;color:var(--text);margin-top:1px}
+.psub{font-size:11.5px;color:var(--dim);margin-top:2px}
+.pbadge{display:inline-block;background:#EAF1FB;color:var(--blue);border:1px solid #C6DBF5;
+  font-size:10.5px;font-weight:700;border-radius:5px;padding:1px 7px;margin-top:6px}
+.pbadge.mg{background:#FBF3E4;color:var(--gold);border-color:#EFDFB9}
+.pstats{border-top:1px solid var(--line);margin-top:11px;padding-top:9px;display:grid;gap:5px}
+.pstat{display:flex;justify-content:space-between;font-size:12px}
+.pstat span{color:var(--dim)}
+.pstat b{font-weight:700}
+.pstat b.gr{color:var(--green)}
+.mini-meters{border-top:1px solid var(--line);margin-top:10px;padding-top:10px;display:grid;gap:7px}
+.mm .t{display:flex;justify-content:space-between;font-size:10.5px;color:var(--dim);margin-bottom:2px;font-weight:600}
+.mm .bar{height:5px;background:#EDEBE7;border-radius:3px;overflow:hidden}
+.mm .bar i{display:block;height:100%;border-radius:3px;transition:width .4s}
+.mm.tec i{background:var(--blue)}.mm.rep i{background:var(--gold)}
+.mm.red i{background:var(--purple)}.mm.ene i{background:var(--green)}
+.mm.warn i{background:var(--red)!important}
+.sideline{border-top:1px solid var(--line);margin-top:10px;padding-top:8px;font-size:11.5px;color:var(--dim)}
+.sideline b{color:var(--text)}
+
+/* experiencia */
+.xp{border-top:1px solid var(--line);margin-top:11px;padding-top:10px}
+.xp .xh{font-size:12px;font-weight:800;margin-bottom:8px}
+.xpi{display:flex;gap:9px;margin-bottom:9px;align-items:flex-start}
+.xpi:last-child{margin-bottom:0}
+.xpi .xav{width:30px;height:30px;border-radius:5px;flex:0 0 30px;display:grid;place-items:center;
+  font-weight:800;font-size:12px;color:#fff}
+.xpi .xr{font-size:12px;font-weight:700;line-height:1.25}
+.xpi .xc{font-size:11.5px;color:var(--text)}
+.xpi .xd{font-size:11px;color:var(--dim2)}
+.xpi.now .xr::after{content:'· Actual';color:var(--green);font-weight:700;font-size:10px;margin-left:4px}
+
+/* mercado (rail) */
+.mkcard{padding:11px 14px;font-size:12px}
+.mkcard .k{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--dim2);text-transform:uppercase;margin-bottom:4px}
+.mkcard .v{font-weight:700;font-size:13px}
+.mkcard .d{color:var(--dim);margin-top:2px;font-size:11.5px}
+.mk-boom .v{color:var(--green)}.mk-est .v{color:var(--blue)}.mk-inv .v{color:var(--red)}
+.mk-reg .v{color:var(--gold)}.mk-agi .v{color:var(--purple)}
+
+/* ═══ FEED ═══ */
+.feedcol{display:flex;flex-direction:column;gap:10px;min-width:0}
+.advance{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+  display:flex;gap:10px;align-items:center}
+.advance .av{width:40px;height:40px;border-radius:50%;flex:0 0 40px;display:grid;place-items:center;
+  font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,#0A66C2,#004182)}
+.advance button{flex:1;background:#fff;border:1px solid var(--line2);border-radius:20px;
+  padding:10px 16px;text-align:left;color:var(--dim);font-size:13.5px;font-weight:500;transition:background .12s}
+.advance button:hover{background:#F1F0EE}
+.advance button b{color:var(--blue);font-weight:700}
+.retirebtn{background:none;border:none;color:var(--dim2);font-size:11.5px;text-decoration:underline;padding:6px}
+
+/* post */
+.post{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 15px 9px;animation:fi .3s ease}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}}
+.phd2{display:flex;gap:9px;align-items:flex-start}
+.pav{width:42px;height:42px;border-radius:50%;flex:0 0 42px;display:grid;place-items:center;
+  font-weight:800;font-size:15px;color:#fff}
+.pav.sq{border-radius:7px}
+.pwho{min-width:0;flex:1}
+.pwho .n{font-weight:700;font-size:13.5px;line-height:1.2}
+.pwho .n small{font-weight:400;color:var(--dim2);font-size:12px}
+.pwho .h{font-size:11.5px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pwho .t{font-size:11px;color:var(--dim2)}
+.ptxt{margin:9px 0 6px;font-size:13.5px;white-space:pre-line}
+.ptxt b{font-weight:700}
+.ptag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:1px 7px;margin-bottom:6px}
+.ptag.g{background:#E7F5EE;color:var(--green)}
+.ptag.r{background:#FBE9EA;color:var(--red)}
+.ptag.o{background:#FBF3E4;color:var(--gold)}
+.ptag.p{background:#F1E9FC;color:var(--purple)}
+.ptag.b{background:#EAF1FB;color:var(--blue)}
+.preact{border-top:1px solid var(--line);margin-top:8px;padding-top:6px;
+  display:flex;justify-content:space-between;font-size:11.5px;color:var(--dim2)}
+.preact .ic{letter-spacing:-2px;margin-right:4px}
+
+/* decisión = encuesta */
+.poll{border:1.5px solid var(--blue)}
+.poll .ptxt{margin-bottom:10px}
+.pollopts{display:grid;gap:7px;margin-bottom:8px}
+.pollopt{position:relative;background:#fff;border:1.5px solid var(--line2);border-radius:8px;
+  padding:9px 12px;text-align:left;overflow:hidden;transition:border-color .12s}
+.pollopt:hover{border-color:var(--blue)}
+.pollopt .fill{position:absolute;inset:0;background:#EAF1FB;z-index:0;border-radius:6px}
+.pollopt .in{position:relative;z-index:1;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.pollopt b{display:block;font-size:13px;font-weight:700}
+.pollopt em{font-style:normal;font-size:11.5px;color:var(--dim)}
+.pollpct{font-weight:800;font-size:13px;color:var(--blue);white-space:nowrap}
+.pollpct small{display:block;font-weight:500;font-size:9px;color:var(--dim2)}
+.pollnote{font-size:11px;color:var(--dim2)}
+
+/* inmail */
+.inmail{border-left:4px solid var(--gold)}
+.inmail .ptag{margin-bottom:4px}
+
+/* botones */
+.btn{background:var(--blue);color:#fff;border:0;border-radius:20px;padding:9px 18px;font-weight:700;font-size:13.5px}
+.btn:hover{background:var(--blue2)}
+.btn.sec{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
+
+/* ═══ CREACIÓN ═══ */
+.create{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;grid-column:1/-1;max-width:640px;margin:0 auto}
+.create h1{font-size:clamp(26px,6vw,34px);margin:0 0 4px;font-weight:800;letter-spacing:-.02em}
+.create h1 em{color:var(--blue);font-style:normal}
+.create .sub{color:var(--dim);margin:0 0 18px;font-size:13.5px}
+.fl{margin-bottom:15px}
+.fl label{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700;margin-bottom:7px}
+input[type=text]{width:100%;background:#fff;border:1.5px solid var(--line2);border-radius:8px;
+  padding:11px 14px;font-size:15px;color:var(--text);font-family:inherit}
+input[type=text]:focus{outline:none;border-color:var(--blue)}
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}
+.route{background:#fff;border:1.5px solid var(--line2);border-radius:10px;padding:12px 13px;text-align:left}
+.route.sel{border-color:var(--blue);background:#EAF1FB}
+.route b{display:block;font-weight:700;margin-bottom:3px;font-size:13px}
+.route em{font-style:normal;color:var(--dim);font-size:11.5px;display:block;line-height:1.4}
+.gobtn{display:block;width:100%;background:var(--blue);color:#fff;border:0;border-radius:24px;
+  padding:13px;font-weight:800;font-size:15px}
+.gobtn:hover{background:var(--blue2)}
+
+/* ═══ TARJETA FINAL ═══ */
+.cvfinal{grid-column:1/-1;max-width:480px;margin:0 auto;width:100%}
+.legadopost .ptxt{font-size:14.5px}
+.legadoline{font-size:17px;font-weight:800;margin:8px 0}
+.cvgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;font-size:12.5px;
+  border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
+.cvgrid div{display:flex;justify-content:space-between}
+.cvgrid span{color:var(--dim)}
+.cvgrid b{font-weight:700}
+.hitolist{border-top:1px solid var(--line);margin-top:10px;padding-top:9px;font-size:12px;color:var(--dim);line-height:1.6}
+.sharebox{text-align:center;margin-top:10px}
+.sharebox pre{font-size:12px;white-space:pre-wrap;background:#F7F6F4;border:1px solid var(--line);
+  border-radius:8px;padding:12px;text-align:left;margin:0 0 10px;font-family:inherit}
+/* cabecera de marca */
+.topbar{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.topbar .in{max-width:1040px;margin:0 auto;padding:8px 12px;display:flex;align-items:center;gap:9px}
+.topbar svg{flex:0 0 auto}
+.topbar .wm{font-weight:900;font-size:17px;letter-spacing:-.03em}
+.topbar .wm em{color:#46A758;font-style:normal}
+.topbar .tg{margin-left:auto;font-size:11px;color:var(--dim2);font-style:italic;text-align:right}
+@media(max-width:560px){.topbar .tg{display:none}}
+
+/* insignias */
+.badges{border-top:1px solid var(--line);margin-top:11px;padding-top:10px}
+.badges .xh{font-size:12px;font-weight:800;margin-bottom:7px}
+.bdgs{display:flex;flex-wrap:wrap;gap:6px}
+.bdg{display:inline-flex;align-items:center;gap:5px;background:#F7F6F4;border:1px solid var(--line);
+  border-radius:14px;padding:3px 10px 3px 7px;font-size:11px;font-weight:700}
+.bdg em{font-style:normal;font-size:13px}
+.bdg small{font-weight:600;color:var(--dim2);font-size:10px}
+.bdg.green{background:#E7F5EE;border-color:#BFE3CF;color:#0E6B45}
+
+/* posts plegados: "…ver más" */
+.ptxt.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:2px}
+.vermas{display:inline-block;color:var(--dim2);font-size:12px;font-weight:600;cursor:pointer;margin-bottom:6px}
+.vermas:hover{color:var(--blue);text-decoration:underline}
+
+/* aro verde open to work (se activa al quedarte sin trabajo) */
+.otw{position:relative;box-shadow:0 0 0 3px #fff,0 0 0 6.5px #46A758!important}
+.otw::after{content:'#OPENTOWORK';position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
+  background:#46A758;color:#fff;font-size:6.5px;font-weight:800;letter-spacing:.04em;
+  border-radius:6px;padding:1px 4px;white-space:nowrap}
+.pavatar.otw::after{font-size:8px;bottom:-8px}
+
+/* comentarios */
+.pcomments{border-top:1px solid var(--line);margin-top:7px;padding-top:8px;display:grid;gap:7px}
+.pcm{display:flex;gap:7px;align-items:flex-start}
+.pcm .cav{width:26px;height:26px;border-radius:50%;flex:0 0 26px;display:grid;place-items:center;
+  font-weight:800;font-size:10px;color:#fff}
+.pcm .bub{background:#F1F0EE;border-radius:0 10px 10px 10px;padding:6px 10px;font-size:12px;min-width:0}
+.pcm .bub b{font-weight:700;font-size:11.5px;display:block}
+.pcm.hater .bub{background:#FBE9EA}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in">
+  <svg width="32" height="32" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54" fill="#0A66C2"/><path d="M32 78 L48 60 L58 68 M58 68 L86 40" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M72 40 H86 V54" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M14 88 A54 54 0 0 0 106 88" stroke="#46A758" stroke-width="12" fill="none" stroke-linecap="round"/></svg>
+  <span class="wm">open to work<em>.</em></span>
+  <span class="tg">«Encantado de anunciar que estás<br>a punto de perderlo todo.»</span>
+</div></div>
+<div class="wrap" id="wrap">
+  <div class="rail" id="rail"></div>
+  <div class="feedcol" id="feedcol">
+    <div id="controls"></div>
+    <div id="feed" style="display:contents"></div>
+  </div>
+</div>
+
+<script>
+/* ═════════ CONSTANTES (mecánica v4) ═════════ */
+const LEVELS=[
+ {t:'Becario/a',lvl:'L1',xp:0},{t:'Junior',lvl:'L2',xp:14},{t:'Mid-level',lvl:'L3',xp:34},
+ {t:'Senior',lvl:'L4',xp:62},{t:'Staff',lvl:'L5',xp:100},{t:'Principal',lvl:'L6',xp:145},
+ {t:'Distinguished',lvl:'L7',xp:195},{t:'Head of AI',lvl:'L8',xp:250},
+ {t:'VP of AI',lvl:'L9',xp:310},{t:'Chief AI Officer',lvl:'L10',xp:380}];
+const MGMT_LEVELS=['','','','Engineering Manager','Senior EM','Director','Senior Director','Head of AI','VP of AI','Chief AI Officer'];
+const TRACKS=[
+ {id:'res',n:'Investigación',d:'Papers, citas, h-index. La vía académico-industrial.'},
+ {id:'ing',n:'Ingeniería ML',d:'Modelos en producción. Lo que de verdad escasea.'},
+ {id:'pro',n:'Producto IA',d:'Del modelo al usuario. Quien decide qué se construye.'}];
+const FORMACION=[
+ {n:'Grado + máster en IA',d:'La ruta estándar. Técnica 42, empiezas a los 23.',tec:42,red:12,age:23},
+ {n:'PhD en machine learning',d:'6 años más, técnica 58, red académica, sueldo perdido que no vuelve.',tec:58,red:22,rep:14,age:28,phd:true},
+ {n:'Bootcamp + proyectos públicos',d:'Al mercado a los 20 con técnica 30. El techo te lo pone RRHH.',tec:30,red:8,age:20,boot:true}];
+const EMPLEADORES=[
+ {n:'Consultora tecnológica',tier:1,minTec:0,minRep:0,base:26,eq:0,type:'corp'},
+ {n:'Startup pre-seed',tier:1,minTec:0,minRep:0,base:24,eq:14,type:'startup'},
+ {n:'Scale-up europea',tier:2,minTec:45,minRep:15,base:48,eq:8,type:'startup'},
+ {n:'Banca / gran corporación',tier:2,minTec:42,minRep:10,base:56,eq:0,type:'corp'},
+ {n:'Nvidia',tier:3,minTec:62,minRep:30,base:120,eq:35,type:'bigtech'},
+ {n:'Google',tier:3,minTec:62,minRep:28,base:115,eq:30,type:'bigtech'},
+ {n:'Meta',tier:3,minTec:60,minRep:26,base:125,eq:35,type:'bigtech'},
+ {n:'Microsoft',tier:3,minTec:58,minRep:25,base:110,eq:26,type:'bigtech'},
+ {n:'Startup stealth muy bien financiada',tier:3,minTec:66,minRep:32,base:130,eq:55,type:'startup',stealth:true},
+ {n:'DeepMind',tier:4,minTec:76,minRep:45,base:170,eq:45,type:'frontier'},
+ {n:'Anthropic',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
+ {n:'OpenAI',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
+ {n:'Universidad (tenure track)',tier:3,minTec:70,minRep:40,base:52,eq:0,type:'academia',needPhd:true}];
+const MARKETS={
+ boom:{n:'🚀 Boom de la IA',cls:'mk-boom',d:'Sueldos disparados, equity al alza',sal:1.25,eqK:1.2,offerP:75,layoffP:0},
+ est:{n:'📊 Mercado estable',cls:'mk-est',d:'Contratación normal, cabezas frías',sal:1,eqK:1.02,offerP:55,layoffP:8},
+ inv:{n:'❄️ Invierno de financiación',cls:'mk-inv',d:'Rondas congeladas, "eficiencia"',sal:.8,eqK:.72,offerP:25,layoffP:30},
+ reg:{n:'⚖️ Ola regulatoria',cls:'mk-reg',d:'Auditorías, compliance, todo más lento',sal:.92,eqK:.9,offerP:40,layoffP:12},
+ agi:{n:'🌀 Carrera hacia AGI',cls:'mk-agi',d:'Pánico contratador, cifras absurdas',sal:1.5,eqK:1.35,offerP:85,layoffP:5}};
+const MK_NEXT={boom:['boom','est','inv','agi'],est:['est','boom','inv','reg'],
+  inv:['inv','est','reg'],reg:['reg','est','boom'],agi:['agi','boom','inv']};
+const MANAGERS=[
+ {q:'good',n:'una manager excelente',d:'Te defiende en calibration',xp:3,ene:3},
+ {q:'good',n:'un manager técnico de los que quedan pocos',d:'Sus reviews son un máster gratis',xp:2,ene:2,tec:1},
+ {q:'mid',n:'un manager correcto',d:'Ni estorba ni impulsa',xp:0,ene:0},
+ {q:'mid',n:'una manager recién ascendida',d:'Aprende cometiendo errores. Contigo',xp:0,ene:-2},
+ {q:'bad',n:'un micromanager con dashboard',d:'Mide tus commits. Literalmente',xp:-2,ene:-6},
+ {q:'bad',n:'un manager fantasma',d:'1:1 cancelado 11 semanas seguidas',xp:-2,ene:-3}];
+
+/* autores de posts */
+const AUTHORS={
+ me:()=>({n:G.name,h:levelName()+' · '+G.track.n+' en '+G.club.n,ini:G.ini,col:'linear-gradient(135deg,#0A66C2,#004182)'}),
+ news:{n:'IA News Diario',h:'Medio · 412.030 seguidores',ini:'IA',col:'linear-gradient(135deg,#1B1F23,#444)',sq:1},
+ rec:{n:'Recruiter de talento tech',h:'Talent Partner · "¡Oportunidad única!"',ini:'RC',col:'linear-gradient(135deg,#B7770D,#8A5A0A)'},
+ hr:{n:'People & Culture',h:'RRHH · Tu empresa',ini:'PC',col:'linear-gradient(135deg,#7A3FD1,#5A2BA0)',sq:1},
+ guru:{n:'Gurú del Networking',h:'Top Voice · Vendo un curso',ini:'GN',col:'linear-gradient(135deg,#0E8A5F,#0A6647)'},
+ chema:{n:'Chema R.',h:'Tu excompañero · siempre un paso por delante',ini:'CH',col:'linear-gradient(135deg,#CC1016,#8A0A0E)'},
+ founder:{n:'Vero Fundadora',h:'CEO de la startup que dejaste',ini:'VF',col:'linear-gradient(135deg,#7A3FD1,#4A2380)'},
+ noreply:{n:'no-reply@talent',h:'Correo automático · No responder',ini:'✉',col:'linear-gradient(135deg,#8C8C8C,#5A5A5A)',sq:1},
+ sys:{n:'Open to Work',h:'El juego de tu carrera',ini:'otw',col:'linear-gradient(135deg,#46A758,#0E8A5F)',sq:1}};
+
+/* comentaristas */
+const COMMENTERS=[
+ ['MG','#0E8A5F'],['LP','#B7770D'],['AS','#7A3FD1'],['JR','#0A66C2'],['TB','#CC1016'],['NK','#444']];
+const NICE_COMMENTS=['¡Enhorabuena crack! 💪','Grande 👏👏','Muy merecido, a por más 🚀','Interesante 🤔','Un placer verte crecer','Esto hay que celebrarlo 🍾','Inspirador, de verdad','👏'];
+const HATER_COMMENTS=['¿Y esto qué aporta exactamente?','Te lo dije en 2019 y no me hiciste caso','Con IA cualquiera hace eso','En mi época esto se hacía sin tanto postureo','Fuente: confía en mí','Discrepo. Hilo 🧵 (no hay hilo)','Yo lo habría hecho distinto','*ha editado este comentario*'];
+
+/* ═════════ ESTADO ═════════ */
+const G={name:'',ini:'',track:null,age:23,year:2026,
+  tec:42,rep:8,red:12,energy:88,xp:0,levelIdx:0,mgmt:false,
+  club:EMPLEADORES[0],salary:26,equity:0,vested:0,maxComp:26,
+  manager:null,side:null,market:'est',otw:false,
+  papers:0,products:0,citas:0,hindex:0,stars:0,talks:0,
+  hitos:[],clubs:[],history:[],burnouts:0,layoffs:0,scandals:0,exits:0,phd:false,boot:false,
+  pendingEvent:null,pendingOffers:null,pendingInterview:null,retired:false,used:{}};
+
+/* experiencia estilo LinkedIn */
+const XPCOLORS=['#0A66C2','#0E8A5F','#B7770D','#7A3FD1','#CC1016','#444444','#2BA3B0','#8A5A0A'];
+const xpColor=n=>{let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%997;return XPCOLORS[h%XPCOLORS.length];};
+function xpStart(clubName){
+  if(G.history.length)G.history[G.history.length-1].to=G.year;
+  G.history.push({club:clubName,role:levelName(),from:G.year,to:null});
+}
+function xpRole(){ // al promocionar, refresca el rol de la etapa actual
+  if(G.history.length)G.history[G.history.length-1].role=levelName();
+}
+
+/* insignias: se derivan del estado, nada que mantener */
+function computeBadges(){
+  const b=[];
+  if(G.layoffs>0)b.push({ic:'🟢',n:'Open to Work',x:G.layoffs,green:1});
+  if(G.rep>=70)b.push({ic:'🏅',n:'Top Voice'});
+  if(G.talks>=10)b.push({ic:'🎤',n:'Speaker'});
+  if(G.exits>0)b.push({ic:'🦄',n:'Exit'});
+  if(G.hitos.some(h=>h.startsWith('Libro')))b.push({ic:'📚',n:'Autor/a'});
+  if(G.mgmt)b.push({ic:'👔',n:'Vía gestión'});
+  if(G.burnouts>0)b.push({ic:'🔥',n:'Superviviente',x:G.burnouts>1?G.burnouts:0});
+  if(G.scandals>0)b.push({ic:'🃏',n:'Con asterisco'});
+  if(G.side&&G.side.subs>2000)b.push({ic:'⚡',n:'Builder'});
+  if(G.track.id==='res'&&G.hindex>=20)b.push({ic:'🎓',n:'h-index '+G.hindex});
+  if(G.vested>=500)b.push({ic:'💰',n:'Equity real'});
+  return b;
+}
+
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const roll=p=>Math.random()*100<p;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const level=()=>{let i=0;LEVELS.forEach((l,x)=>{if(G.xp>=l.xp)i=x;});G.levelIdx=i;return LEVELS[i];};
+const levelName=()=>G.mgmt&&G.levelIdx>=3?MGMT_LEVELS[G.levelIdx]:LEVELS[G.levelIdx].t;
+const comp=()=>G.salary+Math.round(G.equity);
+const MK=()=>MARKETS[G.market];
+const fmtK=v=>v>=1000?(v/1000).toFixed(1)+'k':v;
+
+/* ═════════ POSTS ═════════ */
+function post({author,tag,tagCls,text,big,mute}){
+  const a=typeof author==='function'?author():author;
+  const reacts=mute?rnd(1,6):rnd(4,30)+Math.round(G.rep*rnd(2,14));
+  const comments=mute?rnd(0,1):rnd(0,Math.max(2,Math.round(reacts/9)));
+  // comentarios visibles solo en posts propios con tirón
+  let cmHtml='';
+  if(a.n===G.name&&!mute&&roll(45)){
+    const cms=[];
+    // los haters llegan con la fama; si no, un aplauso
+    if(G.rep>35&&roll(clamp(G.rep-15,10,55)))cms.push({t:pick(HATER_COMMENTS),h:true});
+    else if(roll(75))cms.push({t:pick(NICE_COMMENTS),h:false});
+    if(cms.length)cmHtml=`<div class="pcomments">${cms.map(c=>{
+      const cc=pick(COMMENTERS);
+      return `<div class="pcm ${c.h?'hater':''}">
+        <div class="cav" style="background:${cc[1]}">${cc[0]}</div>
+        <div class="bub"><b>${c.h?'Usuario con opiniones':'Alguien de tu red'}</b>${c.t}</div></div>`;}).join('')}</div>`;
+  }
+  const d=document.createElement('div');
+  d.className='post'+(big?' legadopost':'');
+  d.innerHTML=`
+    <div class="phd2">
+      <div class="pav ${a.sq?'sq':''} ${a.n===G.name&&G.otw?'otw':''}" style="background:${a.col}">${a.ini}</div>
+      <div class="pwho">
+        <div class="n">${a.n} <small>· ${a===AUTHORS.news||a===AUTHORS.sys?'Siguiendo':'1.º'}</small></div>
+        <div class="h">${a.h}</div>
+        <div class="t">${G.year} · 🌐</div>
+      </div>
+    </div>
+    ${tag?`<div style="margin-top:8px"><span class="ptag ${tagCls||'b'}">${tag}</span></div>`:''}
+    <div class="ptxt${text.length>150?' clamp':''}">${text}</div>
+    ${text.length>150?'<span class="vermas">…ver más</span>':''}
+    <div class="preact">
+      <span><span class="ic">👍💡❤️</span> ${fmtK(reacts)}</span>
+      <span>${comments} comentarios · ${rnd(0,Math.round(comments/2)+1)} compartidos</span>
+    </div>
+    ${cmHtml}`;
+  d.addEventListener('click',e=>{
+    if(e.target.classList.contains('vermas')){
+      const tx=d.querySelector('.ptxt');
+      const open=tx.classList.toggle('clamp');
+      e.target.textContent=open?'…ver más':'ver menos';
+    }
+  });
+  document.getElementById('feed').prepend(d);
+}
+
+/* ═════════ RUIDO NEGATIVO DEL FEED ═════════ */
+function ambientPost(){
+  const pool=[];
+  // Chema, tu excompañero, siempre un paso por delante
+  if(G.levelIdx<9)pool.push(()=>{
+    const lvlUp=LEVELS[Math.min(G.levelIdx+1,9)].t;
+    post({author:AUTHORS.chema,text:'¡Encantado de anunciar mi promoción a <b>'+lvlUp+'</b>! 🚀 Cuando entré en la empresa (después que otros, por cierto) nadie daba un duro por mí. #Humildad #Gratitud'});
+    G.energy=clamp(G.energy-2,0,100);});
+  // la startup que dejaste triunfa (FOMO)
+  if(G.clubs.length>1&&roll(50))pool.push(()=>{
+    post({author:AUTHORS.founder,tag:'FOMO',tagCls:'r',text:'Hoy es un día histórico: <b>hemos cerrado nuestra Serie C</b> 🦄 Gracias al equipo que creyó desde el principio. A los que se fueron pronto: también fuisteis parte del camino. (Sí, va por ti.)'});
+    G.energy=clamp(G.energy-2,0,100);});
+  // el gurú
+  pool.push(()=>{
+    post({author:AUTHORS.guru,text:pick([
+      'Nadie habla de esto: me levanto a las 4:55. A las 5:00 ya estoy visualizando mi red de contactos. A las 5:05, primer café con un desconocido. ¿Tú qué excusa tienes? 🧵',
+      'Despedí a mi mejor amigo y fue la mejor decisión de mi carrera. Abro debate.',
+      'La IA no te va a quitar el trabajo. Te lo va a quitar alguien que madruga más que tú Y usa IA. Piénsalo.',
+      'Rechacé una oferta de 300k para seguir siendo fiel a mi propósito. Mi propósito: contarlo aquí.'])});});
+  // recuerdos incómodos
+  if(G.clubs.length>0&&G.age>27&&roll(40))pool.push(()=>{
+    post({author:AUTHORS.sys,tag:'RECUERDOS',tagCls:'p',text:'Hace '+rnd(3,6)+' años publicaste: «'+pick(['El metaverso va a cambiar el trabajo para siempre. El que no lo vea, que se aparte.','Los LLM son un juguete. La ingeniería seria es otra cosa.','Nunca me iré de '+G.clubs[0]+'. Aquí he encontrado mi tribu. ❤️','Web3 + IA es la combinación definitiva. Apuntad este post.'])+'»\n\n¿Quieres volver a compartirlo? (Por favor, no.)'});});
+  // aniversario que nadie celebra
+  if(G.red<40&&roll(35))pool.push(()=>{
+    post({author:AUTHORS.sys,tag:'ANIVERSARIO',tagCls:'b',mute:true,text:'🎉 ¡Felicita a '+G.name+' por su aniversario en '+G.club.n+'!\n\n(3 personas han reaccionado. Una es tu madre. Otra eres tú desde el móvil del trabajo.)'});
+    G.energy=clamp(G.energy-1,0,100);});
+  // ghosting de recruiter
+  if(G.age>25&&roll(35))pool.push(()=>{
+    post({author:AUTHORS.noreply,tag:'PROCESO CERRADO',tagCls:'r',mute:true,text:'Estimado/a candidato/a:\n\nGracias por tu interés. Tras una cuidadosa evaluación, hemos decidido avanzar con perfiles que se ajustan mejor a la posición. No podemos ofrecer feedback individualizado.\n\n(Era el proceso al que aplicaste hace 9 meses. Ya ni te acordabas. Ahora te acuerdas.)'});});
+  if(!pool.length)return;
+  pick(pool)();
+}
+
+/* ═════════ CREACIÓN ═════════ */
+let C={track:'ing',form:0};
+function creation(){
+  document.getElementById('rail').innerHTML='';
+  document.getElementById('feed').innerHTML='';
+  document.getElementById('controls').innerHTML=`
+  <div class="create">
+    <h1>Trayectoria<em>.</em></h1>
+    <p class="sub">Tu carrera en IA contada como lo que es: un muro de posts. Promos, despidos, humblebrags, recruiters y decisiones con porcentaje orientativo. Al retirarte, tu post de despedida.</p>
+    <div class="fl"><label>Tu nombre</label><input type="text" id="nm" placeholder="Nombre o alias" maxlength="18"></div>
+    <div class="fl"><label>Especialización</label><div class="routes">
+      ${TRACKS.map(t=>`<button class="route ${C.track===t.id?'sel':''}" data-tr="${t.id}"><b>${t.n}</b><em>${t.d}</em></button>`).join('')}</div></div>
+    <div class="fl"><label>Formación</label><div class="routes">
+      ${FORMACION.map((f,i)=>`<button class="route ${C.form===i?'sel':''}" data-fo="${i}"><b>${f.n}</b><em>${f.d}</em></button>`).join('')}</div></div>
+    <button class="gobtn" id="go">Crear perfil y entrar al mercado</button>
+  </div>`;
+  document.getElementById('controls').onclick=e=>{
+    const tr=e.target.closest('[data-tr]'),fo=e.target.closest('[data-fo]');
+    if(tr){C.track=tr.dataset.tr;creation();}
+    if(fo){C.form=+fo.dataset.fo;creation();}
+    if(e.target.id==='go'){
+      G.name=(document.getElementById('nm').value||'Alex').trim();
+      G.ini=G.name.slice(0,2).toUpperCase();
+      G.track=TRACKS.find(t=>t.id===C.track);
+      const F=FORMACION[C.form];
+      G.tec=F.tec;G.red=F.red;G.age=F.age;
+      if(F.rep)G.rep+=F.rep;if(F.phd){G.phd=true;G.xp=20;}if(F.boot)G.boot=true;
+      G.club=EMPLEADORES[F.boot?1:0];G.clubs=[G.club.n];G.salary=G.club.base;
+      G.manager=pick(MANAGERS);
+      xpStart(G.club.n);
+      post({author:AUTHORS.me,tag:'PRIMER EMPLEO',tagCls:'b',
+        text:'¡Encantad'+(Math.random()<.5?'o':'a')+' de anunciar que empiezo una nueva etapa como '+G.track.n+' en <b>'+G.club.n+'</b>! 🚀\n\nGracias a todos los que me habéis acompañado hasta aquí. Esto no ha hecho más que empezar. #OpenToLearn #IA'});
+      renderAll();
+    }
+  };
+}
+
+/* ═════════ RAIL ═════════ */
+function renderRail(){
+  if(!G.track)return;
+  const L=level(),m=MK();
+  const meters=[['Técnica','tec',G.tec],['Reputación','rep',G.rep],['Red','red',G.red],['Energía','ene',G.energy]];
+  document.getElementById('rail').innerHTML=`
+  <div class="railcards">
+  <div class="card">
+    <div class="pcover"></div>
+    <div class="pbody">
+      <div class="pavatar ${G.otw?'otw':''}">${G.ini}</div>
+      <div class="pname">${G.name}</div>
+      <div class="phead">${levelName()} · ${G.track.n} en ${G.club.n}</div>
+      <div class="psub">${G.age} años · ${G.year} · ${G.clubs.length} empresa${G.clubs.length>1?'s':''} en el CV</div>
+      <span class="pbadge ${G.mgmt?'mg':''}">${L.lvl} · ${levelName()}${G.mgmt?' · GESTIÓN':''}</span>
+      <div class="pstats">
+        <div class="pstat"><span>Comp. total</span><b class="gr num">${comp()}k€/año</b></div>
+        ${G.equity>0?`<div class="pstat"><span>Equity sin vestear</span><b class="num">${Math.round(G.equity)}k€</b></div>`:''}
+        <div class="pstat"><span>Cobrado (equity+extras)</span><b class="num">${G.vested}k€</b></div>
+        ${G.track.id==='res'
+          ?`<div class="pstat"><span>Papers · h-index</span><b class="num">${G.papers} · ${G.hindex}</b></div>
+            <div class="pstat"><span>Citas</span><b class="num">${fmtK(G.citas)}</b></div>`
+          :`<div class="pstat"><span>Productos · ★</span><b class="num">${G.products} · ${fmtK(G.stars)}</b></div>`}
+        <div class="pstat"><span>Charlas · Hitos</span><b class="num">${G.talks} · ${G.hitos.length}</b></div>
+      </div>
+      <div class="mini-meters">
+        ${meters.map(([l,k,v])=>`<div class="mm ${k} ${k==='ene'&&v<32?'warn':''}">
+          <div class="t"><span>${l}</span><span class="num">${Math.round(v)}</span></div>
+          <div class="bar"><i style="width:${v}%"></i></div></div>`).join('')}
+      </div>
+      ${G.manager?`<div class="sideline">Manager: <b>${G.manager.n}</b></div>`:''}
+      ${G.side?`<div class="sideline">⚡ <b>${G.side.n}</b> · ${fmtK(G.side.subs)} ${G.side.unit}</div>`:''}
+      ${(()=>{const b=computeBadges();return b.length?`
+      <div class="badges"><div class="xh">Licencias e insignias</div>
+        <div class="bdgs">${b.map(x=>`<span class="bdg ${x.green?'green':''}"><em>${x.ic}</em>${x.n}${x.x?` <small>×${x.x}</small>`:''}</span>`).join('')}</div>
+      </div>`:''})()}
+      <div class="xp">
+        <div class="xh">Experiencia</div>
+        ${G.history.slice().reverse().slice(0,6).map((x,i)=>{
+          const now=x.to===null;
+          const role=now?levelName():x.role;
+          const to=now?'Actualidad':x.to;
+          const yrs=(now?G.year:x.to)-x.from;
+          const dur=yrs<1?'menos de 1 año':yrs+(yrs===1?' año':' años');
+          return `<div class="xpi ${now?'now':''}">
+            <div class="xav" style="background:${xpColor(x.club)}">${x.club.slice(0,1)}</div>
+            <div><div class="xr">${role}</div>
+            <div class="xc">${x.club}</div>
+            <div class="xd">${x.from} — ${to} · ${dur}</div></div>
+          </div>`;}).join('')}
+        ${G.history.length>6?`<div class="xd" style="font-size:11px;color:var(--dim2)">y ${G.history.length-6} experiencia${G.history.length-6>1?'s':''} más…</div>`:''}
+      </div>
+    </div>
+  </div>
+  <div class="card mkcard ${m.cls}">
+    <div class="k">Estado del mercado</div>
+    <div class="v">${m.n}</div>
+    <div class="d">${m.d}</div>
+  </div>
+  </div>`;
+}
+
+/* ═════════ CONTROLES ═════════ */
+function renderControls(){
+  if(G.retired||!G.track)return;
+  if(G.pendingEvent||G.pendingOffers||G.pendingInterview){document.getElementById('controls').innerHTML='';return;}
+  document.getElementById('controls').innerHTML=`
+  <div class="advance">
+    <div class="av">${G.ini}</div>
+    <button id="sim">¿Qué te va a pasar en <b>${G.year+1}–${G.year+2}</b>? Publicar dos años…</button>
+  </div>
+  ${G.age>=38?'<div style="text-align:center"><button class="retirebtn" id="ret">Retirarte y escribir el post de despedida</button></div>':''}`;
+  const s=document.getElementById('sim');if(s)s.onclick=playYear;
+  const r=document.getElementById('ret');if(r)r.onclick=finalCard;
+}
+const renderAll=()=>{renderRail();renderControls();};
+
+/* ═════════ AÑO ═════════ */
+function playYear(){
+  G.age+=2;G.year+=2;   // ritmo Copero: cada turno son 2 años
+  if(G.otw){G.otw=false;
+    post({author:AUTHORS.sys,tag:'RECORDATORIO',tagCls:'g',mute:true,
+      text:'Llevabas un tiempo con el aro verde puesto. Ya tienes trabajo. Te lo quitamos nosotros, no pasa nada, le pasa a todo el mundo. 🟢✂️'});}
+  let ownLines=[];      // se agrupan en UN post tuyo
+  let ownTag=null,ownTagCls='b';
+
+  // mercado
+  const prev=G.market;
+  if(roll(48))G.market=pick(MK_NEXT[G.market]);
+  if(G.market!==prev){
+    post({author:AUTHORS.news,tag:'ÚLTIMA HORA',tagCls:{boom:'g',est:'b',inv:'r',reg:'o',agi:'p'}[G.market],
+      text:'<b>'+MK().n+'.</b> '+MK().d+'. Analistas del sector: "esta vez es diferente" (misma frase que el ciclo anterior).'});
+  }
+
+  // equity con mercado (2 años de fluctuación)
+  if(G.equity>0){
+    const k=Math.pow(MK().eqK,1.7)+(Math.random()*.12-.06);
+    const d0=Math.round(G.equity);G.equity*=k;
+    const diff=Math.round(G.equity)-d0;
+    if(Math.abs(diff)>=8)ownLines.push('Mi equity '+(diff>0?'sube':'cae')+' '+Math.abs(diff)+'k€ con el mercado. '+(diff>0?'No es dinero hasta que no es dinero.':'Respira. Solo es papel.'));
+  }
+
+  // manager
+  if(G.manager){
+    G.xp+=G.manager.xp;G.energy=clamp(G.energy+G.manager.ene,0,100);
+    if(G.manager.tec)G.tec=clamp(G.tec+G.manager.tec,10,99);
+    if(roll(18)){G.manager=pick(MANAGERS);
+      post({author:AUTHORS.hr,tag:'REORG',tagCls:'p',
+        text:'Comunicado interno: nueva reorganización para "alinear estructuras con la estrategia". Traducción: te cambia el manager. Ahora tienes '+G.manager.n+' ('+G.manager.d.toLowerCase()+').'});}
+  }
+
+  // técnica y energía (bienio)
+  let dt=((G.age<30?3.2:G.age<38?1.6:.6)+({corp:0,startup:.8,bigtech:1,frontier:2,academia:.6}[G.club.type]))*1.8;
+  if(G.mgmt)dt-=3.2;
+  if(G.energy<32){dt-=3.6;ownTag='RINDIENDO BAJO MÍNIMOS';ownTagCls='r';}
+  G.tec=clamp(G.tec+dt+Math.random()*2-.7,10,99);
+  G.energy=clamp(G.energy-(3+({corp:1,startup:5,bigtech:3,frontier:6,academia:2}[G.club.type]))*1.7+Math.random()*8,0,100);
+
+  // XP y promo (bienio)
+  G.xp+=(4+G.club.tier*2+(G.tec>70?3:0)+(G.mgmt?3:0))*2;
+  const before=G.levelIdx;level();
+  if(G.levelIdx>before){
+    G.salary=Math.round(G.salary*1.18);G.rep=clamp(G.rep+4,0,100);
+    G.hitos.push('Promo a '+levelName()+' ('+G.year+')');
+    post({author:AUTHORS.me,tag:'PROMOCIÓN',tagCls:'g',
+      text:'Me emociona compartir que asumo el rol de <b>'+levelName()+'</b> ('+LEVELS[G.levelIdx].lvl+') 🎉\n\nSolo puedo dar las gracias al equipo. El título tarda 3 semanas en aparecer en la firma del email, pero la ilusión ya está aquí. #Growth'});
+  }
+
+  // producción → post propio
+  if(!G.mgmt){
+    const out=Math.max(0,Math.round(((G.tec-30)/16)*2+(Math.random()*2-.5)));
+    if(G.track.id==='res'){
+      G.papers+=out;const c=out*Math.round(G.tec*1.9);G.citas+=c;
+      G.hindex=Math.min(G.papers,Math.round(Math.sqrt(G.citas/9)));
+      ownLines.unshift(out>0?'Este año: <b>'+out+' paper'+(out>1?'s':'')+'</b> publicados y +'+c+' citas (h-index '+G.hindex+'). El revisor 2 sigue sin quererme, pero las citas no mienten.':'Año sin publicar. A veces el mejor paper es el que no escribes. (Es mentira, estoy fatal.)');
+      if(out>0&&G.tec>72&&roll(28)){G.hitos.push('Best paper ('+G.year+')');G.rep=clamp(G.rep+8,0,100);
+        post({author:AUTHORS.news,tag:'PREMIO',tagCls:'o',text:'<b>'+G.name+'</b> gana el best paper de la conferencia grande del año. Su hilo explicándolo tiene más citas que el paper.'});}
+    } else {
+      G.products+=out;const s=out*Math.round(G.tec*14);G.stars+=s;G.citas+=out*Math.round(G.tec/6);
+      ownLines.unshift(out>0?'Balance del año: <b>'+out+' producto'+(out>1?'s':'')+'</b> en producción y +'+s+' ★ en GitHub. Detrás de cada demo bonita hay un try/except del que no hablo.':'Año de deuda técnica y reuniones. Alguien tenía que hacerlo, y ese alguien no sale en las keynotes.');
+      if(out>0&&G.tec>72&&roll(26)){G.hitos.push('Producto del año ('+G.year+')');G.rep=clamp(G.rep+7,0,100);
+        post({author:AUTHORS.news,tag:'DESTACADO',tagCls:'o',text:'El lanzamiento de <b>'+G.name+'</b> aparece en todas las newsletters del sector esta semana. Sí, en esa también.'});}
+    }
+  } else {
+    G.rep=clamp(G.rep+2,0,100);
+    ownLines.unshift('Un año más liderando al equipo. Mi contribución ya no se mide en commits, sino en que nadie dimita. Spoiler: nadie ha dimitido. 📈');
+  }
+
+  // side project
+  if(G.side){
+    const gr=Math.round(G.side.subs*(.32+Math.random()*.7))+40;
+    G.side.subs+=gr;
+    const inc=Math.round(G.side.subs/(G.side.type==='saas'?60:200));
+    if(inc>2){G.vested+=inc;ownLines.push('⚡ '+G.side.n+': +'+gr+' '+G.side.unit+' este año y '+inc+'k€ de ingreso extra. Construir en público funciona (y da un miedo horrible).');}
+    G.energy=clamp(G.energy-3,0,100);
+  }
+
+  // reputación y charlas
+  G.rep=clamp(G.rep+(G.tec>65?2:1)+(G.club.tier>=3?1:0),0,100);
+  if(G.rep>=45&&roll(G.rep-20)){G.talks++;G.red=clamp(G.red+4,0,100);
+    ownLines.push('Di una charla en la conferencia del sector. Las slides me llevaron 3 semanas; el "¿se ve mi pantalla?", 3 segundos.');}
+
+  // vesting
+  if(G.equity>0){const v=Math.round(G.equity*.45);G.vested+=v;G.equity-=v;}
+
+  G.salary=Math.round(G.salary*1.06);
+  G.maxComp=Math.max(G.maxComp,comp());
+
+  // post propio del año — máx 2 frases, con la energía baja el tono cambia
+  if(G.energy<35&&roll(60)){
+    ownLines=[ownLines[0]||'',
+      'Voy a ser honest'+(Math.random()<.5?'o':'a')+': este año ha sido duro. El feed solo enseña las promos; detrás hay domingos con el estómago cerrado. Si estás igual: no estás solo.'];
+    ownTag=ownTag||'POST VULNERABLE';ownTagCls='r';
+  }
+  post({author:AUTHORS.me,tag:ownTag,tagCls:ownTagCls,text:ownLines.filter(Boolean).slice(0,2).join('\n\n')});
+
+  // ruido del feed: la carrera de los demás también existe (y duele)
+  if(roll(35))ambientPost();
+
+  if(roll(74))queueEvent();
+  else if(roll(MK().offerP))queueOffers();
+
+  if(G.age>=50&&!G.retired)return finalCard();
+  renderAll();renderPending();
+}
+
+/* ═════════ EVENTOS (pool v4) ═════════ */
+const EVENTS=[
+ {id:'layoff',k:'Reestructuración',w:2,cond:()=>['bigtech','corp'].includes(G.club.type)&&roll(MK().layoffP+20),
+  h:'Ronda de despidos: el 15% de tu organización',
+  p:'El email llega un miércoles a las 8:04. "Decisión difícil". "De cara al futuro".',
+  o:[{t:'Hacerte imprescindible en dos semanas',e:'Visibilidad agresiva, ya',pr:60,
+      ok:{txt:'Sobrevivo al corte. Mi manager ni sabía que hacía la mitad de esas cosas. Ahora lo sabe.',rep:3,energy:-10},
+      ko:{txt:'Mi equipo entero ha desaparecido del organigrama. Yo incluido.',layoff:true}},
+     {t:'Negociar la salida con paquete',e:'Si va a pasar, que pague',pr:75,
+      ok:{txt:'Salgo con 6 meses de finiquito y el portátil. La mejor salida posible.',money:30,layoff:true,soft:true},
+      ko:{txt:'Me despidieron antes de negociar. El paquete fue un tupper.',layoff:true}}]},
+ {id:'winter',k:'Caja',w:2,once:true,cond:()=>G.club.type==='startup'&&(G.market==='inv'||roll(30)),
+  h:'A tu startup le quedan 5 meses de caja',
+  p:'La ronda "está al caer" desde hace un año. Los fundadores sonríen distinto.',
+  o:[{t:'Quedarte hasta el final',e:'Lealtad, equity y fe',pr:35,
+      ok:{txt:'La ronda cerró in extremis y doblaron mi equity por quedarme. La lealtad, a veces, paga.',eq:30,rep:5,tag:'REMONTADA',tagCls:'g'},
+      ko:{txt:'La startup murió un martes. Mi equity vale exactamente el papel donde no está impreso.',layoff:true,eqzero:true}},
+     {t:'Buscar ya, en silencio',e:'Los que saben nadar salen primero',pr:85,
+      ok:{txt:'Firmé fuera dos semanas antes del cierre. Por la puerta de delante, con algo de culpa.',soft:true,layoff:true},
+      ko:{txt:'Se enteraron de que buscaba. Los últimos meses fueron un standup incómodo eterno.',rep:-3}}]},
+ {id:'acqui',k:'Movimiento corporativo',w:1,once:true,cond:()=>G.club.type==='startup'&&G.equity>15,
+  h:'Una big tech quiere comprar tu empresa',
+  p:'"Acqui-hire", lo llaman. Tu equity por fin significa algo. O la mitad de algo.',
+  o:[{t:'Votar a favor y cobrar',e:'Pájaro en mano',pr:90,
+      ok:{txt:'Cobré el equity y amanecí con badge de empresa grande. Se gana, se pierde, se firma.',cashout:true,rep:4,tag:'ADQUISICIÓN',tagCls:'g'},
+      ko:{txt:'El deal se cayó en due diligence. Todo sigue igual, pero más raro.',energy:-5}},
+     {t:'Oponerte: esto vale más',e:'La apuesta del que cree',pr:40,
+      ok:{txt:'Teníamos razón: dos años después la empresa vale el triple. Que conste en acta.',eqmul:2.6,rep:6},
+      ko:{txt:'No había más ofertas. La empresa languidece y mi equity con ella.',eqmul:.4}}]},
+ {id:'ipo',k:'Campana',w:1,once:true,cond:()=>G.club.type==='bigtech'&&G.equity>20&&G.market==='boom',
+  h:'Tu empresa anuncia resultados históricos',
+  p:'La acción se dispara. Slack es solo GIFs de cohetes.',
+  o:[{t:'Vender la mitad del equity',e:'Nadie quebró por tomar beneficios',pr:100,
+      ok:{txt:'Convertí papel en dinero de verdad. El resto, que corra.',cashhalf:true}},
+     {t:'Mantenerlo todo',e:'Esto solo puede subir',pr:50,
+      ok:{txt:'Subió otro 40%. Estoy insufrible en las cenas.',eqmul:1.4},
+      ko:{txt:'Corrección del 35% al trimestre siguiente. No lo menciono nunca.',eqmul:.65}}]},
+ {id:'mgmt',k:'Bifurcación',w:2,once:true,cond:()=>!G.mgmt&&G.levelIdx>=3,
+  h:'Te ofrecen pasar a gestión: Engineering Manager',
+  p:'Más nivel, más sueldo, cero código. La decisión que divide al sector en dos religiones.',
+  o:[{t:'Aceptar: liderar personas',e:'Tu impacto se multiplica por tu equipo',pr:100,
+      ok:{txt:'Oficial: paso a la vía de gestión. Cambio el editor por el calendario. 14 reuniones el primer martes. Deseadme suerte.',mgmt:true,sal:1.15,xp:10,tag:'VÍA GESTIÓN',tagCls:'o'}},
+     {t:'Rechazar: vía técnica (IC)',e:'Staff, Principal, Distinguished. Sin 1:1s',pr:100,
+      ok:{txt:'He dicho que no a gestionar. Sigo construyendo. Mi manager respiró aliviado: no quería perderme del roadmap.',rep:3,tec:2}}]},
+ {id:'fire_someone',k:'La parte dura',w:1,cond:()=>G.mgmt,
+  h:'Tienes que despedir a alguien de tu equipo',
+  p:'Bajo rendimiento sostenido. RRHH ya preparó el guion. Tú pones la cara.',
+  o:[{t:'Hacerlo bien: honesto y humano',e:'La conversación que nadie enseña',pr:85,
+      ok:{txt:'La conversación más dura del año. Salió con dignidad y una recomendación mía real. Años después me lo agradecerá.',rep:5,energy:-10},
+      ko:{txt:'La conversación se torció y acabó en legal. Meses de desgaste.',energy:-16}},
+     {t:'Delegarlo en RRHH y no estar',e:'Para eso está el proceso, ¿no?',pr:60,
+      ok:{txt:'El proceso funcionó. Mi equipo tomó nota de que no estuve. Silenciosamente.',rep:-4},
+      ko:{txt:'El equipo perdió la confianza en mí. Dos dimisiones en tres meses.',rep:-8,energy:-8}}]},
+ {id:'promo_cycle',k:'Ciclo de promoción',w:2,cond:()=>G.levelIdx>=2&&G.levelIdx<=6,
+  h:'Se abre el ciclo de promo y tu manager duda',
+  p:'"El caso es fuerte pero el calibration es duro este año."',
+  o:[{t:'Promo packet impecable',e:'Documentar 18 meses de impacto',pr:65,
+      ok:{txt:'Promo conseguida. El doc de 6 páginas costó más que el trabajo que documenta, y lo volvería a hacer.',xp:22,sal:1.15,tag:'PROMOCIÓN',tagCls:'g'},
+      ko:{txt:'"El año que viene seguro." Bonus de consolación y una lección.',energy:-8}},
+     {t:'Forzarlo con oferta externa',e:'La palanca clásica',pr:55,
+      ok:{txt:'Contraoferta inmediata: promo + 20%. Apuntado en la lista de "mercenarios", lo asumo.',xp:22,sal:1.2,rep:-2},
+      ko:{txt:'"Suerte en tu nueva etapa." La contraoferta no llegó y la otra oferta era regular. Ups.',energy:-10,rep:-3}}]},
+ {id:'oncall',k:'Guardia',w:2,cond:()=>!G.mgmt&&['startup','bigtech','frontier'].includes(G.club.type),
+  h:'Incidente P0 a las 3:47 de la mañana',
+  p:'El modelo responde basura en producción. El cliente más grande lo está viendo en directo.',
+  o:[{t:'Liderar la respuesta tú',e:'Es tu sistema. Es tu noche',pr:70,
+      ok:{txt:'P0 resuelto a las 7:50. Cuatro horas quirúrgicas y un postmortem ejemplar. Hoy he nacido como leyenda interna.',rep:6,tec:2,energy:-10},
+      ko:{txt:'Mi fix rompió otra cosa. Seis horas más. El postmortem tiene mi nombre demasiadas veces.',energy:-14,rep:-2}},
+     {t:'Escalar y volver a dormir',e:'Para eso hay rotación de guardias',pr:80,
+      ok:{txt:'Escalé y volví a dormir. Dormir también es una skill senior.',energy:4},
+      ko:{txt:'Nadie cogió la escalación. A las 5:12 estaba mirando logs igualmente, pero enfadado.',energy:-10}}]},
+ {id:'oss_steal',k:'Open source',w:1,once:true,cond:()=>G.stars>500||G.rep>40,
+  h:'Una big tech relanza tu librería sin citarte',
+  p:'Mismo diseño, otro nombre, blog post triunfal. Tu nombre no aparece ni en los agradecimientos.',
+  o:[{t:'Hilo público con recibos',e:'Los commits con fecha no mienten',pr:70,
+      ok:{txt:'Publiqué el hilo con los commits originales. Explotó: disculpas públicas y atribución. Los recibos siempre.',rep:12,red:8},
+      ko:{txt:'Me acusaron de drama. Media industria me da la razón en privado. Solo en privado.',rep:-3,energy:-6}},
+     {t:'Dejarlo pasar y anotarlo',e:'La venganza se sirve en el siguiente ciclo de contratación',pr:100,
+      ok:{txt:'Años después su director me entrevistó. Le enseñé el commit original. Silencio. Oferta.',rep:4}}]},
+ {id:'gptn',k:'Obsolescencia',w:2,once:true,cond:()=>G.age>26,
+  h:'Sale el nuevo modelo y tu proyecto de 2 años queda obsoleto',
+  p:'Lo que construías con un equipo de ocho, ahora es un parámetro en una API.',
+  o:[{t:'Migrar todo encima del modelo nuevo',e:'Si no puedes vencerlos...',pr:70,
+      ok:{txt:'Reconstruimos en 4 meses lo que costó 2 años. Vértigo y alivio a partes iguales.',tec:4,energy:-8},
+      ko:{txt:'La migración se atascó en los edge cases. Lo peor de ambos mundos durante un año.',energy:-12}},
+     {t:'Defender tu enfoque especializado',e:'Los modelos generales no llegan a todo. ¿Aún?',pr:45,
+      ok:{txt:'Nuestro nicho resiste: el modelo general falla justo donde nosotros brillamos. Cotizamos al alza.',rep:7,tec:2},
+      ko:{txt:'La siguiente versión sí llegó. Proyecto cancelado, aprendizaje amortizado.',energy:-8,rep:-2}}]},
+ {id:'data_ethics',k:'Zona gris',w:1,once:true,cond:()=>G.age>25,
+  h:'Te piden entrenar con datos que no deberíais tener',
+  p:'"Legal lo está mirando" significa que legal dijo que no y nadie quiere oírlo.',
+  o:[{t:'Negarte por escrito',e:'Que quede constancia',pr:100,
+      ok:{txt:'Me negué por escrito. El proyecto se hizo igual, sin mí. Un año después explotó en prensa: mi email es mi coartada y mi medalla.',rep:9}},
+     {t:'Hacerlo y no preguntar',e:'Todo el mundo entrena con de todo',pr:60,
+      ok:{txt:'Nadie preguntó nunca. El modelo funciona. Yo duermo regular.',sal:1.06,rep:-2},
+      ko:{txt:'Filtración, artículo, y mi nombre en el pipeline de los datos. El peor día de mi carrera.',rep:-16,scandal:true,tag:'ESCÁNDALO',tagCls:'r'}}]},
+ {id:'safety',k:'Responsabilidad',w:1,once:true,cond:()=>G.club.type==='frontier'||G.tec>70,
+  h:'Descubres un fallo de seguridad grave días antes del lanzamiento',
+  p:'El modelo hace algo que no debería si se lo pides con suficiente educación. El launch es el jueves.',
+  o:[{t:'Parar el lanzamiento',e:'La palabra que nadie quiere decir en la war room',pr:70,
+      ok:{txt:'Paré el lanzamiento. Dos semanas de retraso, enemigos en producto, respeto en todas partes.',rep:8,energy:-8},
+      ko:{txt:'Me ignoraron y lanzaron. El fallo salió en un hilo el viernes. Al menos avisé, y consta.',rep:4,energy:-10}},
+     {t:'Reportarlo y seguir el proceso',e:'Ticket, severidad alta, a la cola',pr:55,
+      ok:{txt:'Milagro: el proceso funcionó y se parcheó a tiempo.',rep:3},
+      ko:{txt:'Mi ticket murió en triaje y el fallo salió en producción. El ticket es mi única defensa.',energy:-8}}]},
+ {id:'podcast',k:'Micrófono',w:1,cond:()=>G.rep>35,
+  h:'Te invitan al podcast que escucha todo el sector',
+  p:'Hora y media, sin guion, con un host que pregunta bien.',
+  o:[{t:'Ir preparadísimo',e:'Dos semanas de notas',pr:80,
+      ok:{txt:'Grabé el podcast. Durante meses me presentarán como "el/la del podcast" y no me quejo.',rep:8,red:6,energy:-5},
+      ko:{txt:'Fui demasiado guionizado. Correcto, olvidable.',rep:2}},
+     {t:'Ir a corazón abierto',e:'Decir lo que piensas de verdad',pr:55,
+      ok:{txt:'Mis hot takes del podcast se están clipeando por todas partes. Polarizo y crezco.',rep:10,red:5},
+      ko:{txt:'Un clip fuera de contexto me persigue desde hace seis meses.',rep:-6,energy:-8}}]},
+ {id:'beef',k:'Discurso',w:1,once:true,cond:()=>G.rep>45,
+  h:'Una figura del sector desmonta tu trabajo en público',
+  p:'Un hilo largo, condescendiente y parcialmente correcto. 800 reposts y subiendo.',
+  o:[{t:'Responder con datos y elegancia',e:'Corregir lo falso, conceder lo cierto',pr:70,
+      ok:{txt:'Respondí con datos y sin adjetivos. Mi respuesta se cita como ejemplo de cómo discutir en público.',rep:9},
+      ko:{txt:'Me tembló el tono en el tercer párrafo. Empate técnico, desgaste real.',energy:-8}},
+     {t:'Silencio absoluto',e:'No alimentar',pr:75,
+      ok:{txt:'No respondí. El hilo murió en 48h. Mi trabajo sigue hablando solo.',energy:3},
+      ko:{txt:'Mi silencio se leyó como derrota. La crítica se volvió "consenso".',rep:-5}}]},
+ {id:'book',k:'Legado escrito',w:1,once:true,cond:()=>G.rep>55&&G.age>30,
+  h:'Una editorial te propone escribir EL libro de tu especialidad',
+  p:'Dos años de findes. Prestigio eterno. Anticipo de risa.',
+  o:[{t:'Escribirlo',e:'Los libros sobreviven a los frameworks',pr:60,
+      ok:{txt:'Dos años de findes después: mi libro es la referencia de la especialidad. Mi apellido ya es un adjetivo.',rep:15,book:true,energy:-15,tag:'HITO',tagCls:'o'},
+      ko:{txt:'Mi libro salió el mismo mes que un modelo lo dejó obsoleto. Culto minoritario, orgullo intacto.',rep:5,energy:-15}},
+     {t:'Declinar',e:'Tus findes son tuyos',pr:100,
+      ok:{txt:'Dije que no al libro. Otro lo escribió. Está bien. El mío habría estado mejor, pienso cada Navidad.',energy:5}}]},
+ {id:'teach',k:'Docencia',w:1,once:true,cond:()=>G.rep>40&&G.age>29,
+  h:'Un máster te ofrece dar la asignatura estrella',
+  p:'80 alumnos, un jueves por la tarde, y la obligación de entender de verdad lo que crees que sabes.',
+  o:[{t:'Aceptar',e:'Enseñar es aprender dos veces',pr:85,
+      ok:{txt:'Doy clase en el máster. Explicar me ordenó la cabeza, y tres exalumnos acabarán contratándome cosas.',tec:3,red:8,money:8,energy:-6},
+      ko:{txt:'Corregir 80 trabajos hechos con IA me rompió algo por dentro. Un año y fuera.',money:8,energy:-10}},
+     {t:'Declinar',e:'Sin tiempo para vocaciones',pr:100,ok:{txt:'Mis jueves siguen siendo míos.',energy:3}}]},
+ {id:'side_start',k:'Fuera de horario',w:2,once:true,cond:()=>!G.side&&G.tec>45&&G.energy>40,
+  h:'Tienes una idea que no te deja dormir',
+  p:'Podrías construirla en los findes. Todos los side projects empiezan con esta frase y este error de cálculo.',
+  o:[{t:'Micro-SaaS de nicho',e:'Cobrar desde el día uno',pr:100,
+      ok:{txt:'He lanzado mi micro-SaaS. 12 usuarios el primer mes. Dos pagan. Estoy oficialmente enganchado.',side:{n:'Tu micro-SaaS',type:'saas',subs:12,unit:'clientes'},tag:'SIDE PROJECT',tagCls:'b'}},
+     {t:'Librería open source',e:'Estrellas en vez de euros',pr:100,
+      ok:{txt:'He publicado mi librería OSS. Alguien de otro continente abrió el primer issue. Magia pura.',side:{n:'Tu librería OSS',type:'oss',subs:80,unit:'★'},tag:'SIDE PROJECT',tagCls:'b'}},
+     {t:'Newsletter técnica',e:'Audiencia como activo',pr:100,
+      ok:{txt:'Número 1 de mi newsletter enviado a 40 personas, 38 de ellas familia. Todo imperio empieza así.',side:{n:'Tu newsletter',type:'news',subs:40,unit:'suscriptores'},tag:'SIDE PROJECT',tagCls:'b'}},
+     {t:'Dormir es mejor proyecto',e:'La opción secretamente correcta',pr:100,
+      ok:{txt:'He decidido no montar nada este año. Elegir vida también es una estrategia.',energy:8}}]},
+ {id:'side_copy',k:'Fuera de horario',w:1,once:true,cond:()=>G.side&&G.side.subs>800,
+  h:'Alguien clona tu side project con mejor marketing',
+  p:'Misma idea, landing más bonita, y un hilo de lanzamiento escrito por un dios del growth.',
+  o:[{t:'Competir: doblar la apuesta',e:'Tu ventaja es que te importa',pr:55,
+      ok:{txt:'Me han clonado el proyecto y he decidido competir. Resultado: la comunidad se quedó conmigo. La autenticidad no se clona.',sideMul:1.8},
+      ko:{txt:'Su marketing ganó. Mi proyecto se estanca; el suyo levanta ronda. Duele elegante.',sideMul:.5,energy:-6}},
+     {t:'Venderle el proyecto al clon',e:'Si no puedes vencerlos, factúrales',pr:65,
+      ok:{txt:'He vendido mi side project. A mi clon. Sí, se puede. Un exit es un exit.',sideSell:true,tag:'VENTA',tagCls:'g'},
+      ko:{txt:'La negociación se enfrió. Sigo, pero ya no ilusiona igual.',sideMul:.8}}]},
+ {id:'side_conflict',k:'Conflicto de interés',w:1,once:true,cond:()=>G.side&&G.side.subs>2000&&G.club.tier>=3,
+  h:'Tu empresa descubre tu side project',
+  p:'"Queremos hablar de tu actividad externa." La frase viene con un PDF de tu contrato adjunto.',
+  o:[{t:'Negociar una excepción por escrito',e:'Transparencia total',pr:60,
+      ok:{txt:'Me han firmado la excepción por actividad externa. Oficialmente, la persona con permiso para tener vida.',rep:3},
+      ko:{txt:'Ultimátum: el proyecto o el puesto. Cerré el proyecto. Algo se apagó.',sideKill:true,energy:-8}},
+     {t:'Apostar por el side project',e:'Full-time en lo tuyo',pr:45,
+      ok:{txt:'He renunciado para dedicarme a mi proyecto. Crece x3 con mi atención completa. El lunes ya no es un concepto hostil.',sideMul:3,quit:true,rep:6,tag:'SALTO',tagCls:'g'},
+      ko:{txt:'Sin el sueldo, el proyecto no daba. Vuelvo al mercado con una historia buenísima y el orgullo razonable.',sideKill:true,layoff:true,soft:true}}]},
+ {id:'burnout',k:'Límite',w:2,cond:()=>G.energy<35,
+  h:'Tu cuerpo lleva meses avisando',
+  p:'Domingos con ansiedad, sueño roto, la sensación de estar a un deploy del desastre.',
+  o:[{t:'Excedencia de 6 meses',e:'Parar de verdad, con coste real',pr:92,
+      ok:{txt:'Post distinto al habitual: me tomo 6 meses de excedencia. Volveré siendo persona. La técnica se oxida; yo, al revés.',energy:45,tec:-2},
+      ko:{txt:'Ni parando desconecté del Slack. Pero ayudó.',energy:25}},
+     {t:'Aguantar hasta el bonus',e:'Solo quedan 7 meses',pr:40,
+      ok:{txt:'Llegué al bonus con lo justo. Lo cobré mirando ofertas tranquilas.',money:15,energy:-12},
+      ko:{txt:'El cuerpo decidió por mí. Seis meses de baja. Este post lo escribo desde el sofá, y está bien así.',energy:40,tec:-3,burnout:true,tag:'BAJA',tagCls:'r'}}]},
+ {id:'rto',k:'Cultura',w:1,once:true,cond:()=>G.club.tier>=3,
+  h:'Mandato de vuelta a la oficina: 5 días',
+  p:'"La colaboración presencial es clave", dice el email enviado desde Bali por el VP.',
+  o:[{t:'Acatar y aprovechar',e:'Cafés, pasillos, política de la buena',pr:75,
+      ok:{txt:'La vuelta a la oficina me dio algo inesperado: aliados. Mi siguiente promo se está cocinando en la cocina. Literalmente.',red:8,energy:-6},
+      ko:{txt:'Tres horas de transporte diario. La promo no compensa el podcast entero que me escucho.',energy:-12}},
+     {t:'Negociar remoto o irte',e:'Tu vida no cabe en un open space',pr:55,
+      ok:{txt:'Excepción de remoto concedida discretamente. No lo contéis.',energy:8},
+      ko:{txt:'"La política aplica a todos." Empiezo a mirar ofertas con otro estado de ánimo.',energy:-6}}]},
+ {id:'crypto',k:'Cantos de sirena',w:1,once:true,cond:()=>G.rep>30,
+  h:'Te ofrecen ser CTO de una startup de "IA + blockchain"',
+  p:'El fundador tiene un Lambo alquilado y un deck de 60 slides. El sueldo es en tokens. "Pre-listing."',
+  o:[{t:'Ni de broma',e:'Hay trenes que es un honor perder',pr:100,
+      ok:{txt:'Decliné ser CTO de una "IA + blockchain". Ocho meses después la SEC hizo la pregunta que yo hice en la primera call.',rep:3}},
+     {t:'Aceptar, ¿qué puede salir mal?',e:'Los tokens podrían valer algo',pr:15,
+      ok:{txt:'Contra todo pronóstico: el token listó y vendí arriba. No se lo contéis a nadie serio.',money:120,rep:-5},
+      ko:{txt:'Rug pull. Mi nombre en el whitepaper. Me esperan años explicándolo en entrevistas.',rep:-14,energy:-10,scandal:true,tag:'DESASTRE',tagCls:'r'}}]},
+ {id:'cofound',k:'La llamada',w:1,once:true,cond:()=>G.age>=28&&G.red>=35,
+  h:'Tu antigua jefa monta startup y te quiere de cofundador técnico',
+  p:'10% de equity, sueldo a la mitad, y "esto es una vez en la vida". Estadísticamente, son unas tres.',
+  o:[{t:'Saltar',e:'La apuesta grande',pr:38,
+      ok:{txt:'Hoy se anuncia: hemos vendido la empresa. Mi 10% de cofundador es libertad financiera. Gracias a la que me llamó aquel martes.',vest:900,rep:15,exit:true,tag:'EXIT',tagCls:'g'},
+      ko:{txt:'Cerramos la startup con dignidad. Tres años de guerra, cero euros, historias infinitas. Volvería a hacerlo (mentira) (verdad).',energy:-18,tec:4,rep:5}},
+     {t:'No saltar',e:'Tu vida ya te gusta',pr:100,
+      ok:{txt:'Decliné cofundar. Mi vida ya me gusta. Miro cómo les va "casi nunca". Cada semana.',energy:5}}]},
+ {id:'ai_replace',k:'El elefante en el repo',w:1,once:true,cond:()=>G.age>=30&&!G.mgmt,
+  h:'Los agentes ya hacen el 70% de tu trabajo de hace 5 años',
+  p:'Lo has medido. No es hype: es tu backlog vaciándose solo.',
+  o:[{t:'Subir de capa: orquestar agentes',e:'De hacer a dirigir sistemas',pr:70,
+      ok:{txt:'He pasado de escribir el código a dirigir a los que lo escriben (no son personas). Rindo como un equipo y negocio como tal.',tec:6,sal:1.15},
+      ko:{txt:'Orquestar se me da peor que ejecutar. Años incómodos de transición.',tec:-2,energy:-8}},
+     {t:'Dominar el 30% restante',e:'Criterio, contexto, responsabilidad',pr:75,
+      ok:{txt:'Me he especializado en lo que el modelo no hace: criterio, contexto, firmar. Los modelos rotan; el criterio se queda.',rep:8,tec:3},
+      ko:{txt:'El 30% se volvió 20%, luego 15%. Corro contra una curva.',tec:-1}}]},
+ {id:'sf',k:'Relocalización',w:1,once:true,cond:()=>G.club.tier>=3&&G.age<36,
+  h:'Te ofrecen moverte a la sede de San Francisco',
+  p:'x2 de sueldo, x4 de alquiler, 9.000 km de todas tus personas.',
+  o:[{t:'Hacer las maletas',e:'El centro del mundo, con jet lag',pr:70,
+      ok:{txt:'Primer post desde San Francisco. El alquiler es un crimen y la red que estoy haciendo vale una carrera entera.',sal:1.6,red:20,energy:-14},
+      ko:{txt:'El visado se complicó y la mudanza se cayó. Subida parcial y ganas intactas.',sal:1.15}},
+     {t:'Quedarte y negociar remoto',e:'Tu vida no está en un campus',pr:60,
+      ok:{txt:'Negocié remoto con ajuste salarial. Duermo en mi cama y en mis horarios. Sin arrepentimientos.',sal:1.1,energy:10},
+      ko:{txt:'"La cultura requiere presencialidad." Todo se enfrió un poco.',energy:-4}}]},
+ {id:'credit',k:'Justicia interna',w:1,once:true,cond:()=>!G.mgmt&&G.age>25,
+  h:'Tu compañero presenta tu trabajo como suyo en la demo trimestral',
+  p:'Usa tus slides. TUS slides. Con una tipografía peor.',
+  o:[{t:'Corregirlo en la misma sala',e:'"Gran resumen de mi proyecto, añado contexto"',pr:65,
+      ok:{txt:'"Gran resumen de mi proyecto, añado contexto." Lo dije con una sonrisa que corta cristal. La sala entendió todo.',rep:6},
+      ko:{txt:'Sonó a rabieta. Tenía razón, pero perdí la sala.',rep:-4,energy:-6}},
+     {t:'Hablarlo después en privado',e:'La vía adulta',pr:75,
+      ok:{txt:'Lo hablamos en privado. Se disculpó y lo corrigió por email a todos. La vía aburrida funciona, quién lo diría.',rep:4},
+      ko:{txt:'"No era mi intención." Lo volvió a hacer. Ahora ya sé quién es.',energy:-5}}]},
+ {id:'pip',k:'Aviso formal',w:1,once:true,cond:()=>G.energy<45&&G.levelIdx>=2,
+  h:'Te ponen en un PIP: plan de mejora de rendimiento',
+  p:'Sesenta días para "demostrar impacto". Todo el mundo sabe lo que es un PIP. Tú también.',
+  o:[{t:'Pelearlo y remontar',e:'Demostrar que se equivocan',pr:45,
+      ok:{txt:'Remonté el PIP. Sesenta días infernales, objetivos cumplidos, y una relación con la empresa que ya nunca será la misma. Pero remonté.',rep:4,energy:-14},
+      ko:{txt:'El PIP era un trámite: la decisión estaba tomada. Firmé la salida sabiendo que el sistema estaba diseñado para esto.',layoff:true}},
+     {t:'Negociar la salida ya',e:'Un PIP es una despedida con papeleo',pr:80,
+      ok:{txt:'Negocié la salida el primer día del PIP. Finiquito digno y cero teatro. A veces la victoria es no jugar.',money:18,layoff:true,soft:true},
+      ko:{txt:'Quisieron el teatro completo antes del finiquito. Sesenta días de fingir que había plan.',layoff:true}}]},
+ {id:'impostor',k:'De puertas adentro',w:1,once:true,cond:()=>G.club.tier>=3&&G.tec>60,
+  h:'Síndrome del impostor en su versión premium',
+  p:'Todos en la sala parecen saber más que tú. Llevas 3 reuniones sin hablar por si "se dan cuenta".',
+  o:[{t:'Preguntar la "pregunta tonta" en la próxima reunión',e:'El movimiento más valiente del sector',pr:75,
+      ok:{txt:'Hice la "pregunta tonta" en la reunión. Resultó que nadie entendía esa parte. Tres personas me lo agradecieron por privado.',rep:5,energy:8},
+      ko:{txt:'Silencio incómodo de cuatro segundos. Sobreviví, pero los cuatro segundos duran todavía.',energy:-5}},
+     {t:'Compensarlo trabajando el doble',e:'La respuesta clásica y carísima',pr:55,
+      ok:{txt:'Trabajé el doble un año entero para sentirme "suficiente". Funcionó a medias: ahora sé más y duermo menos.',tec:3,energy:-14},
+      ko:{txt:'Trabajar más no arregló lo que no era un problema de trabajo. Un año caro de aprender eso.',energy:-16}}]},
+ {id:'mgr_toxic',k:'Convivencia',w:2,cond:()=>G.manager&&G.manager.q==='bad',
+  h:'Tu manager ha cruzado la línea',
+  p:'Feedback humillante en canal público. Otra vez. Ya ni te sorprende, y eso es lo grave.',
+  o:[{t:'Escalar a skip-level con evidencias',e:'Capturas, fechas, testigos',pr:55,
+      ok:{txt:'Escalé con capturas y fechas. Skip-level actuó: reorganización y manager nuevo. El sistema, a veces, funciona.',newMgr:true,rep:3},
+      ko:{txt:'"Son estilos de trabajo distintos." El mensaje llegó a mi manager. El invierno llegó a mis 1:1.',energy:-12}},
+     {t:'Cambiar de equipo en silencio',e:'Transferencia interna, cero drama',pr:75,
+      ok:{txt:'Transferencia interna completada. Nuevo equipo, manager decente, la vida mejora un 40% sin cambiar de badge.',newMgr:true,energy:8},
+      ko:{txt:'Mi manager bloqueó la transferencia "por necesidades del proyecto". Ahora sí es personal.',energy:-10}}]}
+];
+
+function queueEvent(){
+  const pool=[];
+  EVENTS.forEach(e=>{
+    if(e.once&&G.used[e.id])return;
+    if(e.cond&&!e.cond())return;
+    for(let i=0;i<(e.w||1);i++)pool.push(e);
+  });
+  if(!pool.length)return;
+  const ev=pick(pool);
+  G.used[ev.id]=true;G.pendingEvent=ev;
+}
+function renderPending(){
+  if(G.pendingEvent)return renderEvent();
+  if(G.pendingOffers)return renderOffers();
+}
+
+/* decisión como encuesta */
+function renderEvent(){
+  const ev=G.pendingEvent;
+  document.getElementById('controls').innerHTML=`
+  <div class="post poll">
+    <div class="phd2">
+      <div class="pav sq" style="background:${AUTHORS.sys.col}">${AUTHORS.sys.ini}</div>
+      <div class="pwho"><div class="n">${AUTHORS.sys.n}</div>
+      <div class="h">${ev.k} · decisión de carrera</div><div class="t">Ahora mismo</div></div>
+    </div>
+    <div class="ptxt"><b>${ev.h}</b>\n${ev.p}</div>
+    <div class="pollopts">${ev.o.map((o,i)=>`
+      <button class="pollopt" data-e="${i}">
+        <span class="fill" style="width:${o.pr}%"></span>
+        <span class="in"><span><b>${o.t}</b><em>${o.e}</em></span>
+        <span class="pollpct">${o.pr}%<small>orientativo</small></span></span>
+      </button>`).join('')}
+    </div>
+    <div class="pollnote">El porcentaje es orientativo. Una opción razonable también puede salir mal.</div>
+  </div>`;
+  document.getElementById('controls').onclick=e=>{
+    const b=e.target.closest('[data-e]');if(!b)return;
+    resolveEvent(ev.o[+b.dataset.e]);
+  };
+}
+function resolveEvent(o){
+  const win=roll(o.pr);
+  const r=win?o.ok:(o.ko||o.ok);
+  if(r.tec)G.tec=clamp(G.tec+r.tec,10,99);
+  if(r.energy)G.energy=clamp(G.energy+r.energy,0,100);
+  if(r.rep)G.rep=clamp(G.rep+r.rep,0,100);
+  if(r.red)G.red=clamp(G.red+r.red,0,100);
+  if(r.xp)G.xp+=r.xp;
+  if(r.sal)G.salary=Math.round(G.salary*r.sal);
+  if(r.money)G.vested+=r.money;
+  if(r.eq)G.equity+=r.eq;
+  if(r.eqmul)G.equity=Math.round(G.equity*r.eqmul);
+  if(r.eqzero)G.equity=0;
+  if(r.cashout){G.vested+=Math.round(G.equity);G.hitos.push('Adquisición: equity cobrado ('+G.year+')');G.equity=0;}
+  if(r.cashhalf){G.vested+=Math.round(G.equity/2);G.equity=Math.round(G.equity/2);G.hitos.push('Venta parcial de equity ('+G.year+')');}
+  if(r.vest){G.vested+=r.vest;G.hitos.push('Exit de startup ('+G.year+')');G.exits++;}
+  if(r.book)G.hitos.push('Libro de referencia ('+G.year+')');
+  if(r.mgmt){G.mgmt=true;G.hitos.push('Cambio a vía de gestión ('+G.year+')');}
+  if(r.side)G.side=r.side;
+  if(r.sideMul&&G.side)G.side.subs=Math.round(G.side.subs*r.sideMul);
+  if(r.sideSell&&G.side){G.vested+=Math.round(G.side.subs/8);G.hitos.push('Side project vendido ('+G.year+')');G.side=null;}
+  if(r.sideKill)G.side=null;
+  if(r.newMgr)G.manager=pick(MANAGERS.filter(m=>m.q!=='bad'));
+  if(r.burnout){G.burnouts++;G.hitos.push('Baja por burnout ('+G.year+')');}
+  if(r.scandal)G.scandals++;
+  const tag=r.tag||(win?'SALIÓ BIEN':'SALIÓ MAL');
+  const tagCls=r.tagCls||(win?'g':'r');
+  if(r.quit||r.layoff){
+    if(r.layoff&&!r.quit){G.layoffs++;G.otw=true;}
+    if(!r.soft&&!r.quit)G.energy=clamp(G.energy-12,0,100);
+    post({author:AUTHORS.me,tag,tagCls,text:r.txt});
+    if(!r.quit){
+      const fb=EMPLEADORES.filter(e=>G.tec>=e.minTec&&G.rep>=e.minRep&&e.n!==G.club.n&&(!e.needPhd||G.phd));
+      const nx=fb.sort((a,b)=>b.tier-a.tier)[Math.min(1,fb.length-1)]||EMPLEADORES[0];
+      G.club=nx;if(!G.clubs.includes(nx.n))G.clubs.push(nx.n);
+      xpStart(nx.n);
+      G.salary=Math.round(nx.base*(1+G.tec/150)*MK().sal);G.equity+=nx.eq;G.manager=pick(MANAGERS);
+      post({author:AUTHORS.me,tag:'NUEVA ETAPA',tagCls:'b',
+        text:'Tras unos meses de reflexión (y de mirar el techo), ¡encantad'+(Math.random()<.5?'o':'a')+' de anunciar que me uno a <b>'+nx.n+'</b>! La vida sigue, con más cinismo y mejor CV. #NewBeginnings'});
+    } else {
+      G.club={n:'Tu propio proyecto',tier:2,type:'startup',base:30,eq:0};
+      G.clubs.push('Tu propio proyecto');G.salary=30;G.manager=null;
+      xpStart('Tu propio proyecto');
+    }
+    G.pendingEvent=null;renderAll();return;
+  }
+  post({author:AUTHORS.me,tag,tagCls,text:r.txt});
+  G.pendingEvent=null;renderAll();
+}
+
+/* ═════════ OFERTAS (InMail) + LOOP ═════════ */
+function offerComp(o){return Math.round(o.base*(1+G.tec/140)*(1+G.levelIdx*.06)*MK().sal);}
+function queueOffers(){
+  const offers=EMPLEADORES.filter(e=>
+    e.n!==G.club.n&&G.tec>=e.minTec&&G.rep>=e.minRep&&e.tier>=G.club.tier&&(!e.needPhd||G.phd))
+    .sort(()=>Math.random()-.5).slice(0,3);
+  if(!offers.length)return;
+  G.pendingOffers=offers;
+}
+function renderOffers(){
+  const T={corp:'Corporación',startup:'Startup',bigtech:'Big tech',frontier:'Frontier lab',academia:'Academia'};
+  document.getElementById('controls').innerHTML=`
+  <div class="post poll inmail">
+    <div class="phd2">
+      <div class="pav" style="background:${AUTHORS.rec.col}">${AUTHORS.rec.ini}</div>
+      <div class="pwho"><div class="n">${AUTHORS.rec.n}</div>
+      <div class="h">InMail · "Vi tu perfil y encajas perfectamente"</div><div class="t">Ahora mismo</div></div>
+    </div>
+    <span class="ptag o">MENSAJE DIRECTO</span>
+    <div class="ptxt">¡Hola ${G.name}! 👋 Espero que este mensaje te encuentre bien. Tu perfil (técnica ${Math.round(G.tec)}, reputación ${Math.round(G.rep)}) ha llamado la atención de varios clientes. Los procesos de tier alto incluyen loop de entrevistas. ¿Te interesaría explorar?</div>
+    <div class="pollopts">
+      ${G.pendingOffers.map((o,i)=>`
+        <button class="pollopt" data-f="${i}">
+          <span class="in"><span><b>${o.n}${o.stealth?' 🤫':''}</b>
+          <em>${T[o.type]} · ~${offerComp(o)}k€${o.eq?' + '+o.eq+'k€ equity/año':''}${o.tier>=3?' · con loop':''}</em></span>
+          <span class="pollpct">APLICAR</span></span>
+        </button>`).join('')}
+      <button class="pollopt" data-f="stay">
+        <span class="in"><span><b>«Gracias, estoy bien donde estoy»</b>
+        <em>La estabilidad también compone intereses</em></span>
+        <span class="pollpct" style="color:var(--green)">SEGUIR</span></span>
+      </button>
+    </div>
+  </div>`;
+  document.getElementById('controls').onclick=e=>{
+    const f=e.target.closest('[data-f]');if(!f)return;
+    if(f.dataset.f==='stay'){G.pendingOffers=null;renderAll();return;}
+    const o=G.pendingOffers[+f.dataset.f];
+    if(o.tier>=3){G.pendingInterview=o;G.pendingOffers=null;renderInterview();}
+    else signOffer(o,1);
+  };
+}
+function renderInterview(){
+  const o=G.pendingInterview;
+  const basePass=clamp(30+G.tec*.55+G.rep*.2-(o.tier===4?12:0),15,92);
+  document.getElementById('controls').innerHTML=`
+  <div class="post poll">
+    <div class="phd2">
+      <div class="pav sq" style="background:${AUTHORS.sys.col}">${AUTHORS.sys.ini}</div>
+      <div class="pwho"><div class="n">Proceso de selección · ${o.n}</div>
+      <div class="h">El loop: 6 rondas en un día</div><div class="t">Ahora mismo</div></div>
+    </div>
+    <div class="ptxt">Dos de código, una de system design, una de ML, una de "cuéntame un conflicto" y una misteriosa llamada "culture fit".</div>
+    <div class="pollopts">
+      <button class="pollopt" data-iv="prep"><span class="fill" style="width:${clamp(Math.round(basePass)+18,20,95)}%"></span>
+        <span class="in"><span><b>Dos meses de preparación</b><em>Leetcode nocturno, mock interviews, sufrimiento estructurado</em></span>
+        <span class="pollpct">${clamp(Math.round(basePass)+18,20,95)}%<small>orientativo</small></span></span></button>
+      <button class="pollopt" data-iv="raw"><span class="fill" style="width:${Math.round(basePass)}%"></span>
+        <span class="in"><span><b>Ir a pelo</b><em>Tu experiencia debería bastar. "Debería"</em></span>
+        <span class="pollpct">${Math.round(basePass)}%<small>orientativo</small></span></span></button>
+      <button class="pollopt" data-iv="skip">
+        <span class="in"><span><b>Retirarte del proceso</b><em>Invertir un árbol binario no es tu idea de un sábado</em></span>
+        <span class="pollpct" style="color:var(--green)">SALIR</span></span></button>
+    </div>
+  </div>`;
+  document.getElementById('controls').onclick=e=>{
+    const b=e.target.closest('[data-iv]');if(!b)return;
+    const mode=b.dataset.iv;
+    if(mode==='skip'){G.pendingInterview=null;renderAll();return;}
+    const p=mode==='prep'?clamp(basePass+18,20,95):basePass;
+    if(mode==='prep')G.energy=clamp(G.energy-8,0,100);
+    if(roll(p)){
+      G.pendingInterview=null;
+      document.getElementById('controls').innerHTML=`
+      <div class="post poll">
+        <div class="phd2">
+          <div class="pav" style="background:${AUTHORS.rec.col}">${AUTHORS.rec.ini}</div>
+          <div class="pwho"><div class="n">Oferta formal · ${o.n}</div>
+          <div class="h">${offerComp(o)}k€ + ${o.eq}k€ equity/año</div><div class="t">Ahora mismo</div></div>
+        </div>
+        <div class="ptxt">¡Enhorabuena, has superado el loop! 🎉 El recruiter dice que la oferta es "lo máximo aprobado". Siempre dicen eso.</div>
+        <div class="pollopts">
+          <button class="pollopt" data-s="1"><span class="in"><span><b>Aceptar tal cual</b><em>Firmar y a otra cosa</em></span><span class="pollpct" style="color:var(--green)">FIRMAR</span></span></button>
+          <button class="pollopt" data-s="neg"><span class="fill" style="width:65%"></span><span class="in"><span><b>Negociar +25%</b><em>Si sale mal, la oferta se enfría del todo</em></span><span class="pollpct">65%<small>orientativo</small></span></span></button>
+        </div>
+      </div>`;
+      document.getElementById('controls').onclick=ev=>{
+        const bb=ev.target.closest('[data-s]');if(!bb)return;
+        if(bb.dataset.s==='1'){signOffer(o,1);return;}
+        if(roll(65)){post({author:AUTHORS.me,tag:'NEGOCIACIÓN',tagCls:'g',text:'Han aceptado mi contraoferta. Un email de 4 líneas me acaba de pagar un coche. Negociad. Siempre.'});signOffer(o,1.25);}
+        else{post({author:AUTHORS.me,tag:'NEGOCIACIÓN',tagCls:'r',text:'"Vamos a cerrar el proceso con otro candidato." La avaricia rompió la oferta. Lección cara, post gratuito.'});G.pendingInterview=null;renderAll();}
+      };
+    } else {
+      post({author:AUTHORS.me,tag:'LOOP SUSPENDIDO',tagCls:'r',
+        text:'Hoy suspendí un loop de '+o.n+'. Me atasqué en la pizarra virtual con un problema de grafos que jamás veré en el trabajo real. "Seguiremos en contacto." Publico esto por transparencia: también se suspende. #NormalizarElNo'});
+      G.energy=clamp(G.energy-6,0,100);
+      G.pendingInterview=null;renderAll();
+    }
+  };
+}
+function signOffer(o,mult){
+  G.club=o;if(!G.clubs.includes(o.n))G.clubs.push(o.n);
+  xpStart(o.n);
+  G.salary=Math.round(offerComp(o)*mult);G.equity+=o.eq;
+  G.manager=pick(MANAGERS);
+  G.energy=clamp(G.energy-8,0,100);G.red=clamp(G.red+5,0,100);
+  G.maxComp=Math.max(G.maxComp,comp());
+  post({author:AUTHORS.me,tag:'NUEVA ETAPA',tagCls:'b',
+    text:'¡Encantad'+(Math.random()<.5?'o':'a')+' de anunciar que me uno a <b>'+o.n+'</b>'+(o.tier===4?' — la primera división del sector':'')+'! 🚀\n\nEn el onboarding me han asignado a '+G.manager.n+' ('+G.manager.d.toLowerCase()+'). Gracias a todos los que lo habéis hecho posible. #NewJob'});
+  G.pendingOffers=null;G.pendingInterview=null;renderAll();
+}
+
+/* ═════════ TARJETA FINAL ═════════ */
+function finalCard(){
+  G.retired=true;
+  const L=LEVELS[G.levelIdx];
+  const sideBonus=G.side?Math.min(25,G.side.subs/400):0;
+  const score=G.tec*.8+G.rep*1.1+G.red*.5+G.levelIdx*14+G.exits*35+G.talks*2
+    +Math.min(30,G.vested/40)+sideBonus-G.scandals*28-G.burnouts*10;
+  let legado;
+  if(G.scandals>0&&G.rep<40)legado='La historia que se cuenta en los offsites';
+  else if(G.side&&G.side.subs>8000)legado='El imperio que empezó un domingo';
+  else if(G.exits>0&&score>=200)legado='Libertad financiera con opiniones';
+  else if(G.mgmt&&G.levelIdx>=8)legado='La silla desde la que se decide';
+  else if(G.levelIdx>=8)legado='Leyenda de la vía técnica';
+  else if(score>=230)legado='Referente del sector';
+  else if(G.track.id==='res'&&G.hindex>=25)legado='Eminencia citada y querida';
+  else if(score>=160)legado='Carrera de las que se estudian';
+  else if(G.burnouts>=2)legado='Brillante, a un coste que nadie vio';
+  else if(score>=110)legado='Profesional sólido, vida entera';
+  else legado='Un CV honesto en un sector ruidoso';
+
+  const s1=G.track.id==='res'?['h-index',G.hindex]:['Productos',G.products];
+  const s2=G.track.id==='res'?['Citas',fmtK(G.citas)]:['GitHub ★',fmtK(G.stars)];
+  const share=`Open to Work 🟢 — mi carrera en IA\n${G.name} · ${G.track.n} · ${L.lvl} ${levelName()}${G.mgmt?' (gestión)':''}\n«${legado}»\n${s1[0]} ${s1[1]} · ${s2[0]} ${s2[1]} · comp máx ${G.maxComp}k€\n${G.clubs.length} empresas · ${G.layoffs} despidos vividos · retiro a los ${G.age}\n¿Cómo acaba la tuya?`;
+
+  document.getElementById('wrap').innerHTML=`
+  <div class="cvfinal">
+    <div class="post legadopost" style="border-left:4px solid var(--blue)">
+      <div class="phd2">
+        <div class="pav" style="background:linear-gradient(135deg,#0A66C2,#004182)">${G.ini}</div>
+        <div class="pwho"><div class="n">${G.name} <small>· Retirad${Math.random()<.5?'o':'a'}</small></div>
+        <div class="h">${L.lvl} · ${levelName()} — ${G.track.n}${G.mgmt?' · vía gestión':''}</div>
+        <div class="t">${G.year} · post de despedida 📌 Fijado</div></div>
+      </div>
+      <div class="ptxt">Después de ${G.age-FORMACION[C.form].age} años en el sector, hoy escribo mi último post profesional.\n\nNo voy a mentir: hubo de todo. ${G.layoffs>0?G.layoffs+' despido'+(G.layoffs>1?'s':'')+' vivido'+(G.layoffs>1?'s':'')+', ':''}${G.burnouts>0?G.burnouts+' burnout'+(G.burnouts>1?'s':'')+', ':''}${G.clubs.length} empresas, y más de una decisión que volvería a tomar distinto. Pero si algo me llevo, es esto:</div>
+      <div class="legadoline">«${legado}»</div>
+      <div class="cvgrid">
+        <div><span>${s1[0]}</span><b class="num">${s1[1]}</b></div>
+        <div><span>${s2[0]}</span><b class="num">${s2[1]}</b></div>
+        <div><span>Charlas</span><b class="num">${G.talks}</b></div>
+        <div><span>Comp máxima</span><b class="num">${G.maxComp}k€</b></div>
+        <div><span>Cobrado (equity+extras)</span><b class="num">${G.vested}k€</b></div>
+        <div><span>Empresas</span><b class="num">${G.clubs.length}</b></div>
+        <div><span>Despidos vividos</span><b class="num">${G.layoffs}</b></div>
+        <div><span>Técnica final</span><b class="num">${Math.round(G.tec)}</b></div>
+      </div>
+      <div class="hitolist">
+        ${G.hitos.length?G.hitos.slice(-6).map(h=>'· '+h).join('<br>'):'· Sin hitos con titular. Los mejores años no siempre lo dejan.'}
+        ${G.side?'<br>· Side project activo al retirarme: '+G.side.n+' ('+fmtK(G.side.subs)+' '+G.side.unit+')':''}
+        <br><span style="color:var(--dim2)">Recorrido: ${G.clubs.join(' → ')}</span>
+      </div>
+      <div class="preact">
+        <span><span class="ic">👍💡❤️👏</span> ${fmtK(rnd(800,4000)+G.rep*40)}</span>
+        <span>${rnd(80,400)} comentarios · ${rnd(20,120)} compartidos</span>
+      </div>
+    </div>
+    <div class="sharebox">
+      <pre>${share}</pre>
+      <button class="btn" id="copy">Copiar resultado</button>
+      <button class="btn sec" onclick="location.reload()">Otra carrera</button>
+    </div>
+  </div>`;
+  document.getElementById('copy').onclick=()=>navigator.clipboard.writeText(share)
+    .then(()=>document.getElementById('copy').textContent='¡Copiado!').catch(()=>{});
+}
+
+creation();
+</script>
+</body>
+</html>
