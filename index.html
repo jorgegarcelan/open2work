@@ -51,6 +51,18 @@ button{font-family:inherit;cursor:pointer}
 .pstat span{color:var(--dim)}
 .pstat b{font-weight:700}
 .pstat b.gr{color:var(--green)}
+.quickstats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:11px}
+.quickstat{background:#F7F6F4;border:1px solid var(--line);border-radius:8px;padding:7px 9px;min-width:0}
+.quickstat span{display:block;color:var(--dim2);font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.quickstat b{display:block;margin-top:1px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.quickstat.energy b{color:var(--green)}
+.quickstat.energy.low b{color:var(--red)}
+.marketline{margin-top:8px;padding:7px 9px;border-radius:8px;background:#F7F6F4;font-size:11px;color:var(--dim)}
+.marketline b{color:var(--text)}
+.profile-more{border-top:1px solid var(--line);margin-top:10px;padding-top:9px}
+.profile-more summary{list-style:none;cursor:pointer;text-align:center;color:var(--dim);font-size:11.5px;font-weight:700}
+.profile-more summary::-webkit-details-marker{display:none}
+.profile-more[open] summary{margin-bottom:8px;color:var(--text)}
 .mini-meters{border-top:1px solid var(--line);margin-top:10px;padding-top:10px;display:grid;gap:7px}
 .mm .t{display:flex;justify-content:space-between;font-size:10.5px;color:var(--dim);margin-bottom:2px;font-weight:600}
 .mm .bar{height:5px;background:#EDEBE7;border-radius:3px;overflow:hidden}
@@ -91,10 +103,19 @@ button{font-family:inherit;cursor:pointer}
   padding:10px 16px;text-align:left;color:var(--dim);font-size:13.5px;font-weight:500;transition:background .12s}
 .advance button:hover{background:#F1F0EE}
 .advance button b{color:var(--blue);font-weight:700}
+.advance button small{display:block;margin-top:2px;color:var(--dim2);font-size:10.5px}
 .retirebtn{background:none;border:none;color:var(--dim2);font-size:11.5px;text-decoration:underline;padding:6px}
 
 /* post */
 .post{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 15px 9px;animation:fi .3s ease}
+.post.past{cursor:pointer;padding:9px 12px;opacity:.72;animation:none}
+.post.past:not(.expanded) .ptxt,.post.past:not(.expanded) .vermas,
+.post.past:not(.expanded) .preact,.post.past:not(.expanded) .pcomments,
+.post.past:not(.expanded)>div[style]{display:none}
+.post.past:not(.expanded) .pav{width:30px;height:30px;flex-basis:30px;font-size:10px}
+.post.past:not(.expanded) .pwho .h{display:none}
+.post.past:not(.expanded)::after{content:'Ver post';display:block;margin:3px 0 0 39px;color:var(--dim2);font-size:10px;font-weight:700}
+.post.past.expanded{opacity:1}
 @keyframes fi{from{opacity:0;transform:translateY(8px)}}
 .phd2{display:flex;gap:9px;align-items:flex-start}
 .pav{width:42px;height:42px;border-radius:50%;flex:0 0 42px;display:grid;place-items:center;
@@ -150,6 +171,13 @@ button{font-family:inherit;cursor:pointer}
 .create h1{font-size:clamp(26px,6vw,34px);margin:0 0 4px;font-weight:800;letter-spacing:-.02em}
 .create h1 em{color:var(--blue);font-style:normal}
 .create .sub{color:var(--dim);margin:0 0 18px;font-size:13.5px}
+.challenge-banner{background:#E7F5EE;border:1px solid #BFE3CF;border-radius:10px;padding:10px 12px;margin:0 0 14px;font-size:12.5px;color:#0E6B45}
+.start-note{text-align:center;color:var(--dim2);font-size:11px;margin:7px 0 0}
+.customize{border-top:1px solid var(--line);margin-top:16px;padding-top:12px}
+.customize summary{cursor:pointer;color:var(--dim);font-size:12.5px;font-weight:700;text-align:center;list-style:none}
+.customize summary::-webkit-details-marker{display:none}
+.customize[open] summary{margin-bottom:14px;color:var(--text)}
+.customize .btn{width:100%;margin-top:14px}
 .fl{margin-bottom:15px}
 .fl label{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700;margin-bottom:7px}
 input[type=text]{width:100%;background:#fff;border:1.5px solid var(--line2);border-radius:8px;
@@ -165,12 +193,25 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .gobtn:hover{background:var(--blue2)}
 
 /* ═══ TARJETA FINAL ═══ */
-.cvfinal{grid-column:1/-1;max-width:480px;margin:0 auto;width:100%}
+.cvfinal{grid-column:1/-1;max-width:520px;margin:0 auto;width:100%}
 .legadopost .ptxt{font-size:14.5px}
 .legadoline{font-size:17px;font-weight:800;margin:8px 0}
-.archetype{margin:10px 0;padding:12px 14px;border-radius:10px;background:#E7F5EE;border:1px solid #BFE3CF}
-.archetype b{display:block;font-size:18px;line-height:1.2}
-.archetype span{display:block;margin-top:3px;color:var(--dim);font-size:12px}
+.archetype{text-align:center;margin:12px 0;padding:18px 14px;border-radius:12px;background:#E7F5EE;border:1px solid #BFE3CF}
+.archetype em{display:block;font-style:normal;font-size:42px;line-height:1}
+.archetype b{display:block;margin-top:7px;font-size:21px;line-height:1.2}
+.archetype span{display:block;margin-top:5px;color:var(--dim);font-size:12px}
+.scoreline{text-align:center;margin:13px 0 11px}
+.scoreline b{display:block;font-size:44px;line-height:1;color:var(--brand-ink);letter-spacing:-.05em}
+.scoreline span{display:block;margin-top:3px;color:var(--dim2);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.record{display:inline-block;margin-top:7px;border-radius:14px;padding:3px 9px;background:#FBF3E4;color:var(--gold);font-size:11px;font-weight:800}
+.viralstats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0}
+.viralstat{padding:9px 5px;border:1px solid var(--line);border-radius:9px;text-align:center;background:#F7F6F4}
+.viralstat b{display:block;font-size:15px}
+.viralstat span{display:block;color:var(--dim2);font-size:9px;text-transform:uppercase;letter-spacing:.06em}
+.result-more{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+.result-more summary{cursor:pointer;list-style:none;text-align:center;color:var(--dim);font-size:11.5px;font-weight:700}
+.result-more summary::-webkit-details-marker{display:none}
+.result-more[open] summary{margin-bottom:8px}
 .cvgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;font-size:12.5px;
   border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
 .cvgrid div{display:flex;justify-content:space-between}
@@ -178,8 +219,6 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .cvgrid b{font-weight:700}
 .hitolist{border-top:1px solid var(--line);margin-top:10px;padding-top:9px;font-size:12px;color:var(--dim);line-height:1.6}
 .sharebox{text-align:center;margin-top:10px}
-.sharebox pre{font-size:12px;white-space:pre-wrap;background:#F7F6F4;border:1px solid var(--line);
-  border-radius:8px;padding:12px;text-align:left;margin:0 0 10px;font-family:inherit}
 .shareactions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
 /* cabecera de marca */
 .topbar{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
@@ -237,7 +276,23 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 </div>
 
 <script>
-/* ═════════ CONSTANTES (mecánica v4) ═════════ */
+/* ═════════ PARTIDA REPRODUCIBLE ═════════ */
+const GAME_TURNS=8,TURN_YEARS=4;
+const START_PARAMS=new URLSearchParams(location.search);
+const IS_CHALLENGE=START_PARAMS.has('seed');
+const freshSeed=()=>{
+  if(globalThis.crypto&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]||1;}
+  return (Date.now()>>>0)||1;
+};
+const parsedSeed=Number.parseInt(START_PARAMS.get('seed')||'',10);
+const RUN_SEED=(Number.isFinite(parsedSeed)?parsedSeed:freshSeed())>>>0||1;
+let rngState=RUN_SEED;
+function rand(){
+  let t=rngState+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);
+  return ((t^t>>>14)>>>0)/4294967296;
+}
+
+/* ═════════ CONSTANTES (mecánica v12) ═════════ */
 const LEVELS=[
  {t:'Becario/a',lvl:'L1',xp:0},{t:'Junior',lvl:'L2',xp:14},{t:'Mid-level',lvl:'L3',xp:34},
  {t:'Senior',lvl:'L4',xp:62},{t:'Staff',lvl:'L5',xp:100},{t:'Principal',lvl:'L6',xp:145},
@@ -301,13 +356,13 @@ const NICE_COMMENTS=['¡Enhorabuena crack! 💪','Grande 👏👏','Muy merecido
 const HATER_COMMENTS=['¿Y esto qué aporta exactamente?','Te lo dije en 2019 y no me hiciste caso','Con IA cualquiera hace eso','En mi época esto se hacía sin tanto postureo','Fuente: confía en mí','Discrepo. Hilo 🧵 (no hay hilo)','Yo lo habría hecho distinto','*ha editado este comentario*'];
 
 /* ═════════ ESTADO ═════════ */
-const G={name:'',ini:'',track:null,age:23,year:2026,
+const G={name:'',ini:'',track:null,age:23,year:2026,turns:0,
   tec:42,rep:8,red:12,energy:88,xp:0,levelIdx:0,mgmt:false,
   club:EMPLEADORES[0],salary:26,equity:0,vested:0,maxComp:26,
   manager:null,side:null,market:'est',otw:false,
   papers:0,products:0,citas:0,hindex:0,stars:0,talks:0,
   hitos:[],clubs:[],history:[],burnouts:0,layoffs:0,scandals:0,exits:0,twists:0,phd:false,boot:false,
-  pendingEvent:null,pendingOffers:null,pendingInterview:null,retired:false,used:{}};
+  pendingEvent:null,pendingOffers:null,retired:false,used:{}};
 
 /* experiencia estilo LinkedIn */
 const XPCOLORS=['#16B86A','#0E8A5F','#B7770D','#7A3FD1','#CC1016','#444444','#2BAF74','#8A5A0A'];
@@ -338,9 +393,9 @@ function computeBadges(){
 }
 
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-const roll=p=>Math.random()*100<p;
-const pick=a=>a[Math.floor(Math.random()*a.length)];
-const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const roll=p=>rand()*100<p;
+const pick=a=>a[Math.floor(rand()*a.length)];
+const rnd=(a,b)=>a+Math.floor(rand()*(b-a+1));
 const riskBadge=p=>{
   const [label,cls]=p>=80?['BAJO','risk-low']:p>=60?['MEDIO','risk-mid']:p>=40?['ALTO','risk-high']:['LOCURA','risk-wild'];
   return `<span class="pollpct ${cls}">${label}<small>riesgo</small></span>`;
@@ -390,13 +445,15 @@ function post({author,tag,tagCls,text,big,mute}){
     </div>
     ${cmHtml}`;
   d.addEventListener('click',e=>{
+    if(d.classList.contains('past')&&!e.target.classList.contains('vermas')){d.classList.toggle('expanded');return;}
     if(e.target.classList.contains('vermas')){
       const tx=d.querySelector('.ptxt');
       const open=tx.classList.toggle('clamp');
       e.target.textContent=open?'…ver más':'ver menos';
     }
   });
-  document.getElementById('feed').prepend(d);
+  const feed=document.getElementById('feed');feed.prepend(d);
+  [...feed.children].forEach((p,i)=>{p.classList.toggle('past',i>0);if(i>4)p.remove();});
 }
 
 /* ═════════ RUIDO NEGATIVO DEL FEED ═════════ */
@@ -433,7 +490,29 @@ function ambientPost(){
 }
 
 /* ═════════ CREACIÓN ═════════ */
-let C={track:'ing',form:0,name:''};
+const requestedTrack=START_PARAMS.get('track');
+const requestedForm=Number.parseInt(START_PARAMS.get('form')||'',10);
+let C={
+  track:TRACKS.some(t=>t.id===requestedTrack)?requestedTrack:'ing',
+  form:Number.isInteger(requestedForm)&&FORMACION[requestedForm]?requestedForm:0,
+  name:''
+};
+
+function startCareer(){
+  rngState=RUN_SEED;
+  G.name=(document.getElementById('nm')?.value||C.name||'Alex').trim()||'Alex';
+  C.name=G.name;G.ini=G.name.slice(0,2).toUpperCase();
+  G.track=TRACKS.find(t=>t.id===C.track);
+  const F=FORMACION[C.form];
+  G.tec=F.tec;G.red=F.red;G.age=F.age;
+  if(F.rep)G.rep+=F.rep;if(F.phd){G.phd=true;G.xp=20;}if(F.boot)G.boot=true;
+  G.club=EMPLEADORES[F.boot?1:0];G.clubs=[G.club.n];G.salary=G.club.base;
+  G.manager=pick(MANAGERS);xpStart(G.club.n);
+  post({author:AUTHORS.me,tag:'PRIMER EMPLEO',tagCls:'b',
+    text:'¡Encantad'+(rand()<.5?'o':'a')+' de anunciar que empiezo una nueva etapa como '+G.track.n+' en <b>'+G.club.n+'</b>! 🚀\n\nGracias a todos los que me habéis acompañado hasta aquí. Esto no ha hecho más que empezar. #OpenToLearn #IA'});
+  playYear();
+}
+
 function creation(){
   const previousName=document.getElementById('nm');
   if(previousName)C.name=previousName.value;
@@ -442,35 +521,30 @@ function creation(){
   document.getElementById('controls').innerHTML=`
   <div class="create">
     <img class="create-logo" src="assets/brand/open2work-logo-v2.png" alt="OPEN2WORK">
-    <h1>Trayectoria<em>.</em></h1>
-    <p class="sub">Tu carrera en IA contada como lo que es: un muro de posts. Promos, despidos, giros inesperados y decisiones cuyo porcentaje exacto solo conocerás después.</p>
-    <div class="fl"><label>Tu nombre</label><input type="text" id="nm" placeholder="Nombre o alias" maxlength="18"></div>
-    <div class="fl"><label>Especialización</label><div class="routes">
-      ${TRACKS.map(t=>`<button class="route ${C.track===t.id?'sel':''}" data-tr="${t.id}"><b>${t.n}</b><em>${t.d}</em></button>`).join('')}</div></div>
-    <div class="fl"><label>Formación</label><div class="routes">
-      ${FORMACION.map((f,i)=>`<button class="route ${C.form===i?'sel':''}" data-fo="${i}"><b>${f.n}</b><em>${f.d}</em></button>`).join('')}</div></div>
-    <button class="gobtn" id="go">Crear perfil y entrar al mercado</button>
+    <h1>Tu carrera<em>.</em> Tu caos<em>.</em></h1>
+    <p class="sub">Ocho decisiones. Una vida profesional. Entre 60 y 90 segundos para descubrir en qué te conviertes.</p>
+    ${IS_CHALLENGE?'<div class="challenge-banner"><b>⚔️ Te han retado.</b> Jugarás con el mismo mercado y los mismos giros. Tus decisiones cambian el final.</div>':''}
+    <div class="fl"><label>Tu nombre <span style="font-weight:500;text-transform:none;letter-spacing:0">(opcional)</span></label><input type="text" id="nm" placeholder="Alex" maxlength="18"></div>
+    <button class="gobtn" id="quick">${IS_CHALLENGE?'Aceptar el reto':'Jugar una carrera aleatoria'}</button>
+    <div class="start-note">Sin registro · sin tutorial · resultado compartible</div>
+    <details class="customize"><summary>Elegir perfil</summary>
+      <div class="fl"><label>Especialización</label><div class="routes">
+        ${TRACKS.map(t=>`<button class="route ${C.track===t.id?'sel':''}" data-tr="${t.id}"><b>${t.n}</b><em>${t.d}</em></button>`).join('')}</div></div>
+      <div class="fl"><label>Formación</label><div class="routes">
+        ${FORMACION.map((f,i)=>`<button class="route ${C.form===i?'sel':''}" data-fo="${i}"><b>${f.n}</b><em>${f.d}</em></button>`).join('')}</div></div>
+      <button class="btn sec" id="go">Jugar con este perfil</button>
+    </details>
   </div>`;
   document.getElementById('nm').value=C.name;
   document.getElementById('controls').onclick=e=>{
     const tr=e.target.closest('[data-tr]'),fo=e.target.closest('[data-fo]');
-    if(tr){C.track=tr.dataset.tr;creation();}
-    if(fo){C.form=+fo.dataset.fo;creation();}
-    if(e.target.id==='go'){
-      G.name=(document.getElementById('nm').value||'Alex').trim();
-      C.name=G.name;
-      G.ini=G.name.slice(0,2).toUpperCase();
-      G.track=TRACKS.find(t=>t.id===C.track);
-      const F=FORMACION[C.form];
-      G.tec=F.tec;G.red=F.red;G.age=F.age;
-      if(F.rep)G.rep+=F.rep;if(F.phd){G.phd=true;G.xp=20;}if(F.boot)G.boot=true;
-      G.club=EMPLEADORES[F.boot?1:0];G.clubs=[G.club.n];G.salary=G.club.base;
-      G.manager=pick(MANAGERS);
-      xpStart(G.club.n);
-      post({author:AUTHORS.me,tag:'PRIMER EMPLEO',tagCls:'b',
-        text:'¡Encantad'+(Math.random()<.5?'o':'a')+' de anunciar que empiezo una nueva etapa como '+G.track.n+' en <b>'+G.club.n+'</b>! 🚀\n\nGracias a todos los que me habéis acompañado hasta aquí. Esto no ha hecho más que empezar. #OpenToLearn #IA'});
-      renderAll();
+    if(tr){C.track=tr.dataset.tr;document.querySelectorAll('[data-tr]').forEach(x=>x.classList.toggle('sel',x.dataset.tr===C.track));}
+    if(fo){C.form=+fo.dataset.fo;document.querySelectorAll('[data-fo]').forEach(x=>x.classList.toggle('sel',+x.dataset.fo===C.form));}
+    if(e.target.id==='quick'){
+      if(!IS_CHALLENGE){C.track=pick(TRACKS).id;C.form=rnd(0,FORMACION.length-1);}
+      startCareer();
     }
+    if(e.target.id==='go')startCareer();
   };
 }
 
@@ -478,7 +552,7 @@ function creation(){
 function renderRail(){
   if(!G.track)return;
   const L=level(),m=MK();
-  const meters=[['Técnica','tec',G.tec],['Reputación','rep',G.rep],['Red','red',G.red],['Energía','ene',G.energy]];
+  const meters=[['Técnica','tec',G.tec],['Reputación','rep',G.rep],['Red','red',G.red]];
   document.getElementById('rail').innerHTML=`
   <div class="railcards">
   <div class="card">
@@ -487,51 +561,33 @@ function renderRail(){
       <div class="pavatar ${G.otw?'otw':''}">${G.ini}</div>
       <div class="pname">${G.name}</div>
       <div class="phead">${levelName()} · ${G.track.n} en ${G.club.n}</div>
-      <div class="psub">${G.age} años · ${G.year} · ${G.clubs.length} empresa${G.clubs.length>1?'s':''} en el CV</div>
-      <span class="pbadge ${G.mgmt?'mg':''}">${L.lvl} · ${levelName()}${G.mgmt?' · GESTIÓN':''}</span>
-      <div class="pstats">
-        <div class="pstat"><span>Comp. total</span><b class="gr num">${comp()}k€/año</b></div>
-        ${G.equity>0?`<div class="pstat"><span>Equity sin vestear</span><b class="num">${Math.round(G.equity)}k€</b></div>`:''}
-        <div class="pstat"><span>Cobrado (equity+extras)</span><b class="num">${G.vested}k€</b></div>
-        ${G.track.id==='res'
-          ?`<div class="pstat"><span>Papers · h-index</span><b class="num">${G.papers} · ${G.hindex}</b></div>
-            <div class="pstat"><span>Citas</span><b class="num">${fmtK(G.citas)}</b></div>`
-          :`<div class="pstat"><span>Productos · ★</span><b class="num">${G.products} · ${fmtK(G.stars)}</b></div>`}
-        <div class="pstat"><span>Charlas · Hitos</span><b class="num">${G.talks} · ${G.hitos.length}</b></div>
+      <div class="psub">${G.age} años · ${G.year} · turno ${G.turns}/${GAME_TURNS}</div>
+      <div class="quickstats">
+        <div class="quickstat"><span>Nivel</span><b>${L.lvl} · ${levelName()}</b></div>
+        <div class="quickstat energy ${G.energy<32?'low':''}"><span>Energía</span><b class="num">${Math.round(G.energy)}%</b></div>
+        <div class="quickstat"><span>Dinero</span><b class="num">${comp()}k€/año</b></div>
+        <div class="quickstat"><span>Empresa</span><b>${G.club.n}</b></div>
       </div>
-      <div class="mini-meters">
-        ${meters.map(([l,k,v])=>`<div class="mm ${k} ${k==='ene'&&v<32?'warn':''}">
+      <div class="marketline"><b>${m.n}</b> · ${m.d}</div>
+      <details class="profile-more"><summary>Ver perfil completo</summary>
+        <div class="pstats">
+          ${G.equity>0?`<div class="pstat"><span>Equity sin vestear</span><b class="num">${Math.round(G.equity)}k€</b></div>`:''}
+          <div class="pstat"><span>Cobrado</span><b class="num">${G.vested}k€</b></div>
+          ${G.track.id==='res'
+            ?`<div class="pstat"><span>Papers · h-index</span><b class="num">${G.papers} · ${G.hindex}</b></div>`
+            :`<div class="pstat"><span>Productos · ★</span><b class="num">${G.products} · ${fmtK(G.stars)}</b></div>`}
+        </div>
+        <div class="mini-meters">${meters.map(([l,k,v])=>`<div class="mm ${k}">
           <div class="t"><span>${l}</span><span class="num">${Math.round(v)}</span></div>
-          <div class="bar"><i style="width:${v}%"></i></div></div>`).join('')}
-      </div>
-      ${G.manager?`<div class="sideline">Manager: <b>${G.manager.n}</b></div>`:''}
-      ${G.side?`<div class="sideline">⚡ <b>${G.side.n}</b> · ${fmtK(G.side.subs)} ${G.side.unit}</div>`:''}
-      ${(()=>{const b=computeBadges();return b.length?`
-      <div class="badges"><div class="xh">Licencias e insignias</div>
-        <div class="bdgs">${b.map(x=>`<span class="bdg ${x.green?'green':''}"><em>${x.ic}</em>${x.n}${x.x?` <small>×${x.x}</small>`:''}</span>`).join('')}</div>
-      </div>`:''})()}
-      <div class="xp">
-        <div class="xh">Experiencia</div>
-        ${G.history.slice().reverse().slice(0,6).map((x,i)=>{
-          const now=x.to===null;
-          const role=now?levelName():x.role;
-          const to=now?'Actualidad':x.to;
-          const yrs=(now?G.year:x.to)-x.from;
-          const dur=yrs<1?'menos de 1 año':yrs+(yrs===1?' año':' años');
-          return `<div class="xpi ${now?'now':''}">
-            <div class="xav" style="background:${xpColor(x.club)}">${x.club.slice(0,1)}</div>
-            <div><div class="xr">${role}</div>
-            <div class="xc">${x.club}</div>
-            <div class="xd">${x.from} — ${to} · ${dur}</div></div>
-          </div>`;}).join('')}
-        ${G.history.length>6?`<div class="xd" style="font-size:11px;color:var(--dim2)">y ${G.history.length-6} experiencia${G.history.length-6>1?'s':''} más…</div>`:''}
-      </div>
+          <div class="bar"><i style="width:${v}%"></i></div></div>`).join('')}</div>
+        ${G.manager?`<div class="sideline">Manager: <b>${G.manager.n}</b></div>`:''}
+        ${G.side?`<div class="sideline">⚡ <b>${G.side.n}</b> · ${fmtK(G.side.subs)} ${G.side.unit}</div>`:''}
+        ${(()=>{const b=computeBadges();return b.length?`<div class="badges"><div class="bdgs">${b.map(x=>`<span class="bdg ${x.green?'green':''}"><em>${x.ic}</em>${x.n}${x.x?` <small>×${x.x}</small>`:''}</span>`).join('')}</div></div>`:''})()}
+        <div class="xp"><div class="xh">Experiencia</div>
+          ${G.history.slice().reverse().slice(0,4).map(x=>{const now=x.to===null,to=now?'Actualidad':x.to;return `<div class="xpi ${now?'now':''}"><div class="xav" style="background:${xpColor(x.club)}">${x.club.slice(0,1)}</div><div><div class="xr">${now?levelName():x.role}</div><div class="xc">${x.club}</div><div class="xd">${x.from} — ${to}</div></div></div>`;}).join('')}
+        </div>
+      </details>
     </div>
-  </div>
-  <div class="card mkcard ${m.cls}">
-    <div class="k">Estado del mercado</div>
-    <div class="v">${m.n}</div>
-    <div class="d">${m.d}</div>
   </div>
   </div>`;
 }
@@ -539,21 +595,22 @@ function renderRail(){
 /* ═════════ CONTROLES ═════════ */
 function renderControls(){
   if(G.retired||!G.track)return;
-  if(G.pendingEvent||G.pendingOffers||G.pendingInterview){document.getElementById('controls').innerHTML='';return;}
+  if(G.pendingEvent||G.pendingOffers){document.getElementById('controls').innerHTML='';return;}
   document.getElementById('controls').innerHTML=`
   <div class="advance">
     <div class="av">${G.ini}</div>
-    <button id="sim">¿Qué te va a pasar en <b>${G.year+1}–${G.year+2}</b>? Publicar dos años…</button>
+    <button id="sim"><b>Turno ${G.turns+1} de ${GAME_TURNS}</b> · Tentar al algoritmo<small>${G.year+1}–${G.year+TURN_YEARS}</small></button>
   </div>
-  ${G.age>=38?'<div style="text-align:center"><button class="retirebtn" id="ret">Retirarte y escribir el post de despedida</button></div>':''}`;
+  ${G.turns>=6?'<div style="text-align:center"><button class="retirebtn" id="ret">Retirarte antes de tiempo</button></div>':''}`;
   const s=document.getElementById('sim');if(s)s.onclick=playYear;
   const r=document.getElementById('ret');if(r)r.onclick=finalCard;
 }
 const renderAll=()=>{renderRail();renderControls();};
+const finishOrRender=()=>G.turns>=GAME_TURNS?finalCard():renderAll();
 
 /* ═════════ AÑO ═════════ */
 function playYear(){
-  G.age+=2;G.year+=2;   // ritmo Copero: cada turno son 2 años
+  G.turns++;G.age+=TURN_YEARS;G.year+=TURN_YEARS;
   if(G.otw){G.otw=false;
     post({author:AUTHORS.sys,tag:'RECORDATORIO',tagCls:'g',mute:true,
       text:'Llevabas un tiempo con el aro verde puesto. Ya tienes trabajo. Te lo quitamos nosotros, no pasa nada, le pasa a todo el mundo. 🟢✂️'});}
@@ -568,9 +625,9 @@ function playYear(){
       text:'<b>'+MK().n+'.</b> '+MK().d+'. Analistas del sector: "esta vez es diferente" (misma frase que el ciclo anterior).'});
   }
 
-  // equity con mercado (2 años de fluctuación)
+  // equity con mercado durante el salto temporal
   if(G.equity>0){
-    const k=Math.pow(MK().eqK,1.7)+(Math.random()*.12-.06);
+    const k=Math.pow(MK().eqK,1.7)+(rand()*.12-.06);
     const d0=Math.round(G.equity);G.equity*=k;
     const diff=Math.round(G.equity)-d0;
     if(Math.abs(diff)>=8)ownLines.push('Mi equity '+(diff>0?'sube':'cae')+' '+Math.abs(diff)+'k€ con el mercado. '+(diff>0?'No es dinero hasta que no es dinero.':'Respira. Solo es papel.'));
@@ -585,15 +642,15 @@ function playYear(){
         text:'Comunicado interno: nueva reorganización para "alinear estructuras con la estrategia". Traducción: te cambia el manager. Ahora tienes '+G.manager.n+' ('+G.manager.d.toLowerCase()+').'});}
   }
 
-  // técnica y energía (bienio)
-  let dt=((G.age<30?3.2:G.age<38?1.6:.6)+({corp:0,startup:.8,bigtech:1,frontier:2,academia:.6}[G.club.type]))*1.8;
+  // técnica y energía
+  let dt=((G.age<30?3.2:G.age<38?1.6:.6)+({corp:0,startup:.8,bigtech:1,frontier:2,academia:.6}[G.club.type]))*3.2;
   if(G.mgmt)dt-=3.2;
   if(G.energy<32){dt-=3.6;ownTag='RINDIENDO BAJO MÍNIMOS';ownTagCls='r';}
-  G.tec=clamp(G.tec+dt+Math.random()*2-.7,10,99);
-  G.energy=clamp(G.energy-(3+({corp:1,startup:5,bigtech:3,frontier:6,academia:2}[G.club.type]))*1.7+Math.random()*8,0,100);
+  G.tec=clamp(G.tec+dt+rand()*2-.7,10,99);
+  G.energy=clamp(G.energy-(3+({corp:1,startup:5,bigtech:3,frontier:6,academia:2}[G.club.type]))*1.7+rand()*8,0,100);
 
-  // XP y promo (bienio)
-  G.xp+=(4+G.club.tier*2+(G.tec>70?3:0)+(G.mgmt?3:0))*2;
+  // XP y promo
+  G.xp+=(4+G.club.tier*2+(G.tec>70?3:0)+(G.mgmt?3:0))*4;
   const before=G.levelIdx;level();
   if(G.levelIdx>before){
     G.salary=Math.round(G.salary*1.18);G.rep=clamp(G.rep+4,0,100);
@@ -604,7 +661,7 @@ function playYear(){
 
   // producción → post propio
   if(!G.mgmt){
-    const out=Math.max(0,Math.round(((G.tec-30)/16)*2+(Math.random()*2-.5)));
+    const out=Math.max(0,Math.round(((G.tec-30)/16)*2+(rand()*2-.5)));
     if(G.track.id==='res'){
       G.papers+=out;const c=out*Math.round(G.tec*1.9);G.citas+=c;
       G.hindex=Math.min(G.papers,Math.round(Math.sqrt(G.citas/9)));
@@ -624,7 +681,7 @@ function playYear(){
 
   // side project
   if(G.side){
-    const gr=Math.round(G.side.subs*(.32+Math.random()*.7))+40;
+    const gr=Math.round(G.side.subs*(.32+rand()*.7))+40;
     G.side.subs+=gr;
     const inc=Math.round(G.side.subs/(G.side.type==='saas'?60:200));
     if(inc>2){G.vested+=inc;ownLines.push('⚡ '+G.side.n+': +'+gr+' '+G.side.unit+' este año y '+inc+'k€ de ingreso extra. Construir en público funciona (y da un miedo horrible).');}
@@ -639,28 +696,28 @@ function playYear(){
   // vesting
   if(G.equity>0){const v=Math.round(G.equity*.45);G.vested+=v;G.equity-=v;}
 
-  G.salary=Math.round(G.salary*1.06);
+  G.salary=Math.round(G.salary*1.12);
   G.maxComp=Math.max(G.maxComp,comp());
 
   // post propio del año — máx 2 frases, con la energía baja el tono cambia
   if(G.energy<35&&roll(60)){
     ownLines=[ownLines[0]||'',
-      'Voy a ser honest'+(Math.random()<.5?'o':'a')+': este año ha sido duro. El feed solo enseña las promos; detrás hay domingos con el estómago cerrado. Si estás igual: no estás solo.'];
+      'Voy a ser honest'+(rand()<.5?'o':'a')+': este año ha sido duro. El feed solo enseña las promos; detrás hay domingos con el estómago cerrado. Si estás igual: no estás solo.'];
     ownTag=ownTag||'POST VULNERABLE';ownTagCls='r';
   }
   post({author:AUTHORS.me,tag:ownTag,tagCls:ownTagCls,text:ownLines.filter(Boolean).slice(0,2).join('\n\n')});
 
   // uno o dos giros raros por carrera: sorpresa sin otra capa de controles
-  const twistP=G.age>=44&&G.twists<2?55:G.age>=36&&G.twists===0?35:14;
+  const twistP=G.turns>=7&&G.twists<2?60:G.turns>=4&&G.twists===0?40:14;
   if(G.twists<2&&roll(twistP))plotTwist();
 
   // ruido del feed: la carrera de los demás también existe (y duele)
-  if(roll(35))ambientPost();
+  if(roll(20))ambientPost();
 
-  if(roll(74))queueEvent();
-  else if(roll(MK().offerP))queueOffers();
+  if(roll(68))queueEvent();else queueOffers();
+  if(!G.pendingEvent&&!G.pendingOffers)queueEvent();
 
-  if(G.age>=50&&!G.retired)return finalCard();
+  if(G.turns>=GAME_TURNS&&!G.pendingEvent&&!G.pendingOffers)return finalCard();
   renderAll();renderPending();
 }
 
@@ -1034,24 +1091,24 @@ function resolveEvent(o){
       xpStart(nx.n);
       G.salary=Math.round(nx.base*(1+G.tec/150)*MK().sal);G.equity+=nx.eq;G.manager=pick(MANAGERS);
       post({author:AUTHORS.me,tag:'NUEVA ETAPA',tagCls:'b',
-        text:'Tras unos meses de reflexión (y de mirar el techo), ¡encantad'+(Math.random()<.5?'o':'a')+' de anunciar que me uno a <b>'+nx.n+'</b>! La vida sigue, con más cinismo y mejor CV. #NewBeginnings'});
+        text:'Tras unos meses de reflexión (y de mirar el techo), ¡encantad'+(rand()<.5?'o':'a')+' de anunciar que me uno a <b>'+nx.n+'</b>! La vida sigue, con más cinismo y mejor CV. #NewBeginnings'});
     } else {
       G.club={n:'Tu propio proyecto',tier:2,type:'startup',base:30,eq:0};
       G.clubs.push('Tu propio proyecto');G.salary=30;G.manager=null;
       xpStart('Tu propio proyecto');
     }
-    G.pendingEvent=null;renderAll();return;
+    G.pendingEvent=null;finishOrRender();return;
   }
   post({author:AUTHORS.me,tag,tagCls,text:r.txt+oddsLine(o.pr,win)});
-  G.pendingEvent=null;renderAll();
+  G.pendingEvent=null;finishOrRender();
 }
 
 /* ═════════ OFERTAS (InMail) + LOOP ═════════ */
 function offerComp(o){return Math.round(o.base*(1+G.tec/140)*(1+G.levelIdx*.06)*MK().sal);}
 function queueOffers(){
-  const offers=EMPLEADORES.filter(e=>
-    e.n!==G.club.n&&G.tec>=e.minTec&&G.rep>=e.minRep&&e.tier>=G.club.tier&&(!e.needPhd||G.phd))
-    .sort(()=>Math.random()-.5).slice(0,3);
+  const eligible=EMPLEADORES.filter(e=>
+    e.n!==G.club.n&&G.tec>=e.minTec&&G.rep>=e.minRep&&e.tier>=G.club.tier&&(!e.needPhd||G.phd));
+  const offers=eligible.length?[pick(eligible)]:[];
   if(!offers.length)return;
   G.pendingOffers=offers;
 }
@@ -1065,7 +1122,7 @@ function renderOffers(){
       <div class="h">InMail · "Vi tu perfil y encajas perfectamente"</div><div class="t">Ahora mismo</div></div>
     </div>
     <span class="ptag o">MENSAJE DIRECTO</span>
-    <div class="ptxt">¡Hola ${G.name}! 👋 Espero que este mensaje te encuentre bien. Tu perfil (técnica ${Math.round(G.tec)}, reputación ${Math.round(G.rep)}) ha llamado la atención de varios clientes. Los procesos de tier alto incluyen loop de entrevistas. ¿Te interesaría explorar?</div>
+    <div class="ptxt">¡Hola ${G.name}! 👋 Tu perfil ha llamado la atención de ${G.pendingOffers[0].n}. ¿Exploramos?</div>
     <div class="pollopts">
       ${G.pendingOffers.map((o,i)=>`
         <button class="pollopt" data-f="${i}">
@@ -1082,70 +1139,25 @@ function renderOffers(){
   </div>`;
   document.getElementById('controls').onclick=e=>{
     const f=e.target.closest('[data-f]');if(!f)return;
-    if(f.dataset.f==='stay'){G.pendingOffers=null;renderAll();return;}
+    if(f.dataset.f==='stay'){G.pendingOffers=null;finishOrRender();return;}
     const o=G.pendingOffers[+f.dataset.f];
-    if(o.tier>=3){G.pendingInterview=o;G.pendingOffers=null;renderInterview();}
+    if(o.tier>=3)resolveApplication(o);
     else signOffer(o,1);
   };
 }
-function renderInterview(){
-  const o=G.pendingInterview;
-  const basePass=clamp(30+G.tec*.55+G.rep*.2-(o.tier===4?12:0),15,92);
-  document.getElementById('controls').innerHTML=`
-  <div class="post poll">
-    <div class="phd2">
-      <div class="pav sq" style="background:${AUTHORS.sys.col}">${AUTHORS.sys.ini}</div>
-      <div class="pwho"><div class="n">Proceso de selección · ${o.n}</div>
-      <div class="h">El loop: 6 rondas en un día</div><div class="t">Ahora mismo</div></div>
-    </div>
-    <div class="ptxt">Dos de código, una de system design, una de ML, una de "cuéntame un conflicto" y una misteriosa llamada "culture fit".</div>
-    <div class="pollopts">
-      <button class="pollopt" data-iv="prep"><span class="fill" style="width:${clamp(Math.round(basePass)+18,20,95)}%"></span>
-        <span class="in"><span><b>Dos meses de preparación</b><em>Leetcode nocturno, mock interviews, sufrimiento estructurado</em></span>
-        ${riskBadge(clamp(Math.round(basePass)+18,20,95))}</span></button>
-      <button class="pollopt" data-iv="raw"><span class="fill" style="width:${Math.round(basePass)}%"></span>
-        <span class="in"><span><b>Ir a pelo</b><em>Tu experiencia debería bastar. "Debería"</em></span>
-        ${riskBadge(Math.round(basePass))}</span></button>
-      <button class="pollopt" data-iv="skip">
-        <span class="in"><span><b>Retirarte del proceso</b><em>Invertir un árbol binario no es tu idea de un sábado</em></span>
-        <span class="pollpct" style="color:var(--green)">SALIR</span></span></button>
-    </div>
-  </div>`;
-  document.getElementById('controls').onclick=e=>{
-    const b=e.target.closest('[data-iv]');if(!b)return;
-    const mode=b.dataset.iv;
-    if(mode==='skip'){G.pendingInterview=null;renderAll();return;}
-    const p=mode==='prep'?clamp(basePass+18,20,95):basePass;
-    if(mode==='prep')G.energy=clamp(G.energy-8,0,100);
-    if(roll(p)){
-      G.pendingInterview=null;
-      document.getElementById('controls').innerHTML=`
-      <div class="post poll">
-        <div class="phd2">
-          <div class="pav" style="background:${AUTHORS.rec.col}">${AUTHORS.rec.ini}</div>
-          <div class="pwho"><div class="n">Oferta formal · ${o.n}</div>
-          <div class="h">${offerComp(o)}k€ + ${o.eq}k€ equity/año</div><div class="t">Ahora mismo</div></div>
-        </div>
-        <div class="ptxt">¡Enhorabuena, has superado el loop! 🎉 El recruiter dice que la oferta es "lo máximo aprobado". Siempre dicen eso.${oddsLine(p,true)}</div>
-        <div class="pollopts">
-          <button class="pollopt" data-s="1"><span class="in"><span><b>Aceptar tal cual</b><em>Firmar y a otra cosa</em></span><span class="pollpct" style="color:var(--green)">FIRMAR</span></span></button>
-          <button class="pollopt" data-s="neg"><span class="fill" style="width:65%"></span><span class="in"><span><b>Negociar +25%</b><em>Si sale mal, la oferta se enfría del todo</em></span>${riskBadge(65)}</span></button>
-        </div>
-      </div>`;
-      document.getElementById('controls').onclick=ev=>{
-        const bb=ev.target.closest('[data-s]');if(!bb)return;
-        if(bb.dataset.s==='1'){signOffer(o,1);return;}
-        if(roll(65)){post({author:AUTHORS.me,tag:'NEGOCIACIÓN',tagCls:'g',text:'Han aceptado mi contraoferta. Un email de 4 líneas me acaba de pagar un coche. Negociad. Siempre.'+oddsLine(65,true)});signOffer(o,1.25);}
-        else{post({author:AUTHORS.me,tag:'NEGOCIACIÓN',tagCls:'r',text:'"Vamos a cerrar el proceso con otro candidato." La avaricia rompió la oferta. Lección cara, post gratuito.'+oddsLine(65,false)});G.pendingInterview=null;renderAll();}
-      };
-    } else {
-      post({author:AUTHORS.me,tag:'LOOP SUSPENDIDO',tagCls:'r',
-        text:'Hoy suspendí un loop de '+o.n+'. Me atasqué en la pizarra virtual con un problema de grafos que jamás veré en el trabajo real. "Seguiremos en contacto." Publico esto por transparencia: también se suspende. #NormalizarElNo'+oddsLine(p,false)});
-      G.energy=clamp(G.energy-6,0,100);
-      G.pendingInterview=null;renderAll();
-    }
-  };
+
+function resolveApplication(o){
+  const p=clamp(30+G.tec*.55+G.rep*.2-(o.tier===4?12:0),15,92),win=roll(p);
+  G.pendingOffers=null;
+  if(win){
+    post({author:AUTHORS.me,tag:'LOOP SUPERADO',tagCls:'g',text:'Superé las seis entrevistas de '+o.n+'. El recruiter dice que fue una decisión unánime. Prefiero no preguntar cuánto tardaron.'+oddsLine(p,true)});
+    signOffer(o,1);
+  }else{
+    post({author:AUTHORS.me,tag:'LOOP SUSPENDIDO',tagCls:'r',text:'Suspendí el loop de '+o.n+' con un problema de grafos que jamás veré en el trabajo real. Publico esto por transparencia: también se suspende.'+oddsLine(p,false)});
+    G.energy=clamp(G.energy-6,0,100);finishOrRender();
+  }
 }
+
 function signOffer(o,mult){
   G.club=o;if(!G.clubs.includes(o.n))G.clubs.push(o.n);
   xpStart(o.n);
@@ -1154,8 +1166,8 @@ function signOffer(o,mult){
   G.energy=clamp(G.energy-8,0,100);G.red=clamp(G.red+5,0,100);
   G.maxComp=Math.max(G.maxComp,comp());
   post({author:AUTHORS.me,tag:'NUEVA ETAPA',tagCls:'b',
-    text:'¡Encantad'+(Math.random()<.5?'o':'a')+' de anunciar que me uno a <b>'+o.n+'</b>'+(o.tier===4?' — la primera división del sector':'')+'! 🚀\n\nEn el onboarding me han asignado a '+G.manager.n+' ('+G.manager.d.toLowerCase()+'). Gracias a todos los que lo habéis hecho posible. #NewJob'});
-  G.pendingOffers=null;G.pendingInterview=null;renderAll();
+    text:'¡Encantad'+(rand()<.5?'o':'a')+' de anunciar que me uno a <b>'+o.n+'</b>'+(o.tier===4?' — la primera división del sector':'')+'! 🚀\n\nEn el onboarding me han asignado a '+G.manager.n+' ('+G.manager.d.toLowerCase()+'). Gracias a todos los que lo habéis hecho posible. #NewJob'});
+  G.pendingOffers=null;finishOrRender();
 }
 
 function careerArchetype(score){
@@ -1174,13 +1186,37 @@ function careerArchetype(score){
   return {ic:'🪜',n:'Escalador con dignidad',d:'No conquistaste el sector, pero tampoco dejaste que el sector te conquistara.'};
 }
 
+function challengeLink(){
+  if(!/^https?:/.test(location.href))return '';
+  const u=new URL(location.href);u.search='';u.hash='';
+  u.searchParams.set('seed',String(RUN_SEED));u.searchParams.set('track',C.track);u.searchParams.set('form',String(C.form));
+  return u.toString();
+}
+
+function buildShareCard({arch,score,url}){
+  const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
+  const x=canvas.getContext('2d'),grad=x.createLinearGradient(0,0,1080,1080);
+  grad.addColorStop(0,'#14201B');grad.addColorStop(1,'#0E6B45');x.fillStyle=grad;x.fillRect(0,0,1080,1080);
+  x.fillStyle='#16B86A';x.beginPath();x.arc(910,130,210,0,Math.PI*2);x.fill();
+  x.fillStyle='#FFFFFF';x.font='900 58px Inter, Arial';x.fillText('OPEN2WORK',72,100);
+  x.fillStyle='#8DDEB3';x.font='700 24px Inter, Arial';x.fillText('TU CARRERA EN IA',75,145);
+  x.textAlign='center';x.font='110px Arial';x.fillText(arch.ic,540,340);
+  x.fillStyle='#FFFFFF';x.font='900 64px Inter, Arial';x.fillText(arch.n,540,430);
+  x.fillStyle='#8DDEB3';x.font='900 170px Inter, Arial';x.fillText(String(score),540,640);
+  x.fillStyle='#FFFFFF';x.font='800 26px Inter, Arial';x.fillText('PUNTOS',540,685);
+  const stats=[[G.maxComp+'k€','COMP. MÁXIMA'],[String(G.layoffs),'DESPIDOS'],[String(G.clubs.length),'EMPRESAS']];
+  stats.forEach((s,i)=>{const cx=220+i*320;x.fillStyle='rgba(255,255,255,.10)';x.fillRect(cx-125,745,250,120);x.fillStyle='#FFFFFF';x.font='900 38px Inter, Arial';x.fillText(s[0],cx,795);x.fillStyle='#8DDEB3';x.font='700 17px Inter, Arial';x.fillText(s[1],cx,835);});
+  x.fillStyle='#FFFFFF';x.font='800 28px Inter, Arial';x.fillText('¿PUEDES HACERLO MEJOR?',540,950);
+  x.fillStyle='#8DDEB3';x.font='500 18px Inter, Arial';x.fillText(url?new URL(url).host:'open2work',540,995);
+  return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(new File([blob],'open2work-'+score+'.png',{type:'image/png'})):reject(new Error('No se pudo crear la tarjeta')),'image/png'));
+}
+
 /* ═════════ TARJETA FINAL ═════════ */
 function finalCard(){
   G.retired=true;
-  const L=LEVELS[G.levelIdx];
-  const sideBonus=G.side?Math.min(25,G.side.subs/400):0;
-  const score=G.tec*.8+G.rep*1.1+G.red*.5+G.levelIdx*14+G.exits*35+G.talks*2
-    +Math.min(30,G.vested/40)+sideBonus-G.scandals*28-G.burnouts*10;
+  const L=LEVELS[G.levelIdx],sideBonus=G.side?Math.min(25,G.side.subs/400):0;
+  const score=Math.round(G.tec*.8+G.rep*1.1+G.red*.5+G.levelIdx*14+G.exits*35+G.talks*2
+    +Math.min(30,G.vested/40)+sideBonus-G.scandals*28-G.burnouts*10);
   let legado;
   if(G.scandals>0&&G.rep<40)legado='La historia que se cuenta en los offsites';
   else if(G.side&&G.side.subs>8000)legado='El imperio que empezó un domingo';
@@ -1194,71 +1230,63 @@ function finalCard(){
   else if(score>=110)legado='Profesional sólido, vida entera';
   else legado='Un CV honesto en un sector ruidoso';
 
-  const arch=careerArchetype(score);
-  const s1=G.track.id==='res'?['h-index',G.hindex]:['Productos',G.products];
-  const s2=G.track.id==='res'?['Citas',fmtK(G.citas)]:['GitHub ★',fmtK(G.stars)];
-  const shareUrl=/^https?:/.test(location.href)?location.href.split(/[?#]/)[0]:'';
-  const shareText=`Me salió ${arch.ic} ${arch.n} en OPEN2WORK.\n${Math.round(score)} puntos · ${G.layoffs} despido${G.layoffs===1?'':'s'} · ${G.clubs.length} empresa${G.clubs.length===1?'':'s'} · ${G.maxComp}k€ máx.\n¿Puedes hacerlo mejor?`;
+  const arch=careerArchetype(score),shareUrl=challengeLink();
+  const shareText=`Me salió ${arch.ic} ${arch.n} con ${score} puntos en OPEN2WORK. ¿Puedes superar mi carrera?`;
   const share=shareText+(shareUrl?'\n'+shareUrl:'');
+  let previousBest=0;try{previousBest=Number(localStorage.getItem('open2work-best'))||0;}catch(err){}
+  const isRecord=score>previousBest,best=Math.max(score,previousBest);
+  if(isRecord)try{localStorage.setItem('open2work-best',String(score));}catch(err){}
 
   document.getElementById('wrap').innerHTML=`
   <div class="cvfinal">
     <div class="post legadopost" style="border-left:4px solid var(--blue)">
       <div class="phd2">
         <div class="pav" style="background:linear-gradient(135deg,#16B86A,#0E6B45)">${G.ini}</div>
-        <div class="pwho"><div class="n">${G.name} <small>· Retirad${Math.random()<.5?'o':'a'}</small></div>
-        <div class="h">${L.lvl} · ${levelName()} — ${G.track.n}${G.mgmt?' · vía gestión':''}</div>
-        <div class="t">${G.year} · post de despedida 📌 Fijado</div></div>
+        <div class="pwho"><div class="n">${G.name} <small>· Fin de carrera</small></div>
+        <div class="h">${L.lvl} · ${levelName()} — ${G.track.n}</div><div class="t">Resultado final · semilla ${RUN_SEED}</div></div>
       </div>
-      <div class="ptxt">Después de ${G.age-FORMACION[C.form].age} años en el sector, hoy escribo mi último post profesional.\n\nNo voy a mentir: hubo de todo. ${G.layoffs>0?G.layoffs+' despido'+(G.layoffs>1?'s':'')+' vivido'+(G.layoffs>1?'s':'')+', ':''}${G.burnouts>0?G.burnouts+' burnout'+(G.burnouts>1?'s':'')+', ':''}${G.clubs.length} empresas, y más de una decisión que volvería a tomar distinto. Pero si algo me llevo, es esto:</div>
-      <div class="legadoline">«${legado}»</div>
-      <div class="archetype"><b>${arch.ic} ${arch.n}</b><span>${arch.d}</span></div>
-      <div class="cvgrid">
-        <div><span>Puntuación</span><b class="num">${Math.round(score)}</b></div>
-        <div><span>Giros de guion</span><b class="num">${G.twists}</b></div>
-        <div><span>${s1[0]}</span><b class="num">${s1[1]}</b></div>
-        <div><span>${s2[0]}</span><b class="num">${s2[1]}</b></div>
-        <div><span>Charlas</span><b class="num">${G.talks}</b></div>
-        <div><span>Comp máxima</span><b class="num">${G.maxComp}k€</b></div>
-        <div><span>Cobrado (equity+extras)</span><b class="num">${G.vested}k€</b></div>
-        <div><span>Empresas</span><b class="num">${G.clubs.length}</b></div>
-        <div><span>Despidos vividos</span><b class="num">${G.layoffs}</b></div>
-        <div><span>Técnica final</span><b class="num">${Math.round(G.tec)}</b></div>
+      <div class="archetype"><em>${arch.ic}</em><b>${arch.n}</b><span>${arch.d}</span></div>
+      <div class="scoreline"><b class="num">${score}</b><span>puntos</span><div class="record">${isRecord?'🏆 Nuevo récord personal':'Récord personal: '+best}</div></div>
+      <div class="viralstats">
+        <div class="viralstat"><b>${G.maxComp}k€</b><span>Comp. máxima</span></div>
+        <div class="viralstat"><b>${G.layoffs}</b><span>Despidos</span></div>
+        <div class="viralstat"><b>${G.clubs.length}</b><span>Empresas</span></div>
       </div>
-      <div class="hitolist">
-        ${G.hitos.length?G.hitos.slice(-6).map(h=>'· '+h).join('<br>'):'· Sin hitos con titular. Los mejores años no siempre lo dejan.'}
-        ${G.side?'<br>· Side project activo al retirarme: '+G.side.n+' ('+fmtK(G.side.subs)+' '+G.side.unit+')':''}
-        <br><span style="color:var(--dim2)">Recorrido: ${G.clubs.join(' → ')}</span>
-      </div>
-      <div class="preact">
-        <span><span class="ic">👍💡❤️👏</span> ${fmtK(rnd(800,4000)+G.rep*40)}</span>
-        <span>${rnd(80,400)} comentarios · ${rnd(20,120)} compartidos</span>
-      </div>
+      <div class="legadoline" style="text-align:center">«${legado}»</div>
+      <details class="result-more"><summary>Ver carrera completa</summary>
+        <div class="cvgrid">
+          <div><span>Edad final</span><b>${G.age}</b></div><div><span>Energía</span><b>${Math.round(G.energy)}</b></div>
+          <div><span>Técnica</span><b>${Math.round(G.tec)}</b></div><div><span>Reputación</span><b>${Math.round(G.rep)}</b></div>
+          <div><span>Cobrado</span><b>${G.vested}k€</b></div><div><span>Giros</span><b>${G.twists}</b></div>
+        </div>
+        <div class="hitolist">${G.hitos.length?G.hitos.slice(-5).map(h=>'· '+h).join('<br>'):'· Sin hitos con titular.'}<br><span style="color:var(--dim2)">${G.clubs.join(' → ')}</span></div>
+      </details>
     </div>
-    <div class="sharebox">
-      <pre>${share}</pre>
-      <div class="shareactions">
-        <button class="btn" id="share">Compartir reto</button>
-        <button class="btn sec" id="again">Otra vida</button>
-      </div>
-    </div>
+    <div class="sharebox"><div class="shareactions">
+      <button class="btn" id="share" data-url="${shareUrl}">Retar a alguien</button><button class="btn sec" id="again">Otra vida</button>
+    </div></div>
   </div>`;
+
+  const cardPromise=buildShareCard({arch,score,url:shareUrl});
   document.getElementById('share').onclick=async()=>{
     const btn=document.getElementById('share');
     try{
+      const card=await cardPromise;
       if(navigator.share){
         const payload={title:'OPEN2WORK',text:shareText};if(shareUrl)payload.url=shareUrl;
+        if(navigator.canShare&&navigator.canShare({files:[card]}))payload.files=[card];
         await navigator.share(payload);
       }else{
-        await navigator.clipboard.writeText(share);btn.textContent='¡Resultado copiado!';
+        const a=document.createElement('a');a.href=URL.createObjectURL(card);a.download=card.name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+        await navigator.clipboard.writeText(share);btn.textContent='¡Reto copiado!';
       }
     }catch(err){
-      if(err.name!=='AbortError')navigator.clipboard.writeText(share).then(()=>btn.textContent='¡Resultado copiado!').catch(()=>{});
+      if(err.name!=='AbortError')navigator.clipboard.writeText(share).then(()=>btn.textContent='¡Reto copiado!').catch(()=>{});
     }
   };
   document.getElementById('again').onclick=()=>{
-    const replay={name:G.name,track:pick(TRACKS).id,form:rnd(0,FORMACION.length-1)};
-    sessionStorage.setItem('open2work-replay',JSON.stringify(replay));location.reload();
+    sessionStorage.setItem('open2work-replay',JSON.stringify({name:G.name,track:pick(TRACKS).id,form:rnd(0,FORMACION.length-1)}));
+    const next=new URL(location.href);next.search='';next.hash='';location.assign(next.toString());
   };
 }
 
@@ -1268,7 +1296,7 @@ if(replay&&typeof replay.name==='string'){
   C.name=replay.name;
   if(TRACKS.some(t=>t.id===replay.track))C.track=replay.track;
   if(Number.isInteger(replay.form)&&FORMACION[replay.form])C.form=replay.form;
-  creation();document.getElementById('go').click();
+  creation();startCareer();
 }else creation();
 </script>
 </body>
