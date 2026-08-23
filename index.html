@@ -22,17 +22,20 @@ button{font-family:inherit;cursor:pointer}
 .num{font-variant-numeric:tabular-nums}
 
 /* ═══ LAYOUT ═══ */
-.wrap{max-width:1040px;margin:0 auto;padding:14px 12px 80px;
-  display:grid;grid-template-columns:280px 1fr;gap:16px;align-items:start}
-.rail{position:sticky;top:14px;display:flex;flex-direction:column;gap:12px}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 16px 80px;
+  display:grid;grid-template-columns:380px minmax(0,1fr);gap:18px;align-items:start}
+.leftcol{position:sticky;top:70px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.rail{display:flex;flex-direction:column;gap:12px}
+.wrap.creating{display:block;max-width:720px}
+.wrap.creating .leftcol{position:static}
 @media(max-width:820px){
   .wrap{grid-template-columns:1fr;padding-top:10px}
-  .rail{position:static}
+  .leftcol{position:static}
   .railcards{display:grid;grid-template-columns:1fr;gap:12px}
 }
 
 /* ═══ TARJETAS BASE ═══ */
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 22px rgba(20,32,27,.06)}
 
 /* ═══ PERFIL (rail) ═══ */
 .pcover{height:56px;background:linear-gradient(120deg,#0E8A5F,#43C987 60%,#8DDEB3)}
@@ -51,14 +54,18 @@ button{font-family:inherit;cursor:pointer}
 .pstat span{color:var(--dim)}
 .pstat b{font-weight:700}
 .pstat b.gr{color:var(--green)}
-.quickstats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:11px}
+.ratingrow{display:flex;align-items:center;gap:11px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.ovrbox{width:66px;height:66px;flex:0 0 66px;border-radius:14px;background:linear-gradient(145deg,#16B86A,#0E6B45);color:#fff;display:grid;place-items:center;align-content:center;box-shadow:0 7px 15px rgba(22,184,106,.22)}
+.ovrbox b{font-size:27px;line-height:1;font-weight:900}.ovrbox span{font-size:8px;font-weight:900;letter-spacing:.16em;margin-top:2px}
+.identitymeta{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:baseline;min-width:0}
+.identitymeta span{color:var(--dim2);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.identitymeta b{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.quickstats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:11px}
 .quickstat{background:#F7F6F4;border:1px solid var(--line);border-radius:8px;padding:7px 9px;min-width:0}
 .quickstat span{display:block;color:var(--dim2);font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
 .quickstat b{display:block;margin-top:1px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .quickstat.energy b{color:var(--green)}
 .quickstat.energy.low b{color:var(--red)}
-.marketline{margin-top:8px;padding:7px 9px;border-radius:8px;background:#F7F6F4;font-size:11px;color:var(--dim)}
-.marketline b{color:var(--text)}
 .profile-more{border-top:1px solid var(--line);margin-top:10px;padding-top:9px}
 .profile-more summary{list-style:none;cursor:pointer;text-align:center;color:var(--dim);font-size:11.5px;font-weight:700}
 .profile-more summary::-webkit-details-marker{display:none}
@@ -73,51 +80,51 @@ button{font-family:inherit;cursor:pointer}
 .sideline{border-top:1px solid var(--line);margin-top:10px;padding-top:8px;font-size:11.5px;color:var(--dim)}
 .sideline b{color:var(--text)}
 
-/* experiencia */
-.xp{border-top:1px solid var(--line);margin-top:11px;padding-top:10px}
-.xp .xh{font-size:12px;font-weight:800;margin-bottom:8px}
-.xpi{display:flex;gap:9px;margin-bottom:9px;align-items:flex-start}
-.xpi:last-child{margin-bottom:0}
-.xpi .xav{width:30px;height:30px;border-radius:5px;flex:0 0 30px;display:grid;place-items:center;
-  font-weight:800;font-size:12px;color:#fff}
-.xpi .xr{font-size:12px;font-weight:700;line-height:1.25}
-.xpi .xc{font-size:11.5px;color:var(--text)}
-.xpi .xd{font-size:11px;color:var(--dim2)}
-.xpi.now .xr::after{content:'· Actual';color:var(--green);font-weight:700;font-size:10px;margin-left:4px}
-
-/* mercado (rail) */
-.mkcard{padding:11px 14px;font-size:12px}
-.mkcard .k{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--dim2);text-transform:uppercase;margin-bottom:4px}
-.mkcard .v{font-weight:700;font-size:13px}
-.mkcard .d{color:var(--dim);margin-top:2px;font-size:11.5px}
-.mk-boom .v{color:var(--green)}.mk-est .v{color:var(--blue)}.mk-inv .v{color:var(--red)}
-.mk-reg .v{color:var(--gold)}.mk-agi .v{color:var(--purple)}
-
 /* ═══ FEED ═══ */
 .feedcol{display:flex;flex-direction:column;gap:10px;min-width:0}
 .retirebtn{background:none;border:none;color:var(--dim2);font-size:11.5px;text-decoration:underline;padding:6px}
 
 /* siguiente proyecto: el bucle principal de la carrera */
-.careerpick{background:var(--card);border:1.5px solid var(--blue);border-radius:11px;padding:14px}
+.careerpick{background:transparent;border:0;padding:2px 0}
 .careerhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:11px}
 .careerhead span{display:block;color:var(--blue);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
 .careerhead b{display:block;margin-top:2px;font-size:17px;line-height:1.2}
 .careerhead em{font-style:normal;color:var(--dim2);font-size:11px;white-space:nowrap}
-.careeropts{display:grid;gap:7px}
-.careeropt{display:flex;align-items:center;gap:10px;width:100%;background:#fff;border:1.5px solid var(--line2);
-  border-radius:9px;padding:10px 11px;text-align:left;transition:border-color .12s,transform .12s}
-.careeropt:hover{border-color:var(--blue);transform:translateY(-1px)}
+.careeropts{display:grid;gap:9px}
+.careeropt{display:flex;align-items:center;gap:10px;width:100%;background:#F2F8F5;border:1.5px solid #BFE3CF;border-left:5px solid var(--blue);
+  border-radius:12px;padding:12px;text-align:left;transition:border-color .12s,transform .12s,box-shadow .12s;box-shadow:0 5px 14px rgba(20,32,27,.05)}
+.careeropt:hover{border-color:var(--blue);transform:translateY(-1px);box-shadow:0 8px 18px rgba(20,32,27,.1)}
+.careeropt.stay,.careeropt.stableJob{border-left-color:#14201B;background:#F5F6F5}
+.careeropt.build{border-left-color:#B7770D;background:#FFFBF2}
 .careeropt .ico{width:34px;height:34px;flex:0 0 34px;border-radius:8px;background:#E7F5EE;display:grid;place-items:center;font-size:18px}
 .careeropt .copy{min-width:0;flex:1}
 .careeropt .kind{display:block;color:var(--green);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .careeropt b{display:block;font-size:13.5px;margin-top:1px}
 .careeropt small{display:block;color:var(--dim);font-size:11.5px;line-height:1.3;margin-top:1px}
+.careeropt .stars{display:block;color:#E6A400;font-size:12px;letter-spacing:1px;margin-top:4px}
 .careeropt .arr{color:var(--blue);font-size:20px;font-weight:800}
 .cyclecard{background:#14201B;color:#fff;border-radius:9px;padding:9px 11px;margin-bottom:8px;display:flex;align-items:center;gap:9px}
 .cyclecard .years{font-size:11px;font-weight:800;color:#8DDEB3;white-space:nowrap}
 .cyclecard .summary{font-size:11.5px;line-height:1.35;min-width:0}
 .cyclecard .summary b{color:#fff}
 .cyclecard .deltas{display:block;color:#B9C7C0;font-size:10.5px;margin-top:1px}
+
+/* trayectoria: tabla de carrera inspirada en el historial de F1 Glory */
+.careerlog{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 22px rgba(20,32,27,.06)}
+.careerlog-title{padding:13px 16px;border-bottom:2px solid var(--blue);display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.careerlog-title b{font-size:15px}.careerlog-title span{color:var(--dim2);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.careerlog-empty{min-height:140px;display:grid;place-items:center;text-align:center;color:var(--dim2);font-size:12px;padding:22px}
+.careercols,.careerrow-main{display:grid;grid-template-columns:70px minmax(170px,1fr) 58px 78px 76px;gap:8px;align-items:center}
+.careercols{padding:8px 14px;background:#FAFAF9;color:var(--dim2);font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.careerrow{padding:10px 14px;border-top:1px solid var(--line)}
+.careerrow:first-of-type{border-top:0}
+.careerage{background:#F1F0EE;border-radius:7px;padding:6px 4px;text-align:center;font-weight:800;font-size:11px}
+.careerjob{min-width:0}.careerjob b{display:block;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.careerjob span{display:block;color:var(--dim);font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.levelpill,.comppill{border-radius:7px;text-align:center;padding:5px 4px;font-size:11px;font-weight:800}
+.levelpill{background:#E7F5EE;color:#0E6B45}.comppill{background:#14201B;color:#fff}.followpill{text-align:right;font-size:11px;font-weight:800;color:var(--green)}
+.careerroute{margin:7px 0 0 78px;background:#F7F6F4;border-radius:7px;padding:6px 8px;color:var(--dim);font-size:10.5px}
+@media(max-width:980px) and (min-width:821px){.wrap{grid-template-columns:340px minmax(0,1fr)}.careercols,.careerrow-main{grid-template-columns:62px minmax(120px,1fr) 48px 66px}.careercols span:last-child,.followpill{display:none}}
+@media(max-width:560px){.quickstats{grid-template-columns:1fr 1fr}.careercols,.careerrow-main{grid-template-columns:60px minmax(120px,1fr) 48px 62px}.careercols span:last-child,.followpill{display:none}.careerrow{padding:9px 10px}.careercols{padding:8px 10px}.careerroute{margin-left:68px}}
 
 /* post */
 .post{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 15px 9px;animation:fi .3s ease}
@@ -228,7 +235,7 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .shareactions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
 /* cabecera de marca */
 .topbar{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-.topbar .in{max-width:1040px;margin:0 auto;padding:7px 12px;display:flex;align-items:center;gap:9px}
+.topbar .in{max-width:1180px;margin:0 auto;padding:7px 16px;display:flex;align-items:center;gap:9px}
 .brand-logo{display:block;width:auto;height:36px;object-fit:contain}
 .topbar .tg{margin-left:auto;font-size:11px;color:var(--dim2);font-style:italic;text-align:right}
 @media(max-width:560px){.topbar .tg{display:none}.brand-logo{height:32px}}
@@ -274,16 +281,19 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
   <span class="tg">«Encantado de anunciar que estás<br>a punto de perderlo todo.»</span>
 </div></div>
 <div class="wrap" id="wrap">
-  <div class="rail" id="rail"></div>
-  <div class="feedcol" id="feedcol">
+  <div class="leftcol">
+    <div class="rail" id="rail"></div>
     <div id="controls"></div>
+  </div>
+  <div class="feedcol" id="feedcol">
+    <div id="careerlog"></div>
     <div id="feed" style="display:contents"></div>
   </div>
 </div>
 
 <script>
 /* ═════════ PARTIDA REPRODUCIBLE ═════════ */
-const GAME_TURNS=24,TURN_YEARS=1;
+const GAME_TURNS=24,TURN_YEARS=2;
 const START_PARAMS=new URLSearchParams(location.search);
 const IS_CHALLENGE=START_PARAMS.has('seed');
 const freshSeed=()=>{
@@ -298,7 +308,7 @@ function rand(){
   return ((t^t>>>14)>>>0)/4294967296;
 }
 
-/* ═════════ CONSTANTES (mecánica v12) ═════════ */
+/* ═════════ CONSTANTES (mecánica v16) ═════════ */
 const LEVELS=[
  {t:'Becario/a',lvl:'L1',xp:0},{t:'Junior',lvl:'L2',xp:14},{t:'Mid-level',lvl:'L3',xp:34},
  {t:'Senior',lvl:'L4',xp:62},{t:'Staff',lvl:'L5',xp:100},{t:'Principal',lvl:'L6',xp:145},
@@ -328,14 +338,6 @@ const EMPLEADORES=[
  {n:'Anthropic',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
  {n:'OpenAI',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
  {n:'Universidad / laboratorio',tier:3,minTec:70,minRep:40,base:52,eq:0,type:'academia'}];
-const MARKETS={
- boom:{n:'🚀 Boom de la IA',cls:'mk-boom',d:'Sueldos disparados, equity al alza',sal:1.25,eqK:1.2,offerP:75,layoffP:0},
- est:{n:'📊 Mercado estable',cls:'mk-est',d:'Contratación normal, cabezas frías',sal:1,eqK:1.02,offerP:55,layoffP:8},
- inv:{n:'❄️ Invierno de financiación',cls:'mk-inv',d:'Rondas congeladas, "eficiencia"',sal:.8,eqK:.72,offerP:25,layoffP:30},
- reg:{n:'⚖️ Ola regulatoria',cls:'mk-reg',d:'Auditorías, compliance, todo más lento',sal:.92,eqK:.9,offerP:40,layoffP:12},
- agi:{n:'🌀 Carrera hacia AGI',cls:'mk-agi',d:'Pánico contratador, cifras absurdas',sal:1.5,eqK:1.35,offerP:85,layoffP:5}};
-const MK_NEXT={boom:['boom','est','inv','agi'],est:['est','boom','inv','reg'],
-  inv:['inv','est','reg'],reg:['reg','est','boom'],agi:['agi','boom','inv']};
 const MANAGERS=[
  {q:'good',n:'una manager excelente',d:'Te defiende en calibration',xp:3,ene:3},
  {q:'good',n:'un manager técnico de los que quedan pocos',d:'Sus reviews son un máster gratis',xp:2,ene:2,tec:1},
@@ -366,14 +368,12 @@ const HATER_COMMENTS=['¿Y esto qué aporta exactamente?','Te lo dije en 2019 y 
 const G={name:'',ini:'',track:null,age:18,year:2026,turns:0,
   tec:15,rep:2,red:4,energy:96,xp:0,levelIdx:0,mgmt:false,
   club:TRAINING,salary:0,equity:0,vested:0,maxComp:0,
-  manager:null,side:null,market:'est',otw:false,followers:90,peakFollowers:90,
+  manager:null,side:null,otw:false,followers:90,peakFollowers:90,
   papers:0,products:0,citas:0,hindex:0,stars:0,talks:0,
   hitos:[],clubs:[],history:[],burnouts:0,layoffs:0,scandals:0,exits:0,twists:0,
-  pendingEvent:null,routes:null,lastCycle:null,retired:false,used:{}};
+  pendingEvent:null,routes:null,lastCycle:null,lastRoute:null,seasons:[],retired:false,used:{}};
 
 /* experiencia estilo LinkedIn */
-const XPCOLORS=['#16B86A','#0E8A5F','#B7770D','#7A3FD1','#CC1016','#444444','#2BAF74','#8A5A0A'];
-const xpColor=n=>{let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%997;return XPCOLORS[h%XPCOLORS.length];};
 function xpStart(clubName){
   if(G.history.length)G.history[G.history.length-1].to=G.year;
   G.history.push({club:clubName,role:levelName(),from:G.year,to:null});
@@ -407,8 +407,9 @@ const oddsLine=(p,win)=>`\n\n<b>Tenías un ${Math.round(p)}%.</b> ${win?'El algo
 const level=()=>{let i=0;LEVELS.forEach((l,x)=>{if(G.xp>=l.xp)i=x;});G.levelIdx=i;return LEVELS[i];};
 const levelName=()=>G.mgmt&&G.levelIdx>=3?MGMT_LEVELS[G.levelIdx]:LEVELS[G.levelIdx].t;
 const comp=()=>G.salary+Math.round(G.equity);
-const MK=()=>MARKETS[G.market];
 const fmtK=v=>v>=1000?(v/1000).toFixed(1)+'k':v;
+const careerRating=()=>Math.round(clamp(G.tec*.55+G.rep*.25+G.red*.2,0,99));
+const fameLabel=()=>G.followers<1000?'DESCONOCIDO':G.followers<10000?'EN ASCENSO':G.followers<50000?'CONOCIDO':'TOP VOICE';
 
 /* ═════════ POSTS ═════════ */
 function post({author,tag,tagCls,text,big,mute}){
@@ -514,11 +515,17 @@ let C={
 
 function startCareer(){
   rngState=RUN_SEED;
+  document.getElementById('wrap').classList.remove('creating');
   G.name=(document.getElementById('nm')?.value||C.name||'Alex').trim()||'Alex';
   C.name=G.name;G.ini=G.name.slice(0,2).toUpperCase();
   G.track=TRACKS.find(t=>t.id===C.track);
   G.age=18;G.tec=15;G.rep=2;G.red=4;G.energy=96;G.followers=90;G.peakFollowers=90;
-  G.club=TRAINING;G.clubs=[];G.salary=0;G.manager=null;xpStart(TRAINING.n);
+  G.year=2026;G.turns=0;G.xp=0;G.levelIdx=0;G.mgmt=false;G.club=TRAINING;G.clubs=[];
+  G.salary=0;G.equity=0;G.vested=0;G.maxComp=0;G.manager=null;G.side=null;G.otw=false;
+  G.papers=0;G.products=0;G.citas=0;G.hindex=0;G.stars=0;G.talks=0;G.hitos=[];G.history=[];
+  G.burnouts=0;G.layoffs=0;G.scandals=0;G.exits=0;G.twists=0;G.pendingEvent=null;G.routes=null;
+  G.lastCycle=null;G.lastRoute=null;G.seasons=[];G.retired=false;G.used={};
+  document.getElementById('feed').innerHTML='';xpStart(TRAINING.n);
   post({author:AUTHORS.me,tag:'18 AÑOS',tagCls:'b',
     text:'Tengo 18 años, cero experiencia y demasiadas opiniones sobre IA. Toca elegir por dónde empezar. El resto de mi carrera dependerá de decisiones que todavía no sé que voy a tomar.'});
   renderAll();
@@ -527,14 +534,16 @@ function startCareer(){
 function creation(){
   const previousName=document.getElementById('nm');
   if(previousName)C.name=previousName.value;
+  document.getElementById('wrap').classList.add('creating');
   document.getElementById('rail').innerHTML='';
   document.getElementById('feed').innerHTML='';
+  document.getElementById('careerlog').innerHTML='';
   document.getElementById('controls').innerHTML=`
   <div class="create">
     <img class="create-logo" src="assets/brand/open2work-logo-v2.png" alt="OPEN2WORK">
     <h1>Tu carrera<em>.</em> Tu caos<em>.</em></h1>
-    <p class="sub">Empieza a los 18. Elige un proyecto cada año y construye una carrera completa, temporada a temporada.</p>
-    ${IS_CHALLENGE?'<div class="challenge-banner"><b>⚔️ Te han retado.</b> Jugarás con el mismo mercado y los mismos giros. Tus decisiones cambian el final.</div>':''}
+    <p class="sub">Empieza a los 18. Elige un proyecto cada dos años y llega hasta la jubilación. Una carrera completa, ciclo a ciclo.</p>
+    ${IS_CHALLENGE?'<div class="challenge-banner"><b>⚔️ Te han retado.</b> Jugarás con la misma semilla y los mismos giros. Tus decisiones cambian el final.</div>':''}
     <div class="fl"><label>Tu nombre <span style="font-weight:500;text-transform:none;letter-spacing:0">(opcional)</span></label><input type="text" id="nm" placeholder="Alex" maxlength="18"></div>
     <button class="gobtn" id="quick">${IS_CHALLENGE?'Aceptar el reto':'Jugar una carrera aleatoria'}</button>
     <div class="start-note">Sin registro · decide a ciegas · resultado compartible</div>
@@ -559,7 +568,7 @@ function creation(){
 /* ═════════ RAIL ═════════ */
 function renderRail(){
   if(!G.track)return;
-  const L=level(),m=MK();
+  const L=level();
   const meters=[['Técnica','tec',G.tec],['Reputación','rep',G.rep],['Red','red',G.red]];
   document.getElementById('rail').innerHTML=`
   <div class="railcards">
@@ -569,14 +578,16 @@ function renderRail(){
       <div class="pavatar ${G.otw?'otw':''}">${G.ini}</div>
       <div class="pname">${G.name}</div>
       <div class="phead">${levelName()} · ${G.track.n} en ${G.club.n}</div>
-      <div class="psub">${G.age} años · ${G.year} · temporada ${G.turns}/${GAME_TURNS}</div>
+      <div class="psub">Ciclo ${G.turns}/${GAME_TURNS} · ${G.year}</div>
+      <div class="ratingrow"><div class="ovrbox"><b class="num">${careerRating()}</b><span>OVR</span></div>
+        <div class="identitymeta"><span>Edad</span><b>${G.age} años</b><span>Fama</span><b>${fameLabel()}</b><span>Empresa</span><b>${G.club.n}</b></div>
+      </div>
       <div class="quickstats">
-        <div class="quickstat"><span>Nivel</span><b>${L.lvl} · ${levelName()}</b></div>
+        <div class="quickstat"><span>Nivel</span><b>${L.lvl}</b></div>
         <div class="quickstat energy ${G.energy<32?'low':''}"><span>Energía</span><b class="num">${Math.round(G.energy)}%</b></div>
-        <div class="quickstat"><span>Dinero</span><b class="num">${comp()}k€/año</b></div>
+        <div class="quickstat"><span>Comp.</span><b class="num">${comp()}k€</b></div>
         <div class="quickstat"><span>Seguidores</span><b class="num">${fmtK(G.followers)}</b></div>
       </div>
-      <div class="marketline"><b>${m.n}</b> · ${m.d}</div>
       <details class="profile-more"><summary>Ver perfil completo</summary>
         <div class="pstats">
           ${C.form!==null?`<div class="pstat"><span>Formación</span><b>${FORMACION[C.form].n}</b></div>`:''}
@@ -592,9 +603,6 @@ function renderRail(){
         ${G.manager?`<div class="sideline">Manager: <b>${G.manager.n}</b></div>`:''}
         ${G.side?`<div class="sideline">⚡ <b>${G.side.n}</b> · ${fmtK(G.side.subs)} ${G.side.unit}</div>`:''}
         ${(()=>{const b=computeBadges();return b.length?`<div class="badges"><div class="bdgs">${b.map(x=>`<span class="bdg ${x.green?'green':''}"><em>${x.ic}</em>${x.n}${x.x?` <small>×${x.x}</small>`:''}</span>`).join('')}</div></div>`:''})()}
-        <div class="xp"><div class="xh">Experiencia</div>
-          ${G.history.slice().reverse().slice(0,4).map(x=>{const now=x.to===null,to=now?'Actualidad':x.to;return `<div class="xpi ${now?'now':''}"><div class="xav" style="background:${xpColor(x.club)}">${x.club.slice(0,1)}</div><div><div class="xr">${now?levelName():x.role}</div><div class="xc">${x.club}</div><div class="xd">${x.from} — ${to}</div></div></div>`;}).join('')}
-        </div>
       </details>
     </div>
   </div>
@@ -603,13 +611,13 @@ function renderRail(){
 
 /* ═════════ CONTROLES ═════════ */
 function careerProjects(){
-  if(G.turns===0)return FORMACION.map((f,i)=>({id:'formation',form:i,ic:f.ic,kind:f.kind,t:f.n,e:f.d}));
+  if(G.turns===0)return FORMACION.map((f,i)=>({id:'formation',form:i,ic:f.ic,kind:f.kind,t:f.n,e:f.d,stars:[5,4,3][i]}));
   if(G.club.tier===0){
     const startup=EMPLEADORES.find(e=>e.n==='Startup pre-seed'),consulting=EMPLEADORES.find(e=>e.n==='Consultora tecnológica');
     return [
-      {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Ir a por '+startup.n,e:'Más posibilidades de destacar; también de que todo desaparezca.',target:startup},
-      {id:'stableJob',ic:'⚖️',kind:'Proyecto estable',t:'Empezar en '+consulting.n,e:'Primer contrato, aprendizaje previsible y una nómina que llega cada mes.',target:consulting},
-      {id:'build',ic:'🎓',kind:'Programa de desarrollo',t:G.side?'Seguir desarrollando '+G.side.n:'Construir un portfolio público',e:'Sin gran logo todavía. Cada proyecto hace más difícil que te ignoren.'}
+      {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Ir a por '+startup.n,e:'Más posibilidades de destacar; también de que todo desaparezca.',target:startup,stars:5},
+      {id:'stableJob',ic:'⚖️',kind:'Proyecto estable',t:'Empezar en '+consulting.n,e:'Primer contrato, aprendizaje previsible y una nómina que llega cada mes.',target:consulting,stars:4},
+      {id:'build',ic:'🎓',kind:'Programa de desarrollo',t:G.side?'Seguir desarrollando '+G.side.n:'Construir un portfolio público',e:'Sin gran logo todavía. Cada proyecto hace más difícil que te ignoren.',stars:2}
     ];
   }
   const candidates=EMPLEADORES.filter(e=>e.n!==G.club.n&&e.tier>=G.club.tier&&e.tier<=Math.min(4,G.club.tier+1));
@@ -617,16 +625,17 @@ function careerProjects(){
   const target=pick(candidates.length?candidates:fallback);
   return [
     {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Intentar el salto a '+target.n,
-      e:'Una estructura para ganar ya. Si sale mal, el logo no te salva.',target},
+      e:'Una estructura para ganar ya. Si sale mal, el logo no te salva.',target,stars:5},
     {id:'stay',ic:'⚖️',kind:'Proyecto estable',t:G.club.tier===0?'Continuar formándote':'Seguir en '+G.club.n,
-      e:'Menos épica, más continuidad. Crecer sin quemar todos los neumáticos.'},
+      e:'Menos épica, más continuidad. Crecer sin quemar todos los neumáticos.',stars:4},
     {id:'build',ic:'🎓',kind:'Programa de desarrollo',t:G.side?'Desarrollar '+G.side.n:'Lanzar tu primer proyecto público',
-      e:'Peor escaparate hoy, más aprendizaje para lo que venga después.'}
+      e:'Peor escaparate hoy, más aprendizaje para lo que venga después.',stars:3}
   ];
 }
 function signed(v,suffix=''){const n=Math.round(v);return (n>0?'+':'')+n+suffix;}
 function chooseProject(i){
   const route=G.routes&&G.routes[i];if(!route)return;
+  G.lastRoute={id:route.id,kind:route.kind,t:route.t};
   G.routes=null;document.getElementById('controls').onclick=null;
   if(route.id==='formation'){
     const F=FORMACION[route.form];C.form=route.form;
@@ -636,7 +645,7 @@ function chooseProject(i){
   }
   if(route.id==='stay'){
     G.energy=clamp(G.energy+4,0,100);if(G.club.tier>0)G.xp+=2;
-    post({author:AUTHORS.me,tag:'PROYECTO ESTABLE',tagCls:'b',text:G.club.tier===0?'Sigo formándome un año más. Todavía no hay cargo que anunciar, pero cada vez entiendo mejor qué quiero construir.':'He decidido seguir en <b>'+G.club.n+'</b>. No todo movimiento necesita un logo nuevo: a veces la apuesta es quedarse cuando ya conoces las grietas.'});
+    post({author:AUTHORS.me,tag:'PROYECTO ESTABLE',tagCls:'b',text:G.club.tier===0?'Sigo formándome dos años más. Todavía no hay cargo que anunciar, pero cada vez entiendo mejor qué quiero construir.':'He decidido seguir en <b>'+G.club.n+'</b>. No todo movimiento necesita un logo nuevo: a veces la apuesta es quedarse cuando ya conoces las grietas.'});
   }
   if(route.id==='stableJob'){
     const o=route.target;G.club=o;if(!G.clubs.includes(o.n))G.clubs.push(o.n);xpStart(o.n);
@@ -676,21 +685,34 @@ function renderControls(){
   if(!G.routes)G.routes=careerProjects();
   const s=G.lastCycle;
   document.getElementById('controls').innerHTML=`
-  ${s?`<div class="cyclecard"><span class="years">${s.to}</span><span class="summary"><b>${s.club}</b><span class="deltas">${signed(s.tec,' técnica')} · ${signed(s.followers,' seguidores')} · ${signed(s.energy,' energía')}</span></span></div>`:''}
+  ${s?`<div class="cyclecard"><span class="years">${s.from}–${s.to}</span><span class="summary"><b>Tu último ciclo · ${s.club}</b><span class="deltas">${signed(s.tec,' técnica')} · ${signed(s.followers,' seguidores')} · ${signed(s.energy,' energía')}</span></span></div>`:''}
   <div class="careerpick">
-    <div class="careerhead"><div><span>Temporada ${G.turns+1} de ${GAME_TURNS} · ${G.age} años</span><b>${G.turns===0?'Elige cómo empieza tu carrera':'Elige tu proyecto para el próximo año'}</b></div><em>${G.year+1}</em></div>
-    <div class="careeropts">${G.routes.map((r,i)=>`<button class="careeropt" data-route="${i}">
-      <span class="ico">${r.ic}</span><span class="copy"><span class="kind">${r.kind}</span><b>${r.t}</b><small>${r.e}</small></span><span class="arr">→</span>
+    <div class="careerhead"><div><span>Ciclo ${G.turns+1} de ${GAME_TURNS} · ${G.age} años</span><b>${G.turns===0?'Elige cómo empieza tu carrera':'Elige tu proyecto para los próximos dos años'}</b></div><em>${G.year+1}–${G.year+TURN_YEARS}</em></div>
+    <div class="careeropts">${G.routes.map((r,i)=>`<button class="careeropt ${r.id}" data-route="${i}">
+      <span class="ico">${r.ic}</span><span class="copy"><span class="kind">${r.kind}</span><b>${r.t}</b><small>${r.e}</small><span class="stars" aria-label="${r.stars} de 5">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span></span><span class="arr">→</span>
     </button>`).join('')}</div>
   </div>
   ${G.turns>=18?'<div style="text-align:center"><button class="retirebtn" id="ret">Retirarte antes de tiempo</button></div>':''}`;
   document.getElementById('controls').onclick=e=>{const b=e.target.closest('[data-route]');if(b)chooseProject(+b.dataset.route);};
   const retire=document.getElementById('ret');if(retire)retire.onclick=finalCard;
 }
-const renderAll=()=>{renderRail();renderControls();};
+function renderCareerLog(){
+  if(!G.track)return;
+  const rows=G.seasons.slice().reverse();
+  document.getElementById('careerlog').innerHTML=`<section class="careerlog" aria-label="Trayectoria profesional">
+    <div class="careerlog-title"><b>🏆 Tu trayectoria profesional</b><span>${G.turns}/${GAME_TURNS} ciclos · jubilación a los 66</span></div>
+    ${rows.length?`<div class="careercols"><span>Edad</span><span>Proyecto</span><span>Nivel</span><span>Comp.</span><span>Seguidores</span></div>
+      ${rows.map(s=>`<div class="careerrow"><div class="careerrow-main">
+        <span class="careerage">${s.age}</span><span class="careerjob"><b>${s.club}</b><span>${s.from}–${s.to} · ${s.role}</span></span>
+        <span class="levelpill">${s.level}</span><span class="comppill num">${s.comp}k€</span><span class="followpill num">${fmtK(s.followers)}</span>
+      </div><div class="careerroute">${s.kind||'Etapa profesional'} · ${s.route||G.track.n}</div></div>`).join('')}`
+      :'<div class="careerlog-empty">Tu historia empieza aquí…<br>Elige tu primer proyecto sin saber cómo acabará.</div>'}
+  </section>`;
+}
+const renderAll=()=>{renderRail();renderControls();renderCareerLog();};
 const finishOrRender=()=>G.turns>=GAME_TURNS?finalCard():renderAll();
 
-/* ═════════ AÑO ═════════ */
+/* ═════════ CICLO DE DOS AÑOS ═════════ */
 function playYear(){
   const cycleStart={year:G.year,tec:G.tec,followers:G.followers,energy:G.energy};
   G.turns++;G.age+=TURN_YEARS;G.year+=TURN_YEARS;
@@ -700,20 +722,12 @@ function playYear(){
   let ownLines=[];      // se agrupan en UN post tuyo
   let ownTag=null,ownTagCls='b';
 
-  // mercado
-  const prev=G.market;
-  if(roll(28))G.market=pick(MK_NEXT[G.market]);
-  if(G.market!==prev){
-    post({author:AUTHORS.news,tag:'ÚLTIMA HORA',tagCls:{boom:'g',est:'b',inv:'r',reg:'o',agi:'p'}[G.market],
-      text:'<b>'+MK().n+'.</b> '+MK().d+'. Analistas del sector: "esta vez es diferente" (misma frase que el ciclo anterior).'});
-  }
-
-  // equity con mercado durante el salto temporal
+  // El equity fluctúa sin convertir la partida en un simulador de mercado.
   if(G.equity>0){
-    const k=MK().eqK+(rand()*.08-.04);
+    const k=.94+rand()*.18;
     const d0=Math.round(G.equity);G.equity*=k;
     const diff=Math.round(G.equity)-d0;
-    if(Math.abs(diff)>=8)ownLines.push('Mi equity '+(diff>0?'sube':'cae')+' '+Math.abs(diff)+'k€ con el mercado. '+(diff>0?'No es dinero hasta que no es dinero.':'Respira. Solo es papel.'));
+    if(Math.abs(diff)>=8)ownLines.push('Mi equity '+(diff>0?'sube':'cae')+' '+Math.abs(diff)+'k€. '+(diff>0?'No es dinero hasta que no es dinero.':'Respira. Solo es papel.'));
   }
 
   // manager
@@ -747,22 +761,22 @@ function playYear(){
   if(!G.mgmt){
     const out=Math.max(0,Math.round((G.tec-30)/18+(rand()*1.5-.35)));
     if(G.club.tier===0){
-      ownLines.unshift('Un año aprendiendo '+G.track.n.toLowerCase()+'. Todavía no tengo cargo ni sueldo, pero ya empiezo a distinguir una oportunidad real de un hilo con muchos emojis.');
+      ownLines.unshift('Dos años aprendiendo '+G.track.n.toLowerCase()+'. Todavía no tengo cargo ni sueldo, pero ya empiezo a distinguir una oportunidad real de un hilo con muchos emojis.');
     }else if(G.track.id==='res'){
       G.papers+=out;const c=out*Math.round(G.tec*1.9);G.citas+=c;
       G.hindex=Math.min(G.papers,Math.round(Math.sqrt(G.citas/9)));
-      ownLines.unshift(out>0?'Este año: <b>'+out+' paper'+(out>1?'s':'')+'</b> publicados y +'+c+' citas (h-index '+G.hindex+'). El revisor 2 sigue sin quererme, pero las citas no mienten.':'Año sin publicar. A veces el mejor paper es el que no escribes. (Es mentira, estoy fatal.)');
+      ownLines.unshift(out>0?'Este ciclo: <b>'+out+' paper'+(out>1?'s':'')+'</b> publicados y +'+c+' citas (h-index '+G.hindex+'). El revisor 2 sigue sin quererme, pero las citas no mienten.':'Dos años sin publicar. A veces el mejor paper es el que no escribes. (Es mentira, estoy fatal.)');
       if(out>0&&G.tec>72&&roll(28)){G.hitos.push('Best paper ('+G.year+')');G.rep=clamp(G.rep+8,0,100);
         post({author:AUTHORS.news,tag:'PREMIO',tagCls:'o',text:'<b>'+G.name+'</b> gana el best paper de la conferencia grande del año. Su hilo explicándolo tiene más citas que el paper.'});}
     } else {
       G.products+=out;const s=out*Math.round(G.tec*14);G.stars+=s;G.citas+=out*Math.round(G.tec/6);
-      ownLines.unshift(out>0?'Balance del año: <b>'+out+' producto'+(out>1?'s':'')+'</b> en producción y +'+s+' ★ en GitHub. Detrás de cada demo bonita hay un try/except del que no hablo.':'Año de deuda técnica y reuniones. Alguien tenía que hacerlo, y ese alguien no sale en las keynotes.');
+      ownLines.unshift(out>0?'Balance del ciclo: <b>'+out+' producto'+(out>1?'s':'')+'</b> en producción y +'+s+' ★ en GitHub. Detrás de cada demo bonita hay un try/except del que no hablo.':'Dos años de deuda técnica y reuniones. Alguien tenía que hacerlo, y ese alguien no sale en las keynotes.');
       if(out>0&&G.tec>72&&roll(26)){G.hitos.push('Producto del año ('+G.year+')');G.rep=clamp(G.rep+7,0,100);
         post({author:AUTHORS.news,tag:'DESTACADO',tagCls:'o',text:'El lanzamiento de <b>'+G.name+'</b> aparece en todas las newsletters del sector esta semana. Sí, en esa también.'});}
     }
   } else {
     G.rep=clamp(G.rep+2,0,100);
-    ownLines.unshift('Un año más liderando al equipo. Mi contribución ya no se mide en commits, sino en que nadie dimita. Spoiler: nadie ha dimitido. 📈');
+    ownLines.unshift('Otro ciclo liderando al equipo. Mi contribución ya no se mide en commits, sino en que nadie dimita. Spoiler: nadie ha dimitido. 📈');
   }
 
   // side project
@@ -770,7 +784,7 @@ function playYear(){
     const gr=Math.round(G.side.subs*(.16+rand()*.38))+12;
     G.side.subs+=gr;
     const inc=Math.round(G.side.subs/(G.side.type==='saas'?60:200));
-    if(inc>2){G.vested+=inc;ownLines.push('⚡ '+G.side.n+': +'+gr+' '+G.side.unit+' este año y '+inc+'k€ de ingreso extra. Construir en público funciona (y da un miedo horrible).');}
+    if(inc>2){G.vested+=inc;ownLines.push('⚡ '+G.side.n+': +'+gr+' '+G.side.unit+' este ciclo y '+inc+'k€ de ingreso extra. Construir en público funciona (y da un miedo horrible).');}
     G.energy=clamp(G.energy-1,0,100);
   }
 
@@ -785,10 +799,10 @@ function playYear(){
   G.salary=Math.round(G.salary*1.055);
   G.maxComp=Math.max(G.maxComp,comp());
 
-  // post propio del año — máx 2 frases, con la energía baja el tono cambia
+  // post propio del ciclo — máx 2 frases, con la energía baja el tono cambia
   if(G.energy<35&&roll(60)){
     ownLines=[ownLines[0]||'',
-      'Voy a ser honest'+(rand()<.5?'o':'a')+': este año ha sido duro. El feed solo enseña las promos; detrás hay domingos con el estómago cerrado. Si estás igual: no estás solo.'];
+      'Voy a ser honest'+(rand()<.5?'o':'a')+': este ciclo ha sido duro. El feed solo enseña las promos; detrás hay domingos con el estómago cerrado. Si estás igual: no estás solo.'];
     ownTag=ownTag||'POST VULNERABLE';ownTagCls='r';
   }
   post({author:AUTHORS.me,tag:ownTag,tagCls:ownTagCls,text:ownLines.filter(Boolean).slice(0,2).join('\n\n')});
@@ -802,6 +816,8 @@ function playYear(){
 
   G.lastCycle={from:cycleStart.year+1,to:G.year,club:G.club.n,tec:G.tec-cycleStart.tec,
     followers:G.followers-cycleStart.followers,energy:G.energy-cycleStart.energy};
+  G.seasons.push({from:G.lastCycle.from,to:G.lastCycle.to,age:G.age,club:G.club.n,role:levelName(),
+    level:LEVELS[G.levelIdx].lvl,comp:comp(),followers:G.followers,kind:G.lastRoute?.kind,route:G.lastRoute?.t});
 
   // Los proyectos mueven la carrera; los eventos quedan como dilemas excepcionales.
   if(G.turns>=3&&G.turns<GAME_TURNS&&roll(22))queueEvent();
@@ -812,7 +828,7 @@ function playYear(){
 
 /* ═════════ EVENTOS (pool v4) ═════════ */
 const EVENTS=[
- {id:'layoff',k:'Reestructuración',w:2,cond:()=>['bigtech','corp'].includes(G.club.type)&&roll(MK().layoffP+20),
+ {id:'layoff',k:'Reestructuración',w:2,cond:()=>['bigtech','corp'].includes(G.club.type)&&roll(24),
   h:'Ronda de despidos: el 15% de tu organización',
   p:'El email llega un miércoles a las 8:04. "Decisión difícil". "De cara al futuro".',
   o:[{t:'Hacerte imprescindible en dos semanas',e:'Visibilidad agresiva, ya',pr:60,
@@ -821,7 +837,7 @@ const EVENTS=[
      {t:'Negociar la salida con paquete',e:'Si va a pasar, que pague',pr:75,
       ok:{txt:'Salgo con 6 meses de finiquito y el portátil. La mejor salida posible.',money:30,layoff:true,soft:true},
       ko:{txt:'Me despidieron antes de negociar. El paquete fue un tupper.',layoff:true}}]},
- {id:'winter',k:'Caja',w:2,once:true,cond:()=>G.club.type==='startup'&&(G.market==='inv'||roll(30)),
+ {id:'winter',k:'Caja',w:2,once:true,cond:()=>G.club.type==='startup'&&roll(30),
   h:'A tu startup le quedan 5 meses de caja',
   p:'La ronda "está al caer" desde hace un año. Los fundadores sonríen distinto.',
   o:[{t:'Quedarte hasta el final',e:'Lealtad, equity y fe',pr:35,
@@ -839,7 +855,7 @@ const EVENTS=[
      {t:'Oponerte: esto vale más',e:'La apuesta del que cree',pr:40,
       ok:{txt:'Teníamos razón: dos años después la empresa vale el triple. Que conste en acta.',eqmul:2.6,rep:6},
       ko:{txt:'No había más ofertas. La empresa languidece y mi equity con ella.',eqmul:.4}}]},
- {id:'ipo',k:'Campana',w:1,once:true,cond:()=>G.club.type==='bigtech'&&G.equity>20&&G.market==='boom',
+ {id:'ipo',k:'Campana',w:1,once:true,cond:()=>G.club.type==='bigtech'&&G.equity>20&&roll(24),
   h:'Tu empresa anuncia resultados históricos',
   p:'La acción se dispara. Slack es solo GIFs de cohetes.',
   o:[{t:'Vender la mitad del equity',e:'Nadie quebró por tomar beneficios',pr:100,
@@ -1177,7 +1193,7 @@ function resolveEvent(o){
       const nx=fb.sort((a,b)=>b.tier-a.tier)[Math.min(1,fb.length-1)]||EMPLEADORES[0];
       G.club=nx;if(!G.clubs.includes(nx.n))G.clubs.push(nx.n);
       xpStart(nx.n);
-      G.salary=Math.round(nx.base*(1+G.tec/150)*MK().sal);G.equity+=nx.eq;G.manager=pick(MANAGERS);
+      G.salary=Math.round(nx.base*(1+G.tec/150));G.equity+=nx.eq;G.manager=pick(MANAGERS);
       post({author:AUTHORS.me,tag:'NUEVA ETAPA',tagCls:'b',
         text:'Tras unos meses de reflexión (y de mirar el techo), ¡encantad'+(rand()<.5?'o':'a')+' de anunciar que me uno a <b>'+nx.n+'</b>! La vida sigue, con más cinismo y mejor CV. #NewBeginnings'});
     } else {
@@ -1192,7 +1208,7 @@ function resolveEvent(o){
 }
 
 /* compensación estimada para los proyectos disponibles */
-function offerComp(o){return Math.round(o.base*(1+G.tec/140)*(1+G.levelIdx*.06)*MK().sal);}
+function offerComp(o){return Math.round(o.base*(1+G.tec/140)*(1+G.levelIdx*.06));}
 
 function careerArchetype(score){
   if(G.scandals>=2)return {ic:'🃏',n:'Gurú cancelado',d:'Tu carrera sobrevivió a tus propias opiniones. Internet no olvida.'};
@@ -1267,7 +1283,7 @@ function finalCard(){
     <div class="post legadopost" style="border-left:4px solid var(--blue)">
       <div class="phd2">
         <div class="pav" style="background:linear-gradient(135deg,#16B86A,#0E6B45)">${G.ini}</div>
-        <div class="pwho"><div class="n">${G.name} <small>· Fin de carrera</small></div>
+        <div class="pwho"><div class="n">${G.name} <small>· ${G.age>=66?'Jubilación':'Fin de carrera'}</small></div>
         <div class="h">${L.lvl} · ${levelName()} — ${G.track.n}</div><div class="t">Resultado final · semilla ${RUN_SEED}</div></div>
       </div>
       <div class="archetype"><em>${arch.ic}</em><b>${arch.n}</b><span>${arch.d}</span></div>
@@ -1282,7 +1298,7 @@ function finalCard(){
         <div class="cvgrid">
           <div><span>Edad final</span><b>${G.age}</b></div><div><span>Energía</span><b>${Math.round(G.energy)}</b></div>
           <div><span>Técnica</span><b>${Math.round(G.tec)}</b></div><div><span>Reputación</span><b>${Math.round(G.rep)}</b></div>
-          <div><span>Formación</span><b>${C.form!==null?FORMACION[C.form].n:'—'}</b></div><div><span>Temporadas</span><b>${G.turns}</b></div>
+          <div><span>Formación</span><b>${C.form!==null?FORMACION[C.form].n:'—'}</b></div><div><span>Ciclos</span><b>${G.turns}</b></div>
           <div><span>Pico de seguidores</span><b>${fmtK(G.peakFollowers)}</b></div><div><span>Empresas</span><b>${G.clubs.length}</b></div>
           <div><span>Cobrado</span><b>${G.vested}k€</b></div><div><span>Giros</span><b>${G.twists}</b></div>
         </div>
