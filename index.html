@@ -123,8 +123,9 @@ button{font-family:inherit;cursor:pointer}
 .levelpill,.comppill{border-radius:7px;text-align:center;padding:5px 4px;font-size:11px;font-weight:800}
 .levelpill{background:#E7F5EE;color:#0E6B45}.comppill{background:#14201B;color:#fff}.followpill{text-align:right;font-size:11px;font-weight:800;color:var(--green)}
 .careerroute{margin:7px 0 0 78px;background:#F7F6F4;border-radius:7px;padding:6px 8px;color:var(--dim);font-size:10.5px}
+.careerevent{margin:6px 0 0 78px;background:#FFF7E2;border:1px solid #F0D899;border-radius:7px;padding:6px 8px;color:#70500A;font-size:10.5px}
 @media(max-width:980px) and (min-width:821px){.wrap{grid-template-columns:340px minmax(0,1fr)}.careercols,.careerrow-main{grid-template-columns:62px minmax(120px,1fr) 48px 66px}.careercols span:last-child,.followpill{display:none}}
-@media(max-width:560px){.quickstats{grid-template-columns:1fr 1fr}.careercols,.careerrow-main{grid-template-columns:60px minmax(120px,1fr) 48px 62px}.careercols span:last-child,.followpill{display:none}.careerrow{padding:9px 10px}.careercols{padding:8px 10px}.careerroute{margin-left:68px}}
+@media(max-width:560px){.quickstats{grid-template-columns:1fr 1fr}.careercols,.careerrow-main{grid-template-columns:60px minmax(120px,1fr) 48px 62px}.careercols span:last-child,.followpill{display:none}.careerrow{padding:9px 10px}.careercols{padding:8px 10px}.careerroute,.careerevent{margin-left:68px}}
 
 /* post */
 .post{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 15px 9px;animation:fi .3s ease}
@@ -160,6 +161,8 @@ button{font-family:inherit;cursor:pointer}
 
 /* decisión = encuesta */
 .poll{border:1.5px solid var(--blue)}
+.eventcard{background:var(--card);border:1px solid #E3C66F;border-left:5px solid var(--gold);border-radius:12px;padding:14px;box-shadow:0 8px 22px rgba(20,32,27,.07)}
+.eventeyebrow{display:block;color:var(--gold);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
 .poll .ptxt{margin-bottom:10px}
 .pollopts{display:grid;gap:7px;margin-bottom:8px}
 .pollopt{position:relative;background:#fff;border:1.5px solid var(--line2);border-radius:8px;
@@ -371,7 +374,7 @@ const G={name:'',ini:'',track:null,age:18,year:2026,turns:0,
   manager:null,side:null,otw:false,followers:90,peakFollowers:90,
   papers:0,products:0,citas:0,hindex:0,stars:0,talks:0,
   hitos:[],clubs:[],history:[],burnouts:0,layoffs:0,scandals:0,exits:0,twists:0,
-  pendingEvent:null,routes:null,lastCycle:null,lastRoute:null,seasons:[],retired:false,used:{}};
+  pendingEvent:null,routes:null,lastCycle:null,lastRoute:null,seasons:[],cycleStart:null,collectingCycle:false,cycleNotes:[],retired:false,used:{}};
 
 /* experiencia estilo LinkedIn */
 function xpStart(clubName){
@@ -410,16 +413,32 @@ const comp=()=>G.salary+Math.round(G.equity);
 const fmtK=v=>v>=1000?(v/1000).toFixed(1)+'k':v;
 const careerRating=()=>Math.round(clamp(G.tec*.55+G.rep*.25+G.red*.2,0,99));
 const fameLabel=()=>G.followers<1000?'DESCONOCIDO':G.followers<10000?'EN ASCENSO':G.followers<50000?'CONOCIDO':'TOP VOICE';
+const concise=(html,max=180)=>{
+  const clean=String(html||'').replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim();
+  return clean.length>max?clean.slice(0,max-1).trimEnd()+'…':clean;
+};
+
+function buildCycleSummary(from,to){
+  const own=G.cycleNotes.filter(n=>n.own),notable=G.cycleNotes.find(n=>!n.own&&n.tag);
+  const result=concise((own[0]||G.cycleNotes[0]||{}).text||'El ciclo avanzó sin un gran titular.');
+  const progress=own.length>1?concise(own[own.length-1].text):'';
+  const lines=[`<b>Decisión:</b> ${G.lastRoute?.t||'Seguir construyendo la carrera'}.`,`<b>Resultado:</b> ${result}`];
+  if(progress&&progress!==result)lines.push(`<b>Balance:</b> ${progress}`);
+  if(notable)lines.push(`<b>También pasó:</b> ${concise(notable.text,135)}`);
+  return {post:`<b>${from}–${to} · ${G.lastRoute?.kind||'Etapa profesional'}</b>\n\n${lines.join('\n')}`,
+    log:`${G.lastRoute?.t||'Decisión profesional'} · ${result}`,
+    tagCls:(own[0]||{}).tagCls||'g'};
+}
 
 /* ═════════ POSTS ═════════ */
-function post({author,tag,tagCls,text,big,mute}){
+function post({author,tag,tagCls,text,big,mute,summary,summaryDelta=0}){
   const a=typeof author==='function'?author():author;
   const own=a.n===G.name;
   const audience=Math.round(Math.sqrt(G.followers||0)*rnd(1,4));
   const reacts=mute?rnd(1,6):rnd(4,30)+Math.round(G.rep*rnd(2,14))+audience;
   const comments=mute?rnd(0,1):rnd(0,Math.max(2,Math.round(reacts/9)));
-  let followerDelta=0,viral=false;
-  if(own&&!mute){
+  let followerDelta=summary?summaryDelta:0,viral=summary&&summaryDelta>100;
+  if(own&&!mute&&!summary){
     let velocity=Math.max(3,Math.round(reacts*rnd(5,14)/100));
     viral=roll(clamp(3+G.rep/10,3,13));
     if(viral)velocity*=rnd(5,12);
@@ -427,6 +446,10 @@ function post({author,tag,tagCls,text,big,mute}){
     else followerDelta=velocity;
     G.followers=Math.max(0,G.followers+followerDelta);
     G.peakFollowers=Math.max(G.peakFollowers,G.followers);
+  }
+  if(G.collectingCycle&&!summary){
+    G.cycleNotes.push({own,tag,tagCls,text,author:a.n});
+    return;
   }
   // comentarios visibles solo en posts propios con tirón
   let cmHtml='';
@@ -524,7 +547,7 @@ function startCareer(){
   G.salary=0;G.equity=0;G.vested=0;G.maxComp=0;G.manager=null;G.side=null;G.otw=false;
   G.papers=0;G.products=0;G.citas=0;G.hindex=0;G.stars=0;G.talks=0;G.hitos=[];G.history=[];
   G.burnouts=0;G.layoffs=0;G.scandals=0;G.exits=0;G.twists=0;G.pendingEvent=null;G.routes=null;
-  G.lastCycle=null;G.lastRoute=null;G.seasons=[];G.retired=false;G.used={};
+  G.lastCycle=null;G.lastRoute=null;G.seasons=[];G.cycleStart=null;G.collectingCycle=false;G.cycleNotes=[];G.retired=false;G.used={};
   document.getElementById('feed').innerHTML='';xpStart(TRAINING.n);
   post({author:AUTHORS.me,tag:'18 AÑOS',tagCls:'b',
     text:'Tengo 18 años, cero experiencia y demasiadas opiniones sobre IA. Toca elegir por dónde empezar. El resto de mi carrera dependerá de decisiones que todavía no sé que voy a tomar.'});
@@ -635,6 +658,8 @@ function careerProjects(){
 function signed(v,suffix=''){const n=Math.round(v);return (n>0?'+':'')+n+suffix;}
 function chooseProject(i){
   const route=G.routes&&G.routes[i];if(!route)return;
+  G.cycleStart={year:G.year,tec:G.tec,followers:G.followers,energy:G.energy};
+  G.collectingCycle=true;G.cycleNotes=[];
   G.lastRoute={id:route.id,kind:route.kind,t:route.t};
   G.routes=null;document.getElementById('controls').onclick=null;
   if(route.id==='formation'){
@@ -705,7 +730,7 @@ function renderCareerLog(){
       ${rows.map(s=>`<div class="careerrow"><div class="careerrow-main">
         <span class="careerage">${s.age}</span><span class="careerjob"><b>${s.club}</b><span>${s.from}–${s.to} · ${s.role}</span></span>
         <span class="levelpill">${s.level}</span><span class="comppill num">${s.comp}k€</span><span class="followpill num">${fmtK(s.followers)}</span>
-      </div><div class="careerroute">${s.kind||'Etapa profesional'} · ${s.route||G.track.n}</div></div>`).join('')}`
+      </div><div class="careerroute">📝 ${s.summary||((s.kind||'Etapa profesional')+' · '+(s.route||G.track.n))}</div>${s.event?`<div class="careerevent">⚡ ${s.event}</div>`:''}</div>`).join('')}`
       :'<div class="careerlog-empty">Tu historia empieza aquí…<br>Elige tu primer proyecto sin saber cómo acabará.</div>'}
   </section>`;
 }
@@ -714,7 +739,7 @@ const finishOrRender=()=>G.turns>=GAME_TURNS?finalCard():renderAll();
 
 /* ═════════ CICLO DE DOS AÑOS ═════════ */
 function playYear(){
-  const cycleStart={year:G.year,tec:G.tec,followers:G.followers,energy:G.energy};
+  const cycleStart=G.cycleStart||{year:G.year,tec:G.tec,followers:G.followers,energy:G.energy};
   G.turns++;G.age+=TURN_YEARS;G.year+=TURN_YEARS;
   if(G.otw){G.otw=false;
     post({author:AUTHORS.sys,tag:'RECORDATORIO',tagCls:'g',mute:true,
@@ -814,10 +839,15 @@ function playYear(){
   // ruido del feed: la carrera de los demás también existe (y duele)
   if(roll(20))ambientPost();
 
+  const cycleSummary=buildCycleSummary(cycleStart.year+1,G.year);
+  G.collectingCycle=false;
+  post({author:AUTHORS.me,tag:'RESUMEN DE CICLO',tagCls:cycleSummary.tagCls,text:cycleSummary.post,summary:true,
+    summaryDelta:G.followers-cycleStart.followers});
   G.lastCycle={from:cycleStart.year+1,to:G.year,club:G.club.n,tec:G.tec-cycleStart.tec,
     followers:G.followers-cycleStart.followers,energy:G.energy-cycleStart.energy};
   G.seasons.push({from:G.lastCycle.from,to:G.lastCycle.to,age:G.age,club:G.club.n,role:levelName(),
-    level:LEVELS[G.levelIdx].lvl,comp:comp(),followers:G.followers,kind:G.lastRoute?.kind,route:G.lastRoute?.t});
+    level:LEVELS[G.levelIdx].lvl,comp:comp(),followers:G.followers,kind:G.lastRoute?.kind,route:G.lastRoute?.t,summary:cycleSummary.log,event:''});
+  G.cycleStart=null;G.cycleNotes=[];
 
   // Los proyectos mueven la carrera; los eventos quedan como dilemas excepcionales.
   if(G.turns>=3&&G.turns<GAME_TURNS&&roll(22))queueEvent();
@@ -1137,11 +1167,12 @@ function renderPending(){
 function renderEvent(){
   const ev=G.pendingEvent;
   document.getElementById('controls').innerHTML=`
-  <div class="post poll">
+  <div class="eventcard poll">
+    <span class="eventeyebrow">⚡ Evento inesperado · elige sin saber</span>
     <div class="phd2">
       <div class="pav sq" style="background:${AUTHORS.sys.col}">${AUTHORS.sys.ini}</div>
       <div class="pwho"><div class="n">${AUTHORS.sys.n}</div>
-      <div class="h">${ev.k} · decisión de carrera</div><div class="t">Ahora mismo</div></div>
+      <div class="h">${ev.k} · decisión de carrera</div><div class="t">${G.age} años · ${G.year}</div></div>
     </div>
     <div class="ptxt"><b>${ev.h}</b>\n${ev.p}</div>
     <div class="pollopts">${ev.o.map((o,i)=>`
@@ -1160,6 +1191,8 @@ function renderEvent(){
 function resolveEvent(o){
   const win=roll(o.pr);
   const r=win?o.ok:(o.ko||o.ok);
+  const eventName=G.pendingEvent?.k||'Evento de carrera';
+  const eventLead=`<b>Elegí: ${o.t}.</b>\n${r.txt}${oddsLine(o.pr,win)}`;
   if(r.tec)G.tec=clamp(G.tec+r.tec,10,99);
   if(r.energy)G.energy=clamp(G.energy+r.energy,0,100);
   if(r.rep)G.rep=clamp(G.rep+r.rep,0,100);
@@ -1187,23 +1220,27 @@ function resolveEvent(o){
   if(r.quit||r.layoff){
     if(r.layoff&&!r.quit){G.layoffs++;G.otw=true;}
     if(!r.soft&&!r.quit)G.energy=clamp(G.energy-12,0,100);
-    post({author:AUTHORS.me,tag,tagCls,text:r.txt+oddsLine(o.pr,win)});
+    let transition='';
     if(!r.quit){
       const fb=EMPLEADORES.filter(e=>G.tec>=e.minTec&&G.rep>=e.minRep&&e.n!==G.club.n);
       const nx=fb.sort((a,b)=>b.tier-a.tier)[Math.min(1,fb.length-1)]||EMPLEADORES[0];
       G.club=nx;if(!G.clubs.includes(nx.n))G.clubs.push(nx.n);
       xpStart(nx.n);
       G.salary=Math.round(nx.base*(1+G.tec/150));G.equity+=nx.eq;G.manager=pick(MANAGERS);
-      post({author:AUTHORS.me,tag:'NUEVA ETAPA',tagCls:'b',
-        text:'Tras unos meses de reflexión (y de mirar el techo), ¡encantad'+(rand()<.5?'o':'a')+' de anunciar que me uno a <b>'+nx.n+'</b>! La vida sigue, con más cinismo y mejor CV. #NewBeginnings'});
+      transition='Nueva etapa: me uno a <b>'+nx.n+'</b>. La vida sigue, con más cinismo y mejor CV.';
     } else {
       G.club={n:'Tu propio proyecto',tier:2,type:'startup',base:30,eq:0};
       G.clubs.push('Tu propio proyecto');G.salary=30;G.manager=null;
       xpStart('Tu propio proyecto');
+      transition='Nueva etapa: convierto mi proyecto propio en mi trabajo.';
     }
+    const eventPost=eventLead+'\n\n'+transition;
+    if(G.seasons.length)G.seasons[G.seasons.length-1].event=`${eventName} · Elegiste ${o.t}. ${concise(r.txt,145)} ${concise(transition,90)}`;
+    post({author:AUTHORS.me,tag:'EVENTO · '+tag,tagCls,text:eventPost});
     G.pendingEvent=null;finishOrRender();return;
   }
-  post({author:AUTHORS.me,tag,tagCls,text:r.txt+oddsLine(o.pr,win)});
+  if(G.seasons.length)G.seasons[G.seasons.length-1].event=`${eventName} · Elegiste ${o.t}. ${concise(r.txt,160)}`;
+  post({author:AUTHORS.me,tag:'EVENTO · '+tag,tagCls,text:eventLead});
   G.pendingEvent=null;finishOrRender();
 }
 
