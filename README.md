@@ -25,7 +25,7 @@ Un juego de navegador gratuito y en español que simula una carrera completa en 
 - Los **seguidores** suben o bajan con cada publicación, amplifican tus reacciones y también cuentan para la puntuación final
 - Al ser despedido, tu avatar se pone **el aro verde** que da nombre al juego — y coleccionas la insignia
 - Pantalla inspirada en un mánager de carrera: perfil y ofertas a la izquierda, historial completo a la derecha, con lenguaje visual de LinkedIn
-- Inicio en dos pasos: portada cinematográfica y configuración de identidad en tres paneles, siguiendo la estructura visual de F1 Glory
+- Inicio con identidad propia de OPEN2WORK: portada editorial, avance de carrera y configuración con vista previa viva de un perfil estilo LinkedIn
 - Final con puntuación, récord local, arquetipo, tarjeta PNG y enlace de reto reproducible: *¿Puedes hacerlo mejor?*
 
 ## Stack
