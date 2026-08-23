@@ -2,16 +2,17 @@
 
 > «Encantado de anunciar que estás a punto de perderlo todo.»
 
-Un juego de navegador gratuito y en español que simula una carrera completa en el mundo de la IA, contada como lo que realmente es hoy una carrera: **un muro de LinkedIn**. Una partida dura 60-90 segundos y termina en un arquetipo y una tarjeta compartible.
+Un juego de navegador gratuito y en español que simula una carrera completa en el mundo de la IA, contada como lo que realmente es hoy una carrera: **un muro de LinkedIn**. Una partida dura unos minutos y termina en un arquetipo y una tarjeta compartible.
 
 **Jugar:** abre `index.html` en el navegador. Sin registro, sin dependencias ni build. Funciona en móvil y escritorio.
 
 ## Cómo se juega
 
-1. Escribe un nombre opcional y empieza en un toque con un perfil aleatorio, o despliega las opciones para elegir especialización y formación.
-2. Juega **8 etapas de 4 años**. En cada una eliges entre dar un salto, consolidarte o construir algo propio; después se simula el ciclo y ves su resumen.
-3. Los grandes dilemas aparecen de forma ocasional. Decides por instinto y descubres después qué probabilidades tenías.
-4. Descubre tu arquetipo, puntuación y récord personal. Comparte una tarjeta y reta a otra persona con el mismo mercado y los mismos giros.
+1. Escribe un nombre opcional y empieza a los **18 años**. Puedes dejar que el juego elija tu especialización o escogerla tú.
+2. La primera temporada eliges cómo formarte: proyecto ganador, proyecto estable o programa de desarrollo.
+3. Juega **24 temporadas anuales**, hasta los 42 años. Cada año eliges proyecto y después ves el resultado de la temporada.
+4. Los grandes dilemas aparecen de forma ocasional. Decides por instinto y descubres después qué probabilidades tenías.
+5. Descubre tu arquetipo, puntuación y récord personal. Comparte una tarjeta y reta a otra persona con el mismo mercado y los mismos giros.
 
 ## Mecánicas
 
@@ -19,7 +20,7 @@ Un juego de navegador gratuito y en español que simula una carrera completa en 
 - Empleadores por tiers: de consultora a Google/Meta/Nvidia y frontier labs (OpenAI, Anthropic, DeepMind), presentados como proyectos de carrera con resultado incierto
 - **Ciclos de mercado** (boom, invierno de financiación, ola regulatoria, carrera AGI) que mueven sueldos, despidos y el valor de tu equity
 - Managers aleatorios (incluido el tóxico), side projects con vida propia, burnout, PIPs, escándalos y ~29 eventos del sector
-- Bucle de carrera **elige proyecto → simula cuatro años → revisa el resultado**, con tres rutas cualitativas y probabilidades ocultas
+- Bucle de carrera **elige proyecto → simula un año → revisa el resultado**, con tres rutas cualitativas y probabilidades ocultas
 - Hasta dos **giros de guion** raros por partida: virales accidentales, reply-all catastróficos, equity olvidado y otras sorpresas
 - Los **seguidores** suben o bajan con cada publicación, amplifican tus reacciones y también cuentan para la puntuación final
 - Al ser despedido, tu avatar se pone **el aro verde** que da nombre al juego — y coleccionas la insignia
