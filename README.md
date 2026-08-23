@@ -17,7 +17,7 @@ Un juego de navegador gratuito y en español que simula una carrera completa en 
 ## Mecánicas
 
 - Escalera **L1 Becario → L10 Chief AI Officer**, con bifurcación vía técnica / vía gestión
-- Empleadores con nombre y sector: compañías ficticias como **Nexo Norte, Menta AI, Syntara, Banco Faro, Cobalto Labs e Instituto Vector**, además de Google/Meta/Nvidia y frontier labs
+- Formación y empleadores reales: **IE University, UPM, Ironhack, Accenture, Luzia, Mistral AI, BBVA, NVIDIA, Google, Meta, Microsoft, Hugging Face, Google DeepMind, Anthropic, OpenAI y Barcelona Supercomputing Center**
 - Managers aleatorios (incluido el tóxico), side projects con vida propia, burnout, PIPs, escándalos y ~29 eventos del sector
 - Bucle de carrera **elige proyecto → simula dos años → revisa el resultado**, con tres rutas cualitativas y probabilidades ocultas
 - Cada ciclo se publica como una sola recapitulación cargada de jerga de LinkedIn; un botón permite traducirla al instante a lenguaje normal con la decisión y el resultado reales
@@ -35,3 +35,5 @@ HTML + CSS + JavaScript vanilla. Cero dependencias y cero build. Fuente: Inter (
 ---
 
 Hecho con sátira y cariño por el LinkedIn español. Las probabilidades se revelan después; el burnout, no.
+
+Los nombres de organizaciones reales se utilizan únicamente dentro de una simulación ficticia y satírica. OPEN2WORK no está afiliado, avalado ni patrocinado por ninguna de ellas.
