@@ -20,7 +20,7 @@ Un juego de navegador gratuito y en español que simula una carrera completa en 
 - Empleadores por tiers: de consultora a Google/Meta/Nvidia y frontier labs (OpenAI, Anthropic, DeepMind), presentados como proyectos de carrera con resultado incierto
 - Managers aleatorios (incluido el tóxico), side projects con vida propia, burnout, PIPs, escándalos y ~29 eventos del sector
 - Bucle de carrera **elige proyecto → simula dos años → revisa el resultado**, con tres rutas cualitativas y probabilidades ocultas
-- Cada ciclo se publica como una sola recapitulación de LinkedIn; promociones, giros y noticias se integran en ese resumen en lugar de llenar el feed de posts sueltos
+- Cada ciclo se publica como una sola recapitulación cargada de jerga de LinkedIn; un botón permite traducirla al instante a lenguaje normal con la decisión y el resultado reales
 - Hasta dos **giros de guion** raros por partida: virales accidentales, reply-all catastróficos, equity olvidado y otras sorpresas
 - Los **seguidores** suben o bajan con cada publicación, amplifican tus reacciones y también cuentan para la puntuación final
 - Al ser despedido, tu avatar se pone **el aro verde** que da nombre al juego — y coleccionas la insignia

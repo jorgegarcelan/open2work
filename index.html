@@ -133,7 +133,7 @@ button{font-family:inherit;cursor:pointer}
 .post.past{cursor:pointer;padding:9px 12px;opacity:.72;animation:none}
 .post.past:not(.expanded) .ptxt,.post.past:not(.expanded) .vermas,
 .post.past:not(.expanded) .preact,.post.past:not(.expanded) .pcomments,
-.post.past:not(.expanded)>div[style]{display:none}
+.post.past:not(.expanded) .translatebtn,.post.past:not(.expanded)>div[style]{display:none}
 .post.past:not(.expanded) .pav{width:30px;height:30px;flex-basis:30px;font-size:10px}
 .post.past:not(.expanded) .pwho .h{display:none}
 .post.past:not(.expanded)::after{content:'Ver post';display:block;margin:3px 0 0 39px;color:var(--dim2);font-size:10px;font-weight:700}
@@ -274,6 +274,8 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .ptxt.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:2px}
 .vermas{display:inline-block;color:var(--dim2);font-size:12px;font-weight:600;cursor:pointer;margin-bottom:6px}
 .vermas:hover{color:var(--blue);text-decoration:underline}
+.translatebtn{display:block;background:none;border:0;color:var(--blue2);font-size:11.5px;font-weight:750;padding:3px 0 7px;text-align:left}
+.translatebtn:hover{text-decoration:underline}
 
 /* aro verde open to work (se activa al quedarte sin trabajo) */
 .otw{position:relative;box-shadow:0 0 0 3px #fff,0 0 0 6.5px #46A758!important}
@@ -444,16 +446,25 @@ function buildCycleSummary(from,to){
   const own=G.cycleNotes.filter(n=>n.own),notable=G.cycleNotes.find(n=>!n.own&&n.tag);
   const result=concise((own[0]||G.cycleNotes[0]||{}).text||'El ciclo avanzó sin un gran titular.');
   const progress=own.length>1?concise(own[own.length-1].text):'';
-  const lines=[`<b>Decisión:</b> ${G.lastRoute?.t||'Seguir construyendo la carrera'}.`,`<b>Resultado:</b> ${result}`];
-  if(progress&&progress!==result)lines.push(`<b>Balance:</b> ${progress}`);
-  if(notable)lines.push(`<b>También pasó:</b> ${concise(notable.text,135)}`);
-  return {post:`<b>${from}–${to} · ${G.lastRoute?.kind||'Etapa profesional'}</b>\n\n${lines.join('\n')}`,
-    log:`${G.lastRoute?.t||'Decisión profesional'} · ${result}`,
+  const route=G.lastRoute?.t||'seguir construyendo mi carrera',kind=G.lastRoute?.kind||'etapa profesional';
+  const opener=pick(['Encantado de compartir un nuevo capítulo profesional 🚀','Hoy cierro un ciclo que me ha sacado de mi zona de confort ✨','Después de dos años intensos, toca hacer balance 🙌']);
+  const spin=(own[0]||{}).tagCls==='r'
+    ?'El resultado no fue el que imaginaba, pero cada obstáculo es una oportunidad para recalibrar, aprender y volver con más foco.'
+    :'El resultado confirma que apostar por el crecimiento, el impacto y el aprendizaje continuo siempre abre nuevas puertas.';
+  const linkedin=[`<b>${opener}</b>`,`En ${from}–${to} decidí apostar por <b>${route}</b>. No fue una decisión fácil, pero las mejores trayectorias rara vez son lineales.`,`${spin} ${result}`];
+  if(progress&&progress!==result)linkedin.push(`También me llevo este aprendizaje: ${progress}`);
+  if(notable)linkedin.push(`El ecosistema tampoco se detuvo: ${concise(notable.text,125)}`);
+  linkedin.push('Gracias a todas las personas que han formado parte del camino. Seguimos. 💚\n\n#CareerGrowth #InteligenciaArtificial #AprendizajeContinuo #Open2Work');
+  const normal=[`<b>Lo que pasó de verdad (${from}–${to}):</b>`,`Elegí <b>${route}</b>.`,`Resultado: ${result}`];
+  if(progress&&progress!==result)normal.push(`Además: ${progress}`);
+  if(notable)normal.push(`También ocurrió: ${concise(notable.text,125)}`);
+  return {post:linkedin.join('\n\n'),normal:normal.join('\n\n'),
+    log:`${kind} · ${route} · ${result}`,
     tagCls:(own[0]||{}).tagCls||'g'};
 }
 
 /* ═════════ POSTS ═════════ */
-function post({author,tag,tagCls,text,big,mute,summary,summaryDelta=0}){
+function post({author,tag,tagCls,text,big,mute,summary,summaryDelta=0,normalText}){
   const a=typeof author==='function'?author():author;
   const own=a.n===G.name;
   const audience=Math.round(Math.sqrt(G.followers||0)*rnd(1,4));
@@ -486,7 +497,7 @@ function post({author,tag,tagCls,text,big,mute,summary,summaryDelta=0}){
         <div class="cav" style="background:${cc[1]}">${cc[0]}</div>
         <div class="bub"><b>${c.h?'Usuario con opiniones':'Alguien de tu red'}</b>${c.t}</div></div>`;}).join('')}</div>`;
   }
-  const d=document.createElement('div');
+  const d=document.createElement('div'),canClamp=Math.max(text.length,normalText?.length||0)>150;
   d.className='post'+(big?' legadopost':'');
   d.innerHTML=`
     <div class="phd2">
@@ -499,13 +510,20 @@ function post({author,tag,tagCls,text,big,mute,summary,summaryDelta=0}){
     </div>
     ${tag?`<div style="margin-top:8px"><span class="ptag ${tagCls||'b'}">${tag}</span></div>`:''}
     <div class="ptxt${text.length>150?' clamp':''}">${text}</div>
-    ${text.length>150?'<span class="vermas">…ver más</span>':''}
+    ${canClamp?`<span class="vermas"${text.length>150?'':' style="display:none"'}>…ver más</span>`:''}
+    ${normalText?'<button class="translatebtn" type="button">Traducir a lenguaje normal</button>':''}
     <div class="preact">
       <span><span class="ic">👍💡❤️</span> ${fmtK(reacts)}</span>
       <span>${comments} comentarios · ${rnd(0,Math.round(comments/2)+1)} compartidos${followerDelta?` · <span class="fdelta ${followerDelta<0?'down':''}">${followerDelta>0?'+':'−'}${fmtK(Math.abs(followerDelta))} seguidores${viral?' 🚀':''}</span>`:''}</span>
     </div>
     ${cmHtml}`;
   d.addEventListener('click',e=>{
+    if(e.target.classList.contains('translatebtn')){
+      const tx=d.querySelector('.ptxt'),more=d.querySelector('.vermas'),showNormal=e.target.textContent.includes('normal'),next=showNormal?normalText:text;
+      tx.innerHTML=next;tx.classList.toggle('clamp',next.length>150);
+      if(more){more.style.display=next.length>150?'inline-block':'none';more.textContent='…ver más';}
+      e.target.textContent=showNormal?'Volver a lenguaje LinkedIn':'Traducir a lenguaje normal';return;
+    }
     if(d.classList.contains('past')&&!e.target.classList.contains('vermas')){d.classList.toggle('expanded');return;}
     if(e.target.classList.contains('vermas')){
       const tx=d.querySelector('.ptxt');
@@ -911,7 +929,7 @@ function playYear(){
   const cycleSummary=buildCycleSummary(cycleStart.year+1,G.year);
   G.collectingCycle=false;
   post({author:AUTHORS.me,tag:'RESUMEN DE CICLO',tagCls:cycleSummary.tagCls,text:cycleSummary.post,summary:true,
-    summaryDelta:G.followers-cycleStart.followers});
+    summaryDelta:G.followers-cycleStart.followers,normalText:cycleSummary.normal});
   G.lastCycle={from:cycleStart.year+1,to:G.year,club:G.club.n,tec:G.tec-cycleStart.tec,
     followers:G.followers-cycleStart.followers,energy:G.energy-cycleStart.energy};
   G.seasons.push({from:G.lastCycle.from,to:G.lastCycle.to,age:G.age,club:G.club.n,role:levelName(),
