@@ -8,7 +8,7 @@ Un juego de navegador gratuito y en español que simula una carrera completa en 
 
 ## Cómo se juega
 
-1. Escribe un nombre opcional y empieza a los **18 años**. Puedes dejar que el juego elija tu especialización o escogerla tú.
+1. Desde una portada inspirada en un juego de carrera, crea tu identidad: nombre, especialización y estilo **Ambicioso, Técnico o Consistente**. Cada estilo modifica tus estadísticas iniciales.
 2. En el primer ciclo eliges cómo formarte: proyecto ganador, proyecto estable o programa de desarrollo.
 3. Juega **24 ciclos de dos años**, desde los 18 hasta la jubilación a los 66. En cada ciclo eliges proyecto y recibes un único post-resumen con tu decisión y todo lo que ocurrió.
 4. Los grandes dilemas aparecen de forma ocasional y sustituyen temporalmente a las ofertas. Eliges por instinto y después queda registrada la opción, la consecuencia y la probabilidad real.
@@ -25,6 +25,7 @@ Un juego de navegador gratuito y en español que simula una carrera completa en 
 - Los **seguidores** suben o bajan con cada publicación, amplifican tus reacciones y también cuentan para la puntuación final
 - Al ser despedido, tu avatar se pone **el aro verde** que da nombre al juego — y coleccionas la insignia
 - Pantalla inspirada en un mánager de carrera: perfil y ofertas a la izquierda, historial completo a la derecha, con lenguaje visual de LinkedIn
+- Inicio en dos pasos: portada cinematográfica y configuración de identidad en tres paneles, siguiendo la estructura visual de F1 Glory
 - Final con puntuación, récord local, arquetipo, tarjeta PNG y enlace de reto reproducible: *¿Puedes hacerlo mejor?*
 
 ## Stack
