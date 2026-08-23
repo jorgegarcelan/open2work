@@ -17,7 +17,7 @@ Un juego de navegador gratuito y en español que simula una carrera completa en 
 ## Mecánicas
 
 - Escalera **L1 Becario → L10 Chief AI Officer**, con bifurcación vía técnica / vía gestión
-- Empleadores por tiers: de consultora a Google/Meta/Nvidia y frontier labs (OpenAI, Anthropic, DeepMind), presentados como proyectos de carrera con resultado incierto
+- Empleadores con nombre y sector: compañías ficticias como **Nexo Norte, Menta AI, Syntara, Banco Faro, Cobalto Labs e Instituto Vector**, además de Google/Meta/Nvidia y frontier labs
 - Managers aleatorios (incluido el tóxico), side projects con vida propia, burnout, PIPs, escándalos y ~29 eventos del sector
 - Bucle de carrera **elige proyecto → simula dos años → revisa el resultado**, con tres rutas cualitativas y probabilidades ocultas
 - Cada ciclo se publica como una sola recapitulación cargada de jerga de LinkedIn; un botón permite traducirla al instante a lenguaje normal con la decisión y el resultado reales

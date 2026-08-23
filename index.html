@@ -346,24 +346,24 @@ const CAREER_STYLES=[
  {id:'tec',ic:'🧠',n:'Técnico',d:'Aprendes más rápido y dejas que el trabajo hable.',tec:3,rep:0,red:0,energy:-1},
  {id:'con',ic:'📊',n:'Consistente',d:'Menos fuegos artificiales, más energía para llegar lejos.',tec:0,rep:1,red:1,energy:5}];
 const FORMACION=[
- {n:'Universidad de élite + prácticas',kind:'Proyecto ganador',ic:'🏆',d:'Prestigio y contactos. Si destacas, llegas al mercado con galones.',tec:24,red:18,rep:9,followers:180},
- {n:'Grado público + beca',kind:'Proyecto estable',ic:'⚖️',d:'Formación sólida, menos focos y una ruta que no depende de un golpe de suerte.',tec:22,red:11,rep:5,followers:120},
- {n:'Bootcamp + proyectos públicos',kind:'Programa de desarrollo',ic:'🎓',d:'Poco escudo y mucha práctica. Creces construyendo antes de pedir permiso.',tec:28,red:8,rep:3,followers:150}];
-const TRAINING={n:'En formación',tier:0,minTec:0,minRep:0,base:0,eq:0,type:'academia'};
+ {n:'Nova Institute + prácticas',kind:'Proyecto ganador',ic:'🏆',d:'Universidad privada de élite. Prestigio, contactos y mucha presión por destacar.',tec:24,red:18,rep:9,followers:180},
+ {n:'Universidad Central + beca',kind:'Proyecto estable',ic:'⚖️',d:'Universidad pública sólida, menos focos y una ruta que no depende de un golpe de suerte.',tec:22,red:11,rep:5,followers:120},
+ {n:'Launchpad AI Academy',kind:'Programa de desarrollo',ic:'🎓',d:'Bootcamp intensivo y proyectos públicos. Creces construyendo antes de pedir permiso.',tec:28,red:8,rep:3,followers:150}];
+const TRAINING={id:'training',n:'En formación',sector:'Formación',tier:0,minTec:0,minRep:0,base:0,eq:0,type:'academia'};
 const EMPLEADORES=[
- {n:'Consultora tecnológica',tier:1,minTec:0,minRep:0,base:26,eq:0,type:'corp'},
- {n:'Startup pre-seed',tier:1,minTec:0,minRep:0,base:24,eq:14,type:'startup'},
- {n:'Scale-up europea',tier:2,minTec:45,minRep:15,base:48,eq:8,type:'startup'},
- {n:'Banca / gran corporación',tier:2,minTec:42,minRep:10,base:56,eq:0,type:'corp'},
- {n:'Nvidia',tier:3,minTec:62,minRep:30,base:120,eq:35,type:'bigtech'},
- {n:'Google',tier:3,minTec:62,minRep:28,base:115,eq:30,type:'bigtech'},
- {n:'Meta',tier:3,minTec:60,minRep:26,base:125,eq:35,type:'bigtech'},
- {n:'Microsoft',tier:3,minTec:58,minRep:25,base:110,eq:26,type:'bigtech'},
- {n:'Startup stealth muy bien financiada',tier:3,minTec:66,minRep:32,base:130,eq:55,type:'startup',stealth:true},
- {n:'DeepMind',tier:4,minTec:76,minRep:45,base:170,eq:45,type:'frontier'},
- {n:'Anthropic',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
- {n:'OpenAI',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
- {n:'Universidad / laboratorio',tier:3,minTec:70,minRep:40,base:52,eq:0,type:'academia'}];
+ {id:'consulting',n:'Nexo Norte',sector:'Consultora tecnológica',tier:1,minTec:0,minRep:0,base:26,eq:0,type:'corp'},
+ {id:'seed',n:'Menta AI',sector:'Startup pre-seed',tier:1,minTec:0,minRep:0,base:24,eq:14,type:'startup'},
+ {id:'scaleup',n:'Syntara',sector:'Scale-up europea',tier:2,minTec:45,minRep:15,base:48,eq:8,type:'startup'},
+ {id:'bank',n:'Banco Faro',sector:'Banca y gran corporación',tier:2,minTec:42,minRep:10,base:56,eq:0,type:'corp'},
+ {id:'nvidia',n:'Nvidia',sector:'Big Tech',tier:3,minTec:62,minRep:30,base:120,eq:35,type:'bigtech'},
+ {id:'google',n:'Google',sector:'Big Tech',tier:3,minTec:62,minRep:28,base:115,eq:30,type:'bigtech'},
+ {id:'meta',n:'Meta',sector:'Big Tech',tier:3,minTec:60,minRep:26,base:125,eq:35,type:'bigtech'},
+ {id:'microsoft',n:'Microsoft',sector:'Big Tech',tier:3,minTec:58,minRep:25,base:110,eq:26,type:'bigtech'},
+ {id:'stealth',n:'Cobalto Labs',sector:'Startup stealth',tier:3,minTec:66,minRep:32,base:130,eq:55,type:'startup',stealth:true},
+ {id:'deepmind',n:'DeepMind',sector:'Frontier lab',tier:4,minTec:76,minRep:45,base:170,eq:45,type:'frontier'},
+ {id:'anthropic',n:'Anthropic',sector:'Frontier lab',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
+ {id:'openai',n:'OpenAI',sector:'Frontier lab',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
+ {id:'research',n:'Instituto Vector',sector:'Universidad y laboratorio',tier:3,minTec:70,minRep:40,base:52,eq:0,type:'academia'}];
 const MANAGERS=[
  {q:'good',n:'una manager excelente',d:'Te defiende en calibration',xp:3,ene:3},
  {q:'good',n:'un manager técnico de los que quedan pocos',d:'Sus reviews son un máster gratis',xp:2,ene:2,tec:1},
@@ -700,6 +700,7 @@ function renderRail(){
       <details class="profile-more"><summary>Ver perfil completo</summary>
         <div class="pstats">
           <div class="pstat"><span>Estilo</span><b>${CAREER_STYLES.find(s=>s.id===C.style)?.n||'Técnico'}</b></div>
+          <div class="pstat"><span>Organización</span><b>${G.club.sector||G.club.type}</b></div>
           ${C.form!==null?`<div class="pstat"><span>Formación</span><b>${FORMACION[C.form].n}</b></div>`:''}
           ${G.equity>0?`<div class="pstat"><span>Equity sin vestear</span><b class="num">${Math.round(G.equity)}k€</b></div>`:''}
           <div class="pstat"><span>Cobrado</span><b class="num">${G.vested}k€</b></div>
@@ -723,10 +724,10 @@ function renderRail(){
 function careerProjects(){
   if(G.turns===0)return FORMACION.map((f,i)=>({id:'formation',form:i,ic:f.ic,kind:f.kind,t:f.n,e:f.d,stars:[5,4,3][i]}));
   if(G.club.tier===0){
-    const startup=EMPLEADORES.find(e=>e.n==='Startup pre-seed'),consulting=EMPLEADORES.find(e=>e.n==='Consultora tecnológica');
+    const startup=EMPLEADORES.find(e=>e.id==='seed'),consulting=EMPLEADORES.find(e=>e.id==='consulting');
     return [
-      {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Ir a por '+startup.n,e:'Más posibilidades de destacar; también de que todo desaparezca.',target:startup,stars:5},
-      {id:'stableJob',ic:'⚖️',kind:'Proyecto estable',t:'Empezar en '+consulting.n,e:'Primer contrato, aprendizaje previsible y una nómina que llega cada mes.',target:consulting,stars:4},
+      {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Ir a por '+startup.n,e:startup.sector+' · Más posibilidades de destacar; también de que todo desaparezca.',target:startup,stars:5},
+      {id:'stableJob',ic:'⚖️',kind:'Proyecto estable',t:'Empezar en '+consulting.n,e:consulting.sector+' · Primer contrato, aprendizaje previsible y una nómina que llega cada mes.',target:consulting,stars:4},
       {id:'build',ic:'🎓',kind:'Programa de desarrollo',t:G.side?'Seguir desarrollando '+G.side.n:'Construir un portfolio público',e:'Sin gran logo todavía. Cada proyecto hace más difícil que te ignoren.',stars:2}
     ];
   }
@@ -735,7 +736,7 @@ function careerProjects(){
   const target=pick(candidates.length?candidates:fallback);
   return [
     {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Intentar el salto a '+target.n,
-      e:'Una estructura para ganar ya. Si sale mal, el logo no te salva.',target,stars:5},
+      e:target.sector+' · Una estructura para ganar ya. Si sale mal, el logo no te salva.',target,stars:5},
     {id:'stay',ic:'⚖️',kind:'Proyecto estable',t:G.club.tier===0?'Continuar formándote':'Seguir en '+G.club.n,
       e:'Menos épica, más continuidad. Crecer sin quemar todos los neumáticos.',stars:4},
     {id:'build',ic:'🎓',kind:'Programa de desarrollo',t:G.side?'Desarrollar '+G.side.n:'Lanzar tu primer proyecto público',
@@ -783,10 +784,10 @@ function chooseProject(i){
       post({author:AUTHORS.me,tag:'CONSTRUIR EN PÚBLICO',tagCls:'p',text:'He decidido doblar la apuesta por <b>'+G.side.n+'</b>. +'+fmtK(gained)+' '+G.side.unit+'. Ya no sé si es un side project o mi plan de fuga.'});
     }else{
       G.side={...pick([
-        {n:'Tu micro-SaaS',type:'saas',subs:12,unit:'clientes'},
-        {n:'Tu librería OSS',type:'oss',subs:80,unit:'★'},
-        {n:'Tu newsletter',type:'news',subs:40,unit:'suscriptores'}])};
-      post({author:AUTHORS.me,tag:'CONSTRUIR EN PÚBLICO',tagCls:'p',text:'He lanzado <b>'+G.side.n.toLowerCase()+'</b>. Es pequeño, imperfecto y por primera vez el roadmap no lo decide un comité.'});
+        {n:'SignalStack',type:'saas',subs:12,unit:'clientes'},
+        {n:'OpenMesh',type:'oss',subs:80,unit:'★'},
+        {n:'Latent Weekly',type:'news',subs:40,unit:'suscriptores'}])};
+      post({author:AUTHORS.me,tag:'CONSTRUIR EN PÚBLICO',tagCls:'p',text:'He lanzado <b>'+G.side.n+'</b>. Es pequeño, imperfecto y por primera vez el roadmap no lo decide un comité.'});
     }
   }
   playYear();
@@ -815,7 +816,7 @@ function renderCareerLog(){
     <div class="careerlog-title"><b>🏆 Tu trayectoria profesional</b><span>${G.turns}/${GAME_TURNS} ciclos · jubilación a los 66</span></div>
     ${rows.length?`<div class="careercols"><span>Edad</span><span>Proyecto</span><span>Nivel</span><span>Comp.</span><span>Seguidores</span></div>
       ${rows.map(s=>`<div class="careerrow"><div class="careerrow-main">
-        <span class="careerage">${s.age}</span><span class="careerjob"><b>${s.club}</b><span>${s.from}–${s.to} · ${s.role}</span></span>
+        <span class="careerage">${s.age}</span><span class="careerjob"><b>${s.club}</b><span>${s.from}–${s.to} · ${s.role}${s.sector?' · '+s.sector:''}</span></span>
         <span class="levelpill">${s.level}</span><span class="comppill num">${s.comp}k€</span><span class="followpill num">${fmtK(s.followers)}</span>
       </div><div class="careerroute">📝 ${s.summary||((s.kind||'Etapa profesional')+' · '+(s.route||G.track.n))}</div>${s.event?`<div class="careerevent">⚡ ${s.event}</div>`:''}</div>`).join('')}`
       :'<div class="careerlog-empty">Tu historia empieza aquí…<br>Elige tu primer proyecto sin saber cómo acabará.</div>'}
@@ -933,7 +934,7 @@ function playYear(){
   G.lastCycle={from:cycleStart.year+1,to:G.year,club:G.club.n,tec:G.tec-cycleStart.tec,
     followers:G.followers-cycleStart.followers,energy:G.energy-cycleStart.energy};
   G.seasons.push({from:G.lastCycle.from,to:G.lastCycle.to,age:G.age,club:G.club.n,role:levelName(),
-    level:LEVELS[G.levelIdx].lvl,comp:comp(),followers:G.followers,kind:G.lastRoute?.kind,route:G.lastRoute?.t,summary:cycleSummary.log,event:''});
+    sector:G.club.sector||'',level:LEVELS[G.levelIdx].lvl,comp:comp(),followers:G.followers,kind:G.lastRoute?.kind,route:G.lastRoute?.t,summary:cycleSummary.log,event:''});
   G.cycleStart=null;G.cycleNotes=[];
 
   // Los proyectos mueven la carrera; los eventos quedan como dilemas excepcionales.
@@ -946,7 +947,7 @@ function playYear(){
 /* ═════════ EVENTOS (pool v4) ═════════ */
 const EVENTS=[
  {id:'layoff',k:'Reestructuración',w:2,cond:()=>['bigtech','corp'].includes(G.club.type)&&roll(24),
-  h:'Ronda de despidos: el 15% de tu organización',
+  h:()=>G.club.n+' anuncia despidos: el 15% de tu organización',
   p:'El email llega un miércoles a las 8:04. "Decisión difícil". "De cara al futuro".',
   o:[{t:'Hacerte imprescindible en dos semanas',e:'Visibilidad agresiva, ya',pr:60,
       ok:{txt:'Sobrevivo al corte. Mi manager ni sabía que hacía la mitad de esas cosas. Ahora lo sabe.',rep:3,energy:-10},
@@ -955,7 +956,7 @@ const EVENTS=[
       ok:{txt:'Salgo con 6 meses de finiquito y el portátil. La mejor salida posible.',money:30,layoff:true,soft:true},
       ko:{txt:'Me despidieron antes de negociar. El paquete fue un tupper.',layoff:true}}]},
  {id:'winter',k:'Caja',w:2,once:true,cond:()=>G.club.type==='startup'&&roll(30),
-  h:'A tu startup le quedan 5 meses de caja',
+  h:()=>G.club.n+' tiene 5 meses de caja',
   p:'La ronda "está al caer" desde hace un año. Los fundadores sonríen distinto.',
   o:[{t:'Quedarte hasta el final',e:'Lealtad, equity y fe',pr:35,
       ok:{txt:'La ronda cerró in extremis y doblaron mi equity por quedarme. La lealtad, a veces, paga.',eq:30,rep:5,tag:'REMONTADA',tagCls:'g'},
@@ -964,7 +965,7 @@ const EVENTS=[
       ok:{txt:'Firmé fuera dos semanas antes del cierre. Por la puerta de delante, con algo de culpa.',soft:true,layoff:true},
       ko:{txt:'Se enteraron de que buscaba. Los últimos meses fueron un standup incómodo eterno.',rep:-3}}]},
  {id:'acqui',k:'Movimiento corporativo',w:1,once:true,cond:()=>G.club.type==='startup'&&G.equity>15,
-  h:'Una big tech quiere comprar tu empresa',
+  h:()=> 'Una big tech quiere comprar '+G.club.n,
   p:'"Acqui-hire", lo llaman. Tu equity por fin significa algo. O la mitad de algo.',
   o:[{t:'Votar a favor y cobrar',e:'Pájaro en mano',pr:90,
       ok:{txt:'Cobré el equity y amanecí con badge de empresa grande. Se gana, se pierde, se firma.',cashout:true,rep:4,tag:'ADQUISICIÓN',tagCls:'g'},
@@ -973,7 +974,7 @@ const EVENTS=[
       ok:{txt:'Teníamos razón: dos años después la empresa vale el triple. Que conste en acta.',eqmul:2.6,rep:6},
       ko:{txt:'No había más ofertas. La empresa languidece y mi equity con ella.',eqmul:.4}}]},
  {id:'ipo',k:'Campana',w:1,once:true,cond:()=>G.club.type==='bigtech'&&G.equity>20&&roll(24),
-  h:'Tu empresa anuncia resultados históricos',
+  h:()=>G.club.n+' anuncia resultados históricos',
   p:'La acción se dispara. Slack es solo GIFs de cohetes.',
   o:[{t:'Vender la mitad del equity',e:'Nadie quebró por tomar beneficios',pr:100,
       ok:{txt:'Convertí papel en dinero de verdad. El resto, que corra.',cashhalf:true}},
@@ -1085,11 +1086,11 @@ const EVENTS=[
   h:'Tienes una idea que no te deja dormir',
   p:'Podrías construirla en los findes. Todos los side projects empiezan con esta frase y este error de cálculo.',
   o:[{t:'Micro-SaaS de nicho',e:'Cobrar desde el día uno',pr:100,
-      ok:{txt:'He lanzado mi micro-SaaS. 12 usuarios el primer mes. Dos pagan. Estoy oficialmente enganchado.',side:{n:'Tu micro-SaaS',type:'saas',subs:12,unit:'clientes'},tag:'SIDE PROJECT',tagCls:'b'}},
+      ok:{txt:'He lanzado SignalStack, mi micro-SaaS. 12 usuarios el primer mes. Dos pagan. Estoy oficialmente enganchado.',side:{n:'SignalStack',type:'saas',subs:12,unit:'clientes'},tag:'SIDE PROJECT',tagCls:'b'}},
      {t:'Librería open source',e:'Estrellas en vez de euros',pr:100,
-      ok:{txt:'He publicado mi librería OSS. Alguien de otro continente abrió el primer issue. Magia pura.',side:{n:'Tu librería OSS',type:'oss',subs:80,unit:'★'},tag:'SIDE PROJECT',tagCls:'b'}},
+      ok:{txt:'He publicado OpenMesh, mi librería OSS. Alguien de otro continente abrió el primer issue. Magia pura.',side:{n:'OpenMesh',type:'oss',subs:80,unit:'★'},tag:'SIDE PROJECT',tagCls:'b'}},
      {t:'Newsletter técnica',e:'Audiencia como activo',pr:100,
-      ok:{txt:'Número 1 de mi newsletter enviado a 40 personas, 38 de ellas familia. Todo imperio empieza así.',side:{n:'Tu newsletter',type:'news',subs:40,unit:'suscriptores'},tag:'SIDE PROJECT',tagCls:'b'}},
+      ok:{txt:'Número 1 de Latent Weekly enviado a 40 personas, 38 de ellas familia. Todo imperio empieza así.',side:{n:'Latent Weekly',type:'news',subs:40,unit:'suscriptores'},tag:'SIDE PROJECT',tagCls:'b'}},
      {t:'Dormir es mejor proyecto',e:'La opción secretamente correcta',pr:100,
       ok:{txt:'He decidido no montar nada este año. Elegir vida también es una estrategia.',energy:8}}]},
  {id:'side_copy',k:'Fuera de horario',w:1,once:true,cond:()=>G.side&&G.side.subs>800,
@@ -1102,7 +1103,7 @@ const EVENTS=[
       ok:{txt:'He vendido mi side project. A mi clon. Sí, se puede. Un exit es un exit.',sideSell:true,tag:'VENTA',tagCls:'g'},
       ko:{txt:'La negociación se enfrió. Sigo, pero ya no ilusiona igual.',sideMul:.8}}]},
  {id:'side_conflict',k:'Conflicto de interés',w:1,once:true,cond:()=>G.side&&G.side.subs>2000&&G.club.tier>=3,
-  h:'Tu empresa descubre tu side project',
+  h:()=>G.club.n+' descubre '+G.side.n,
   p:'"Queremos hablar de tu actividad externa." La frase viene con un PDF de tu contrato adjunto.',
   o:[{t:'Negociar una excepción por escrito',e:'Transparencia total',pr:60,
       ok:{txt:'Me han firmado la excepción por actividad externa. Oficialmente, la persona con permiso para tener vida.',rep:3},
@@ -1120,7 +1121,7 @@ const EVENTS=[
       ok:{txt:'Llegué al bonus con lo justo. Lo cobré mirando ofertas tranquilas.',money:15,energy:-12},
       ko:{txt:'El cuerpo decidió por mí. Seis meses de baja. Este post lo escribo desde el sofá, y está bien así.',energy:40,tec:-3,burnout:true,tag:'BAJA',tagCls:'r'}}]},
  {id:'rto',k:'Cultura',w:1,once:true,cond:()=>G.club.tier>=3,
-  h:'Mandato de vuelta a la oficina: 5 días',
+  h:()=>G.club.n+' ordena volver a la oficina 5 días',
   p:'"La colaboración presencial es clave", dice el email enviado desde Bali por el VP.',
   o:[{t:'Acatar y aprovechar',e:'Cafés, pasillos, política de la buena',pr:75,
       ok:{txt:'La vuelta a la oficina me dio algo inesperado: aliados. Mi siguiente promo se está cocinando en la cocina. Literalmente.',red:8,energy:-6},
@@ -1253,6 +1254,7 @@ function renderPending(){
 /* decisión como encuesta */
 function renderEvent(){
   const ev=G.pendingEvent;
+  const eventTitle=typeof ev.h==='function'?ev.h():ev.h,eventCopy=typeof ev.p==='function'?ev.p():ev.p;
   document.getElementById('controls').innerHTML=`
   <div class="eventcard poll">
     <span class="eventeyebrow">⚡ Evento inesperado · elige sin saber</span>
@@ -1261,7 +1263,7 @@ function renderEvent(){
       <div class="pwho"><div class="n">${AUTHORS.sys.n}</div>
       <div class="h">${ev.k} · decisión de carrera</div><div class="t">${G.age} años · ${G.year}</div></div>
     </div>
-    <div class="ptxt"><b>${ev.h}</b>\n${ev.p}</div>
+    <div class="ptxt"><b>${eventTitle}</b>\n${eventCopy}</div>
     <div class="pollopts">${ev.o.map((o,i)=>`
       <button class="pollopt" data-e="${i}">
         <span class="in"><span><b>${o.t}</b><em>${o.e}</em></span>
@@ -1316,10 +1318,11 @@ function resolveEvent(o){
       G.salary=Math.round(nx.base*(1+G.tec/150));G.equity+=nx.eq;G.manager=pick(MANAGERS);
       transition='Nueva etapa: me uno a <b>'+nx.n+'</b>. La vida sigue, con más cinismo y mejor CV.';
     } else {
-      G.club={n:'Tu propio proyecto',tier:2,type:'startup',base:30,eq:0};
-      G.clubs.push('Tu propio proyecto');G.salary=30;G.manager=null;
-      xpStart('Tu propio proyecto');
-      transition='Nueva etapa: convierto mi proyecto propio en mi trabajo.';
+      const ownName=G.side?.n||'Modo Fundador';
+      G.club={id:'own',n:ownName,sector:'Proyecto propio',tier:2,type:'startup',base:30,eq:0};
+      if(!G.clubs.includes(ownName))G.clubs.push(ownName);G.salary=30;G.manager=null;
+      xpStart(ownName);
+      transition='Nueva etapa: convierto <b>'+ownName+'</b> en mi trabajo.';
     }
     const eventPost=eventLead+'\n\n'+transition;
     if(G.seasons.length)G.seasons[G.seasons.length-1].event=`${eventName} · Elegiste ${o.t}. ${concise(r.txt,145)} ${concise(transition,90)}`;
