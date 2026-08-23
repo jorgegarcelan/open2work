@@ -80,6 +80,7 @@ button{font-family:inherit;cursor:pointer}
 .mm.warn i{background:var(--red)!important}
 .sideline{border-top:1px solid var(--line);margin-top:10px;padding-top:8px;font-size:11.5px;color:var(--dim)}
 .sideline b{color:var(--text)}
+.trophy-card{padding:12px 14px}.trophy-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.trophy-head b{font-size:12px}.trophy-head span{font-size:9px;color:var(--dim2);font-weight:800}.trophy-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}.trophy{min-width:0;aspect-ratio:1;border-radius:8px;background:#F7F6F4;border:1px solid var(--line);display:grid;place-items:center;font-size:17px}.trophy.locked{filter:grayscale(1);opacity:.34}.trophy-note{font-size:9px;color:var(--dim2);margin-top:7px}
 
 /* ═══ FEED ═══ */
 .feedcol{display:flex;flex-direction:column;gap:10px;min-width:0}
@@ -125,6 +126,7 @@ button{font-family:inherit;cursor:pointer}
 .levelpill{background:#E7F5EE;color:#0E6B45}.comppill{background:#14201B;color:#fff}.followpill{text-align:right;font-size:11px;font-weight:800;color:var(--green)}
 .careerroute{margin:7px 0 0 78px;background:#F7F6F4;border-radius:7px;padding:6px 8px;color:var(--dim);font-size:10.5px}
 .careerevent{margin:6px 0 0 78px;background:#FFF7E2;border:1px solid #F0D899;border-radius:7px;padding:6px 8px;color:#70500A;font-size:10.5px}
+.worldpanel{background:#14201B;color:#fff;border-radius:14px;padding:12px 14px;margin-bottom:10px;box-shadow:0 8px 22px rgba(20,32,27,.12)}.marketline{display:flex;gap:10px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.12)}.marketline>span{font-size:18px}.marketline b{display:block;color:#8DDEB3;font-size:9px;letter-spacing:.1em;text-transform:uppercase}.marketline small{display:block;color:#D8E1DD;font-size:10.5px;line-height:1.4;margin-top:2px}.rival-head{display:flex;justify-content:space-between;margin:9px 0 6px}.rival-head b{font-size:10.5px}.rival-head span{font-size:8.5px;color:#91A29A}.rival-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.rival{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:6px;align-items:center;background:rgba(255,255,255,.07);border-radius:8px;padding:7px}.rival-avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:8px;font-weight:900;color:#fff}.rival-copy{min-width:0}.rival-copy b{display:block;font-size:9.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rival-copy span{display:block;font-size:8px;color:#AFC0B8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rival-ovr{text-align:right}.rival-ovr b{display:block;font-size:12px;color:#8DDEB3}.rival-ovr span{display:block;font-size:7px;color:#91A29A}
 @media(max-width:980px) and (min-width:821px){.wrap{grid-template-columns:340px minmax(0,1fr)}.careercols,.careerrow-main{grid-template-columns:62px minmax(120px,1fr) 48px 66px}.careercols span:last-child,.followpill{display:none}}
 @media(max-width:560px){.quickstats{grid-template-columns:1fr 1fr}.careercols,.careerrow-main{grid-template-columns:60px minmax(120px,1fr) 48px 62px}.careercols span:last-child,.followpill{display:none}.careerrow{padding:9px 10px}.careercols{padding:8px 10px}.careerroute,.careerevent{margin-left:68px}}
 
@@ -191,7 +193,9 @@ button{font-family:inherit;cursor:pointer}
 .hero-sub{max-width:610px;margin:22px 0;color:var(--dim);font-size:clamp(14px,1.6vw,17px);line-height:1.65}
 .hero-cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:210px;background:var(--brand-ink);color:#fff;border:0;border-radius:10px;padding:14px 22px;font-weight:850;font-size:15px;box-shadow:0 10px 24px rgba(20,32,27,.16)}
 .hero-cta::after{content:'→';color:#8DDEB3;font-size:20px}.hero-cta:hover{background:#24342D;transform:translateY(-1px)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.hero-secondary{background:transparent;color:var(--brand-ink);border:1.5px solid var(--brand-ink);border-radius:10px;padding:13px 19px;font-weight:800;font-size:13px}.hero-secondary:hover{background:#fff}
 .hero-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.hero-facts span{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:7px;padding:6px 9px;color:var(--dim);font-size:11px}.hero-facts b{color:var(--text)}
+.era-picker{margin:18px 0 12px}.era-picker>span{display:block;color:var(--dim2);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}.era-options{display:flex;flex-wrap:wrap;gap:6px}.era-btn{background:rgba(255,255,255,.7);border:1.5px solid var(--line2);border-radius:8px;padding:7px 10px;text-align:left}.era-btn b{display:block;font-size:11px}.era-btn small{display:block;color:var(--dim2);font-size:8.5px}.era-btn.sel{border-color:var(--blue);background:#E7F5EE;color:#0E6B45}
 .challenge-banner{background:#E7F5EE;border:1px solid #BFE3CF;border-radius:10px;padding:10px 12px;margin:0 0 16px;font-size:12.5px;color:#0E6B45;text-align:left;max-width:560px}
 .career-teaser{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px rgba(20,32,27,.13);overflow:hidden;transform:rotate(1deg)}
 .career-teaser::before{content:'';position:absolute;right:-45px;top:-45px;width:150px;height:150px;border-radius:50%;background:#DFF7EA}
@@ -224,7 +228,7 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .backbtn{background:#fff;border:1.5px solid var(--brand-ink);color:var(--brand-ink);border-radius:24px;padding:11px 24px;font-weight:800}
 .confirmbtn{background:var(--blue);border:0;color:#fff;border-radius:24px;padding:12px 26px;font-weight:900;font-size:14px;box-shadow:0 8px 18px rgba(22,184,106,.2)}
 .confirmbtn:hover{background:var(--blue2)}
-@media(max-width:820px){.startscreen{padding:30px 4px}.startinner{grid-template-columns:1fr;gap:34px}.hero-copy{text-align:center}.hero-brand{justify-content:center}.hero-sub{margin-left:auto;margin-right:auto}.hero-facts{justify-content:center}.challenge-banner{margin-left:auto;margin-right:auto}.career-teaser{width:min(430px,100%);margin:0 auto;transform:none}.identity-screen{padding-top:12px}.identity-layout{grid-template-columns:1fr}.identity-preview{position:static}.setup-list{grid-template-columns:1fr}.setup-choice{min-height:0}.identity-actions{position:sticky;bottom:8px;background:rgba(244,242,238,.94);padding:10px;border-radius:28px;z-index:3}.hero-title{font-size:clamp(40px,12vw,60px)}}
+@media(max-width:820px){.startscreen{padding:30px 4px}.startinner{grid-template-columns:1fr;gap:34px}.hero-copy{text-align:center}.hero-brand{justify-content:center}.hero-sub{margin-left:auto;margin-right:auto}.hero-facts,.hero-actions,.era-options{justify-content:center}.challenge-banner{margin-left:auto;margin-right:auto}.career-teaser{width:min(430px,100%);margin:0 auto;transform:none}.identity-screen{padding-top:12px}.identity-layout{grid-template-columns:1fr}.identity-preview{position:static}.setup-list{grid-template-columns:1fr}.setup-choice{min-height:0}.identity-actions{position:sticky;bottom:8px;background:rgba(244,242,238,.94);padding:10px;border-radius:28px;z-index:3}.hero-title{font-size:clamp(40px,12vw,60px)}.rival-grid{grid-template-columns:repeat(3,1fr)}}
 
 /* ═══ TARJETA FINAL ═══ */
 .cvfinal{grid-column:1/-1;max-width:520px;margin:0 auto;width:100%}
@@ -254,6 +258,7 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .hitolist{border-top:1px solid var(--line);margin-top:10px;padding-top:9px;font-size:12px;color:var(--dim);line-height:1.6}
 .sharebox{text-align:center;margin-top:10px}
 .shareactions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.final-trophies{border-top:1px solid var(--line);margin-top:12px;padding-top:11px}.final-trophies h3,.final-rivals h3{font-size:12px;margin:0 0 8px}.final-trophy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.final-trophy{background:#F7F6F4;border:1px solid var(--line);border-radius:9px;padding:7px;text-align:center}.final-trophy em{display:block;font-style:normal;font-size:20px}.final-trophy b{display:block;font-size:8.5px;line-height:1.2;margin-top:2px}.final-trophy.locked{opacity:.28;filter:grayscale(1)}.final-rivals{border-top:1px solid var(--line);margin-top:12px;padding-top:11px}.final-rival{display:grid;grid-template-columns:28px 1fr auto;gap:7px;align-items:center;padding:6px 0;border-top:1px solid var(--line)}.final-rival:first-of-type{border-top:0}.final-rival span{font-size:10px;color:var(--dim)}.final-rival b{font-size:11px}.weekly-result{margin:10px 0;background:#14201B;color:#fff;border-radius:9px;padding:10px;text-align:center;font-size:11px}.weekly-result b{color:#8DDEB3}
 /* cabecera de marca */
 .topbar{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
 .topbar .in{max-width:1180px;margin:0 auto;padding:7px 16px;display:flex;align-items:center;gap:9px}
@@ -296,6 +301,7 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+@media(max-width:560px){.rival-grid{grid-template-columns:1fr}.final-trophy-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
@@ -319,12 +325,22 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 const GAME_TURNS=24,TURN_YEARS=2;
 const START_PARAMS=new URLSearchParams(location.search);
 const IS_CHALLENGE=START_PARAMS.has('seed');
+const TARGET_SCORE=Math.max(0,Number.parseInt(START_PARAMS.get('beat')||'0',10)||0);
+let GAME_MODE=START_PARAMS.get('mode')==='weekly'?'weekly':IS_CHALLENGE?'challenge':'free';
+function isoWeekStamp(date=new Date()){
+  const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));
+  d.setUTCDate(d.getUTCDate()+4-(d.getUTCDay()||7));
+  const y=new Date(Date.UTC(d.getUTCFullYear(),0,1));
+  return d.getUTCFullYear()+'-W'+String(Math.ceil((((d-y)/86400000)+1)/7)).padStart(2,'0');
+}
+function hashText(value){let h=2166136261;for(const c of value){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0||1;}
+const WEEKLY_ID=isoWeekStamp(),WEEKLY_SEED=hashText('open2work-'+WEEKLY_ID);
 const freshSeed=()=>{
   if(globalThis.crypto&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]||1;}
   return (Date.now()>>>0)||1;
 };
 const parsedSeed=Number.parseInt(START_PARAMS.get('seed')||'',10);
-const RUN_SEED=(Number.isFinite(parsedSeed)?parsedSeed:freshSeed())>>>0||1;
+let RUN_SEED=(Number.isFinite(parsedSeed)?parsedSeed:GAME_MODE==='weekly'?WEEKLY_SEED:freshSeed())>>>0||1;
 let rngState=RUN_SEED;
 function rand(){
   let t=rngState+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);
@@ -346,25 +362,30 @@ const CAREER_STYLES=[
  {id:'amb',ic:'🔥',n:'Ambicioso',d:'Más visibilidad y contactos; también más desgaste.',tec:0,rep:3,red:3,energy:-4},
  {id:'tec',ic:'🧠',n:'Técnico',d:'Aprendes más rápido y dejas que el trabajo hable.',tec:3,rep:0,red:0,energy:-1},
  {id:'con',ic:'📊',n:'Consistente',d:'Menos fuegos artificiales, más energía para llegar lejos.',tec:0,rep:1,red:1,energy:5}];
+const ERAS=[
+ {id:'2016',n:'2016',label:'Deep learning',d:'Startups, oficinas y promesas de disrupción.',trend:'El deep learning entra en todos los pitch decks.'},
+ {id:'2020',n:'2020',label:'Todo remoto',d:'Videollamadas, rondas enormes y oficinas vacías.',trend:'El trabajo remoto deja de ser un beneficio y se convierte en infraestructura.'},
+ {id:'2026',n:'2026',label:'Era de agentes',d:'IA generativa, creators y carreras sin manual.',trend:'Los agentes de IA redibujan equipos y puestos antes de que RRHH actualice las ofertas.'}];
 const FORMACION=[
  {n:'IE University + prácticas',kind:'Proyecto ganador',ic:'🏆',d:'Universidad privada de élite. Prestigio, contactos y mucha presión por destacar.',tec:24,red:18,rep:9,followers:180},
  {n:'UPM + beca',kind:'Proyecto estable',ic:'⚖️',d:'Universidad pública sólida, menos focos y una ruta que no depende de un golpe de suerte.',tec:22,red:11,rep:5,followers:120},
  {n:'Ironhack AI Bootcamp',kind:'Programa de desarrollo',ic:'🎓',d:'Bootcamp intensivo y proyectos públicos. Creces construyendo antes de pedir permiso.',tec:28,red:8,rep:3,followers:150}];
 const TRAINING={id:'training',n:'En formación',sector:'Formación',tier:0,minTec:0,minRep:0,base:0,eq:0,type:'academia'};
 const EMPLEADORES=[
- {id:'consulting',n:'Accenture',sector:'Consultoría tecnológica y de IA',tier:1,minTec:0,minRep:0,base:26,eq:0,type:'corp'},
- {id:'seed',n:'Luzia',sector:'Startup española de IA',tier:1,minTec:0,minRep:0,base:24,eq:14,type:'startup'},
- {id:'scaleup',n:'Mistral AI',sector:'Compañía europea de IA',tier:2,minTec:45,minRep:15,base:48,eq:8,type:'startup'},
- {id:'bank',n:'BBVA',sector:'Banca y transformación con IA',tier:2,minTec:42,minRep:10,base:56,eq:0,type:'corp'},
- {id:'nvidia',n:'NVIDIA',sector:'Big Tech',tier:3,minTec:62,minRep:30,base:120,eq:35,type:'bigtech'},
- {id:'google',n:'Google',sector:'Big Tech',tier:3,minTec:62,minRep:28,base:115,eq:30,type:'bigtech'},
- {id:'meta',n:'Meta',sector:'Big Tech',tier:3,minTec:60,minRep:26,base:125,eq:35,type:'bigtech'},
- {id:'microsoft',n:'Microsoft',sector:'Big Tech',tier:3,minTec:58,minRep:25,base:110,eq:26,type:'bigtech'},
- {id:'huggingface',n:'Hugging Face',sector:'Plataforma open-source de IA',tier:3,minTec:66,minRep:32,base:130,eq:55,type:'startup'},
- {id:'deepmind',n:'Google DeepMind',sector:'Frontier lab',tier:4,minTec:76,minRep:45,base:170,eq:45,type:'frontier'},
- {id:'anthropic',n:'Anthropic',sector:'Frontier lab',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
- {id:'openai',n:'OpenAI',sector:'Frontier lab',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier'},
- {id:'research',n:'Barcelona Supercomputing Center',sector:'Centro público de investigación',tier:3,minTec:70,minRep:40,base:52,eq:0,type:'academia'}];
+ {id:'consulting',n:'Accenture',sector:'Consultoría tecnológica y de IA',tier:1,minTec:0,minRep:0,base:26,eq:0,type:'corp',since:1989},
+ {id:'glovo',n:'Glovo',sector:'Startup tecnológica',tier:1,minTec:0,minRep:0,base:25,eq:10,type:'startup',since:2015},
+ {id:'seed',n:'Luzia',sector:'Startup española de IA',tier:1,minTec:0,minRep:0,base:24,eq:14,type:'startup',since:2023},
+ {id:'scaleup',n:'Mistral AI',sector:'Compañía europea de IA',tier:2,minTec:45,minRep:15,base:48,eq:8,type:'startup',since:2023},
+ {id:'bank',n:'BBVA',sector:'Banca y transformación con IA',tier:2,minTec:42,minRep:10,base:56,eq:0,type:'corp',since:1999},
+ {id:'nvidia',n:'NVIDIA',sector:'Big Tech',tier:3,minTec:62,minRep:30,base:120,eq:35,type:'bigtech',since:1993},
+ {id:'google',n:'Google',sector:'Big Tech',tier:3,minTec:62,minRep:28,base:115,eq:30,type:'bigtech',since:1998},
+ {id:'meta',n:'Meta',sector:'Big Tech',tier:3,minTec:60,minRep:26,base:125,eq:35,type:'bigtech',since:2004},
+ {id:'microsoft',n:'Microsoft',sector:'Big Tech',tier:3,minTec:58,minRep:25,base:110,eq:26,type:'bigtech',since:1975},
+ {id:'huggingface',n:'Hugging Face',sector:'Plataforma open-source de IA',tier:3,minTec:66,minRep:32,base:130,eq:55,type:'startup',since:2016},
+ {id:'deepmind',n:'Google DeepMind',sector:'Frontier lab',tier:4,minTec:76,minRep:45,base:170,eq:45,type:'frontier',since:2010},
+ {id:'anthropic',n:'Anthropic',sector:'Frontier lab',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier',since:2021},
+ {id:'openai',n:'OpenAI',sector:'Frontier lab',tier:4,minTec:78,minRep:48,base:185,eq:60,type:'frontier',since:2015},
+ {id:'research',n:'Barcelona Supercomputing Center',sector:'Centro público de investigación',tier:3,minTec:70,minRep:40,base:52,eq:0,type:'academia',since:2005}];
 const MANAGERS=[
  {q:'good',n:'una manager excelente',d:'Te defiende en calibration',xp:3,ene:3},
  {q:'good',n:'un manager técnico de los que quedan pocos',d:'Sus reviews son un máster gratis',xp:2,ene:2,tec:1},
@@ -398,7 +419,8 @@ const G={name:'',ini:'',track:null,age:18,year:2026,turns:0,
   manager:null,side:null,otw:false,followers:90,peakFollowers:90,
   papers:0,products:0,citas:0,hindex:0,stars:0,talks:0,
   hitos:[],clubs:[],history:[],burnouts:0,layoffs:0,scandals:0,exits:0,twists:0,
-  pendingEvent:null,routes:null,lastCycle:null,lastRoute:null,seasons:[],cycleStart:null,collectingCycle:false,cycleNotes:[],retired:false,used:{}};
+  pendingEvent:null,routes:null,lastCycle:null,lastRoute:null,seasons:[],cycleStart:null,collectingCycle:false,cycleNotes:[],retired:false,used:{},
+  rivals:[],marketHeadline:'',marketHistory:[]};
 
 /* experiencia estilo LinkedIn */
 function xpStart(clubName){
@@ -424,6 +446,67 @@ function computeBadges(){
   if(G.track.id==='res'&&G.hindex>=20)b.push({ic:'🎓',n:'h-index '+G.hindex});
   if(G.vested>=500)b.push({ic:'💰',n:'Equity real'});
   return b;
+}
+
+function eraInfo(){return ERAS.find(e=>e.id===String(C.era))||ERAS[2];}
+function availableEmployers(year=G.year){
+  return EMPLEADORES.filter(e=>(e.since||0)<=year);
+}
+function computeTrophies(){
+  const counts=G.seasons.reduce((acc,s)=>(acc[s.club]=(acc[s.club]||0)+1,acc),{});
+  const longest=Math.max(0,...Object.values(counts));
+  const workedTypes=new Set(G.clubs.map(n=>EMPLEADORES.find(e=>e.n===n)?.type).filter(Boolean));
+  return [
+    {ic:'🟢',n:'Vuelta al mercado',d:'Sobreviviste a un despido.',earned:G.layoffs>0},
+    {ic:'🦄',n:'Unicornio accidental',d:'Cobraste un exit.',earned:G.exits>0},
+    {ic:'📣',n:'El algoritmo te conoce',d:'Superaste 10.000 seguidores.',earned:G.peakFollowers>=10000},
+    {ic:'⚡',n:'Constructor de domingo',d:'Tu proyecto propio superó 2.000 usuarios.',earned:!!(G.side&&G.side.subs>=2000)},
+    {ic:'🧠',n:'Sin cambiar de vía',d:'Llegaste a L8 por la ruta técnica.',earned:!G.mgmt&&G.levelIdx>=7},
+    {ic:'👔',n:'Dueño del organigrama',d:'Llegaste a L8 por gestión.',earned:G.mgmt&&G.levelIdx>=7},
+    {ic:'🏛️',n:'Frontier club',d:'Trabajaste en un laboratorio frontier.',earned:workedTypes.has('frontier')},
+    {ic:'🪑',n:'La silla es tuya',d:'Aguantaste diez años en una organización.',earned:longest>=5},
+    {ic:'💰',n:'Equity de verdad',d:'Convertiste 500k€ de papel en dinero.',earned:G.vested>=500},
+    {ic:'🧘',n:'Sistema nervioso intacto',d:'Llegaste a los 66 con energía.',earned:G.retired&&G.age>=66&&G.energy>=65},
+    {ic:'🧳',n:'Coleccionista de logos',d:'Pasaste por seis organizaciones.',earned:G.clubs.length>=6},
+    {ic:'🃏',n:'No abras comentarios',d:'Acumulaste dos escándalos.',earned:G.scandals>=2,secret:true}
+  ];
+}
+
+const RIVAL_PROFILES=[
+ {n:'Claudia Martín',ini:'CM',style:'Técnica',pace:1.08,col:'#7A3FD1'},
+ {n:'Diego Salas',ini:'DS',style:'Ambicioso',pace:1.16,col:'#B7770D'},
+ {n:'Nuria Vega',ini:'NV',style:'Consistente',pace:.98,col:'#0E8A5F'}
+];
+function initRivals(){
+  G.rivals=RIVAL_PROFILES.map((r,i)=>({...r,level:0,ovr:36+i*2,followers:80+i*45,club:'En formación',energy:96,score:0}));
+}
+function advanceRivals(){
+  const available=availableEmployers(),maxTier=Math.min(4,1+Math.floor(G.turns/5));
+  G.rivals.forEach((r,i)=>{
+    const fast=r.pace+(rand()*.24-.09);
+    r.ovr=Math.round(clamp(r.ovr+fast*2.2,35,97));
+    r.level=Math.min(9,Math.max(r.level,Math.floor((G.turns*fast+i*.55)/3)));
+    r.followers=Math.round(r.followers*(1.07+rand()*.08)+(i===1?45:18));
+    r.energy=clamp(r.energy-(i===1?rnd(2,5):rnd(1,3))+(i===2?2:0),12,100);
+    if(G.turns===1||G.turns%3===0||r.club==='En formación'){
+      const pool=available.filter(e=>e.tier<=maxTier&&e.n!==r.club);
+      if(pool.length)r.club=pick(pool).n;
+    }
+    r.score=Math.round(r.ovr*1.05+r.level*12+Math.log10(r.followers+1)*7+(r.energy>55?8:0));
+  });
+}
+function marketPulse(){
+  const pool=availableEmployers();if(!pool.length)return;
+  const a=pick(pool),r=pick(G.rivals);
+  const templates=[
+    ()=>`${a.n} acelera contrataciones y vuelve a llenar el feed de “nuevos comienzos”.`,
+    ()=>`${a.n} reorganiza su división de IA. Nadie sabe qué significa para su organigrama, incluido el organigrama.`,
+    ()=>`${a.n} congela algunas vacantes mientras asegura que el talento sigue siendo su prioridad.`,
+    ()=>`${r.n} cambia a ${a.n} y lo anuncia con una foto de una libreta que nunca utilizará.`,
+    ()=>`${a.n} presenta una nueva estrategia: menos proyectos, más “foco” y exactamente las mismas reuniones.`
+  ];
+  G.marketHeadline=pick(templates)();G.marketHistory.push({year:G.year,text:G.marketHeadline});
+  post({author:AUTHORS.news,tag:'MERCADO · SIMULACIÓN',tagCls:'o',text:G.marketHeadline});
 }
 
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -571,11 +654,13 @@ function ambientPost(){
 
 /* ═════════ CREACIÓN ═════════ */
 const requestedTrack=START_PARAMS.get('track');
+const requestedEra=START_PARAMS.get('era');
 let C={
   track:TRACKS.some(t=>t.id===requestedTrack)?requestedTrack:'ing',
   style:'tec',
   form:null,
-  name:''
+  name:'',
+  era:ERAS.some(e=>e.id===requestedEra)?requestedEra:'2026'
 };
 
 function startCareer(){
@@ -587,11 +672,12 @@ function startCareer(){
   G.track=TRACKS.find(t=>t.id===C.track);
   const style=CAREER_STYLES.find(s=>s.id===C.style)||CAREER_STYLES[1];
   G.age=18;G.tec=15+style.tec;G.rep=2+style.rep;G.red=4+style.red;G.energy=clamp(96+style.energy,0,100);G.followers=90;G.peakFollowers=90;
-  G.year=2026;G.turns=0;G.xp=0;G.levelIdx=0;G.mgmt=false;G.club=TRAINING;G.clubs=[];
+  G.year=Number(C.era);G.turns=0;G.xp=0;G.levelIdx=0;G.mgmt=false;G.club=TRAINING;G.clubs=[];
   G.salary=0;G.equity=0;G.vested=0;G.maxComp=0;G.manager=null;G.side=null;G.otw=false;
   G.papers=0;G.products=0;G.citas=0;G.hindex=0;G.stars=0;G.talks=0;G.hitos=[];G.history=[];
   G.burnouts=0;G.layoffs=0;G.scandals=0;G.exits=0;G.twists=0;G.pendingEvent=null;G.routes=null;
   G.lastCycle=null;G.lastRoute=null;G.seasons=[];G.cycleStart=null;G.collectingCycle=false;G.cycleNotes=[];G.retired=false;G.used={};
+  G.marketHeadline=eraInfo().trend;G.marketHistory=[];initRivals();
   document.getElementById('feed').innerHTML='';xpStart(TRAINING.n);
   post({author:AUTHORS.me,tag:'18 AÑOS',tagCls:'b',
     text:'Tengo 18 años, cero experiencia y un estilo <b>'+style.n.toLowerCase()+'</b>. Toca elegir por dónde empezar. El resto dependerá de decisiones que todavía no sé que voy a tomar.'});
@@ -614,8 +700,11 @@ function creation(){
       <div class="hero-brand"><img class="hero-logo" src="assets/brand/open2work-logo-v2.png" alt="OPEN2WORK"><span class="hero-kicker">🟢 Career simulator</span></div>
       <h1 class="hero-title">Tu carrera no será lineal.<br><em>Haz que cuente.</em></h1>
       <p class="hero-sub">Empiezas con 18 años y un perfil vacío. Cada dos años eliges un proyecto, descubres sus consecuencias y publicas el resumen. Tu carrera termina a los 66; tu reputación, quién sabe.</p>
-      ${IS_CHALLENGE?'<div class="challenge-banner"><b>⚔️ Te han retado.</b> Misma semilla, decisiones distintas.</div>':''}
-      <button class="hero-cta" id="begin">${IS_CHALLENGE?'Aceptar el reto':'Crear mi carrera'}</button>
+      ${IS_CHALLENGE?`<div class="challenge-banner"><b>⚔️ Te han retado.</b> Misma semilla, decisiones distintas.${TARGET_SCORE?' Objetivo: '+TARGET_SCORE+' puntos.':''}</div>`:'<div class="challenge-banner"><b>📅 Reto '+WEEKLY_ID+'.</b> Una misma carrera para todo el mundo durante esta semana.</div>'}
+      <div class="era-picker"><span>${IS_CHALLENGE?'Época fijada por el reto':'Elige una época'}</span><div class="era-options">
+        ${ERAS.map(e=>`<button class="era-btn ${C.era===e.id?'sel':''}" data-era="${e.id}" ${IS_CHALLENGE?'disabled':''}><b>${e.n} · ${e.label}</b><small>${e.d}</small></button>`).join('')}
+      </div></div>
+      <div class="hero-actions"><button class="hero-cta" id="weekly">${IS_CHALLENGE?'Aceptar el reto':'Jugar reto semanal'}</button><button class="hero-secondary" id="free">Carrera libre</button></div>
       <div class="hero-facts"><span><b>24</b> ciclos</span><span>decisiones <b>a ciegas</b></span><span>final <b>compartible</b></span></div>
       <div class="start-note" style="text-align:left">Sin registro · una partida dura pocos minutos</div>
       <div class="realnames-note">Organizaciones reales dentro de una simulación ficticia y satírica. OPEN2WORK no está afiliado ni patrocinado por ellas.</div>
@@ -631,7 +720,15 @@ function creation(){
       </div>
     </aside>
   </div></main>`;
-  document.getElementById('controls').onclick=e=>{if(e.target.closest('#begin'))identityCreation();};
+  document.getElementById('controls').onclick=e=>{
+    const era=e.target.closest('[data-era]');
+    if(era&&!IS_CHALLENGE){C.era=era.dataset.era;document.querySelectorAll('[data-era]').forEach(x=>x.classList.toggle('sel',x.dataset.era===C.era));return;}
+    if(e.target.closest('#weekly')){
+      if(!IS_CHALLENGE){GAME_MODE='weekly';RUN_SEED=WEEKLY_SEED;rngState=RUN_SEED;}
+      identityCreation();
+    }
+    if(e.target.closest('#free')){GAME_MODE='free';RUN_SEED=freshSeed();rngState=RUN_SEED;identityCreation();}
+  };
 }
 
 function identityCreation(){
@@ -640,10 +737,10 @@ function identityCreation(){
   const initials=(C.name.trim()||'A').slice(0,2).toUpperCase();
   const selectedTrack=TRACKS.find(t=>t.id===C.track)||TRACKS[1],selectedStyle=CAREER_STYLES.find(s=>s.id===C.style)||CAREER_STYLES[1];
   document.getElementById('controls').innerHTML=`<main class="identity-screen">
-    <header class="identity-head"><span>Tu perfil · antes de publicar</span><h1>¿Quién vas a ser?</h1><p>Configura el perfil que verá tu red. Las consecuencias empiezan después.</p></header>
+    <header class="identity-head"><span>${GAME_MODE==='weekly'?'Reto '+WEEKLY_ID:GAME_MODE==='challenge'?'Reto recibido':'Carrera libre'} · ${eraInfo().n}</span><h1>¿Quién vas a ser?</h1><p>Configura el perfil que verá tu red. Las consecuencias empiezan después.</p></header>
     <div class="identity-layout">
       <aside class="identity-preview"><div class="preview-cover"></div><div class="preview-body"><div class="identity-avatar" id="identityAvatar">${initials}</div>
-        <div class="preview-name" id="previewName">${escapeHtml(C.name.trim()||'Alex')}</div><div class="preview-headline" id="previewHeadline">Aspirante a ${selectedTrack.n}</div><div class="preview-meta">18 años · estilo <span id="previewStyle">${selectedStyle.n}</span></div>
+        <div class="preview-name" id="previewName">${escapeHtml(C.name.trim()||'Alex')}</div><div class="preview-headline" id="previewHeadline">Aspirante a ${selectedTrack.n}</div><div class="preview-meta">18 años · ${eraInfo().n} · estilo <span id="previewStyle">${selectedStyle.n}</span></div>
         <div class="preview-stats"><div class="preview-stat"><b id="previewTec">${15+selectedStyle.tec}</b><span>Técnica</span></div><div class="preview-stat"><b id="previewRed">${4+selectedStyle.red}</b><span>Red</span></div><div class="preview-stat"><b id="previewEnergy">${96+selectedStyle.energy}</b><span>Energía</span></div></div>
       </div><div class="profile-hint"><b>Vista previa viva.</b> Así empieza tu perfil; después el juego lo destroza o lo mejora.</div></aside>
       <section class="identity-form">
@@ -719,6 +816,7 @@ function renderRail(){
       </details>
     </div>
   </div>
+  ${(()=>{const all=computeTrophies(),won=all.filter(t=>t.earned);return `<div class="card trophy-card"><div class="trophy-head"><b>🏆 Vitrina profesional</b><span>${won.length}/${all.length}</span></div><div class="trophy-grid">${all.map(t=>`<span class="trophy ${t.earned?'':'locked'}" title="${t.earned?t.n+' · '+t.d:t.secret?'Logro secreto':'Aún bloqueado'}">${t.earned?t.ic:'?'}</span>`).join('')}</div><div class="trophy-note">Los logros secretos se descubren jugando.</div></div>`})()}
   </div>`;
 }
 
@@ -726,15 +824,17 @@ function renderRail(){
 function careerProjects(){
   if(G.turns===0)return FORMACION.map((f,i)=>({id:'formation',form:i,ic:f.ic,kind:f.kind,t:f.n,e:f.d,stars:[5,4,3][i]}));
   if(G.club.tier===0){
-    const startup=EMPLEADORES.find(e=>e.id==='seed'),consulting=EMPLEADORES.find(e=>e.id==='consulting');
+    const available=availableEmployers(),startups=available.filter(e=>e.type==='startup'&&e.tier===1);
+    const startup=startups[startups.length-1]||available.find(e=>e.tier===1),consulting=available.find(e=>e.id==='consulting')||available[0];
     return [
       {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Ir a por '+startup.n,e:startup.sector+' · Más posibilidades de destacar; también de que todo desaparezca.',target:startup,stars:5},
       {id:'stableJob',ic:'⚖️',kind:'Proyecto estable',t:'Empezar en '+consulting.n,e:consulting.sector+' · Primer contrato, aprendizaje previsible y una nómina que llega cada mes.',target:consulting,stars:4},
       {id:'build',ic:'🎓',kind:'Programa de desarrollo',t:G.side?'Seguir desarrollando '+G.side.n:'Construir un portfolio público',e:'Sin gran logo todavía. Cada proyecto hace más difícil que te ignoren.',stars:2}
     ];
   }
-  const candidates=EMPLEADORES.filter(e=>e.n!==G.club.n&&e.tier>=G.club.tier&&e.tier<=Math.min(4,G.club.tier+1));
-  const fallback=EMPLEADORES.filter(e=>e.n!==G.club.n);
+  const available=availableEmployers();
+  const candidates=available.filter(e=>e.n!==G.club.n&&e.tier>=G.club.tier&&e.tier<=Math.min(4,G.club.tier+1));
+  const fallback=available.filter(e=>e.n!==G.club.n);
   const target=pick(candidates.length?candidates:fallback);
   return [
     {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Intentar el salto a '+target.n,
@@ -814,7 +914,11 @@ function renderControls(){
 function renderCareerLog(){
   if(!G.track)return;
   const rows=G.seasons.slice().reverse();
-  document.getElementById('careerlog').innerHTML=`<section class="careerlog" aria-label="Trayectoria profesional">
+  document.getElementById('careerlog').innerHTML=`<section class="worldpanel" aria-label="Mercado y promoción ficticia">
+    <div class="marketline"><span>🗞️</span><div><b>Mercado simulado · ${G.year}</b><small>${G.marketHeadline||eraInfo().trend}</small></div></div>
+    <div class="rival-head"><b>Tu promoción</b><span>Personajes ficticios · misma edad</span></div>
+    <div class="rival-grid">${G.rivals.map(r=>`<div class="rival"><span class="rival-avatar" style="background:${r.col}">${r.ini}</span><span class="rival-copy"><b>${r.n}</b><span>${r.club} · L${r.level+1}</span></span><span class="rival-ovr"><b>${r.ovr}</b><span>OVR</span></span></div>`).join('')}</div>
+  </section><section class="careerlog" aria-label="Trayectoria profesional">
     <div class="careerlog-title"><b>🏆 Tu trayectoria profesional</b><span>${G.turns}/${GAME_TURNS} ciclos · jubilación a los 66</span></div>
     ${rows.length?`<div class="careercols"><span>Edad</span><span>Proyecto</span><span>Nivel</span><span>Comp.</span><span>Seguidores</span></div>
       ${rows.map(s=>`<div class="careerrow"><div class="careerrow-main">
@@ -928,6 +1032,9 @@ function playYear(){
 
   // ruido del feed: la carrera de los demás también existe (y duele)
   if(roll(20))ambientPost();
+
+  // tu promoción y el mercado avanzan aunque tú no mires el feed
+  advanceRivals();marketPulse();
 
   const cycleSummary=buildCycleSummary(cycleStart.year+1,G.year);
   G.collectingCycle=false;
@@ -1313,7 +1420,7 @@ function resolveEvent(o){
     if(!r.soft&&!r.quit)G.energy=clamp(G.energy-12,0,100);
     let transition='';
     if(!r.quit){
-      const fb=EMPLEADORES.filter(e=>G.tec>=e.minTec&&G.rep>=e.minRep&&e.n!==G.club.n);
+      const fb=availableEmployers().filter(e=>G.tec>=e.minTec&&G.rep>=e.minRep&&e.n!==G.club.n);
       const nx=fb.sort((a,b)=>b.tier-a.tier)[Math.min(1,fb.length-1)]||EMPLEADORES[0];
       G.club=nx;if(!G.clubs.includes(nx.n))G.clubs.push(nx.n);
       xpStart(nx.n);
@@ -1356,10 +1463,13 @@ function careerArchetype(score){
   return {ic:'🪜',n:'Escalador con dignidad',d:'No conquistaste el sector, pero tampoco dejaste que el sector te conquistara.'};
 }
 
-function challengeLink(){
+function challengeLink(score=0){
   if(!/^https?:/.test(location.href))return '';
   const u=new URL(location.href);u.search='';u.hash='';
   u.searchParams.set('seed',String(RUN_SEED));u.searchParams.set('track',C.track);
+  u.searchParams.set('era',String(C.era));
+  if(GAME_MODE==='weekly')u.searchParams.set('mode','weekly');
+  if(score>0)u.searchParams.set('beat',String(score));
   return u.toString();
 }
 
@@ -1400,8 +1510,11 @@ function finalCard(){
   else if(score>=110)legado='Profesional sólido, vida entera';
   else legado='Un CV honesto en un sector ruidoso';
 
-  const arch=careerArchetype(score),shareUrl=challengeLink();
-  const shareText=`Me salió ${arch.ic} ${arch.n} con ${score} puntos y ${fmtK(G.followers)} seguidores en OPEN2WORK. ¿Puedes superar mi carrera?`;
+  const arch=careerArchetype(score),shareUrl=challengeLink(score);
+  const cohort=[{n:G.name,ini:G.ini,col:'#16B86A',club:G.club.n,score,me:true},...G.rivals].sort((a,b)=>b.score-a.score);
+  const cohortRank=cohort.findIndex(r=>r.me)+1,wonTrophies=computeTrophies().filter(t=>t.earned);
+  const targetLine=TARGET_SCORE?(score>TARGET_SCORE?`Superaste el reto por <b>${score-TARGET_SCORE} puntos</b>.`:score===TARGET_SCORE?'<b>Empate exacto.</b> Ni un punto de margen.':`Te faltaron <b>${TARGET_SCORE-score} puntos</b> para superar el reto.`):'';
+  const shareText=`Me salió ${arch.ic} ${arch.n} con ${score} puntos, ${fmtK(G.followers)} seguidores y el puesto ${cohortRank}/4 de mi promoción en OPEN2WORK. ¿Puedes superar mi carrera?`;
   const share=shareText+(shareUrl?'\n'+shareUrl:'');
   let previousBest=0;try{previousBest=Number(localStorage.getItem('open2work-best'))||0;}catch(err){}
   const isRecord=score>previousBest,best=Math.max(score,previousBest);
@@ -1417,12 +1530,15 @@ function finalCard(){
       </div>
       <div class="archetype"><em>${arch.ic}</em><b>${arch.n}</b><span>${arch.d}</span></div>
       <div class="scoreline"><b class="num">${score}</b><span>puntos</span><div class="record">${isRecord?'🏆 Nuevo récord personal':'Récord personal: '+best}</div></div>
+      <div class="weekly-result">${GAME_MODE==='weekly'?`📅 Reto ${WEEKLY_ID} · <b>${cohortRank}.º de tu promoción</b>`:`🎓 <b>${cohortRank}.º de tu promoción</b>`}${targetLine?'<br>'+targetLine:''}</div>
       <div class="viralstats">
         <div class="viralstat"><b>${fmtK(G.followers)}</b><span>Seguidores</span></div>
         <div class="viralstat"><b>${G.maxComp}k€</b><span>Comp. máxima</span></div>
         <div class="viralstat"><b>${G.layoffs}</b><span>Despidos</span></div>
       </div>
       <div class="legadoline" style="text-align:center">«${legado}»</div>
+      <section class="final-trophies"><h3>🏆 Vitrina · ${wonTrophies.length}/${computeTrophies().length}</h3><div class="final-trophy-grid">${computeTrophies().map(t=>`<div class="final-trophy ${t.earned?'':'locked'}"><em>${t.earned?t.ic:'?'}</em><b>${t.earned?t.n:t.secret?'Secreto':'Bloqueado'}</b></div>`).join('')}</div></section>
+      <section class="final-rivals"><h3>Tu promoción al final</h3>${cohort.map((r,i)=>`<div class="final-rival"><span class="rival-avatar" style="background:${r.col}">${r.ini}</span><span><b>${i+1}. ${r.n}${r.me?' · TÚ':''}</b><br>${r.club}</span><b>${r.score} pts</b></div>`).join('')}</section>
       <details class="result-more"><summary>Ver carrera completa</summary>
         <div class="cvgrid">
           <div><span>Edad final</span><b>${G.age}</b></div><div><span>Energía</span><b>${Math.round(G.energy)}</b></div>
@@ -1436,7 +1552,7 @@ function finalCard(){
       </details>
     </div>
     <div class="sharebox"><div class="shareactions">
-      <button class="btn" id="share" data-url="${shareUrl}">Retar a alguien</button><button class="btn sec" id="again">Otra vida</button>
+      <button class="btn" id="share" data-url="${shareUrl}">Retar a alguien</button><button class="btn sec" id="same">Repetir semilla</button><button class="btn sec" id="again">Nueva vida</button>
     </div></div>
   </div>`;
 
@@ -1457,9 +1573,14 @@ function finalCard(){
       if(err.name!=='AbortError')navigator.clipboard.writeText(share).then(()=>btn.textContent='¡Reto copiado!').catch(()=>{});
     }
   };
+  const replayProfile={name:G.name,track:C.track,style:C.style,era:C.era};
+  document.getElementById('same').onclick=()=>{
+    sessionStorage.setItem('open2work-replay',JSON.stringify(replayProfile));
+    const next=new URL(location.href);next.search='';next.hash='';next.searchParams.set('seed',String(RUN_SEED));next.searchParams.set('era',String(C.era));next.searchParams.set('track',C.track);if(GAME_MODE==='weekly')next.searchParams.set('mode','weekly');location.assign(next.toString());
+  };
   document.getElementById('again').onclick=()=>{
-    sessionStorage.setItem('open2work-replay',JSON.stringify({name:G.name,track:pick(TRACKS).id,style:pick(CAREER_STYLES).id}));
-    const next=new URL(location.href);next.search='';next.hash='';location.assign(next.toString());
+    sessionStorage.setItem('open2work-replay',JSON.stringify(replayProfile));
+    const next=new URL(location.href);next.search='';next.hash='';next.searchParams.set('era',String(C.era));location.assign(next.toString());
   };
 }
 
@@ -1469,6 +1590,7 @@ if(replay&&typeof replay.name==='string'){
   C.name=replay.name;
   if(TRACKS.some(t=>t.id===replay.track))C.track=replay.track;
   if(CAREER_STYLES.some(s=>s.id===replay.style))C.style=replay.style;
+  if(ERAS.some(e=>e.id===String(replay.era)))C.era=String(replay.era);
   creation();startCareer();
 }else creation();
 </script>
