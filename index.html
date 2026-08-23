@@ -95,16 +95,29 @@ button{font-family:inherit;cursor:pointer}
 
 /* ═══ FEED ═══ */
 .feedcol{display:flex;flex-direction:column;gap:10px;min-width:0}
-.advance{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;
-  display:flex;gap:10px;align-items:center}
-.advance .av{width:40px;height:40px;border-radius:50%;flex:0 0 40px;display:grid;place-items:center;
-  font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,#16B86A,#0E6B45)}
-.advance button{flex:1;background:#fff;border:1px solid var(--line2);border-radius:20px;
-  padding:10px 16px;text-align:left;color:var(--dim);font-size:13.5px;font-weight:500;transition:background .12s}
-.advance button:hover{background:#F1F0EE}
-.advance button b{color:var(--blue);font-weight:700}
-.advance button small{display:block;margin-top:2px;color:var(--dim2);font-size:10.5px}
 .retirebtn{background:none;border:none;color:var(--dim2);font-size:11.5px;text-decoration:underline;padding:6px}
+
+/* siguiente proyecto: el bucle principal de la carrera */
+.careerpick{background:var(--card);border:1.5px solid var(--blue);border-radius:11px;padding:14px}
+.careerhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:11px}
+.careerhead span{display:block;color:var(--blue);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.careerhead b{display:block;margin-top:2px;font-size:17px;line-height:1.2}
+.careerhead em{font-style:normal;color:var(--dim2);font-size:11px;white-space:nowrap}
+.careeropts{display:grid;gap:7px}
+.careeropt{display:flex;align-items:center;gap:10px;width:100%;background:#fff;border:1.5px solid var(--line2);
+  border-radius:9px;padding:10px 11px;text-align:left;transition:border-color .12s,transform .12s}
+.careeropt:hover{border-color:var(--blue);transform:translateY(-1px)}
+.careeropt .ico{width:34px;height:34px;flex:0 0 34px;border-radius:8px;background:#E7F5EE;display:grid;place-items:center;font-size:18px}
+.careeropt .copy{min-width:0;flex:1}
+.careeropt .kind{display:block;color:var(--green);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.careeropt b{display:block;font-size:13.5px;margin-top:1px}
+.careeropt small{display:block;color:var(--dim);font-size:11.5px;line-height:1.3;margin-top:1px}
+.careeropt .arr{color:var(--blue);font-size:20px;font-weight:800}
+.cyclecard{background:#14201B;color:#fff;border-radius:9px;padding:9px 11px;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+.cyclecard .years{font-size:11px;font-weight:800;color:#8DDEB3;white-space:nowrap}
+.cyclecard .summary{font-size:11.5px;line-height:1.35;min-width:0}
+.cyclecard .summary b{color:#fff}
+.cyclecard .deltas{display:block;color:#B9C7C0;font-size:10.5px;margin-top:1px}
 
 /* post */
 .post{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 15px 9px;animation:fi .3s ease}
@@ -149,15 +162,9 @@ button{font-family:inherit;cursor:pointer}
 .pollopt b{display:block;font-size:13px;font-weight:700}
 .pollopt em{font-style:normal;font-size:11.5px;color:var(--dim)}
 .choice-arrow{font-size:20px;font-weight:800;color:var(--blue);line-height:1}
-.pollpct{font-weight:800;font-size:13px;color:var(--blue);white-space:nowrap}
-.pollpct small{display:block;font-weight:500;font-size:9px;color:var(--dim2)}
 .pollnote{font-size:11px;color:var(--dim2)}
 .fdelta{color:var(--green);font-weight:700}
 .fdelta.down{color:var(--red)}
-
-/* inmail */
-.inmail{border-left:4px solid var(--gold)}
-.inmail .ptag{margin-bottom:4px}
 
 /* botones */
 .btn{background:var(--blue);color:#fff;border:0;border-radius:20px;padding:9px 18px;font-weight:700;font-size:13.5px}
@@ -361,7 +368,7 @@ const G={name:'',ini:'',track:null,age:23,year:2026,turns:0,
   manager:null,side:null,market:'est',otw:false,followers:620,peakFollowers:620,
   papers:0,products:0,citas:0,hindex:0,stars:0,talks:0,
   hitos:[],clubs:[],history:[],burnouts:0,layoffs:0,scandals:0,exits:0,twists:0,phd:false,boot:false,
-  pendingEvent:null,pendingOffers:null,retired:false,used:{}};
+  pendingEvent:null,routes:null,lastCycle:null,retired:false,used:{}};
 
 /* experiencia estilo LinkedIn */
 const XPCOLORS=['#16B86A','#0E8A5F','#B7770D','#7A3FD1','#CC1016','#444444','#2BAF74','#8A5A0A'];
@@ -518,7 +525,7 @@ function startCareer(){
   G.manager=pick(MANAGERS);xpStart(G.club.n);
   post({author:AUTHORS.me,tag:'PRIMER EMPLEO',tagCls:'b',
     text:'¡Encantad'+(rand()<.5?'o':'a')+' de anunciar que empiezo una nueva etapa como '+G.track.n+' en <b>'+G.club.n+'</b>! 🚀\n\nGracias a todos los que me habéis acompañado hasta aquí. Esto no ha hecho más que empezar. #OpenToLearn #IA'});
-  playYear();
+  renderAll();
 }
 
 function creation(){
@@ -530,7 +537,7 @@ function creation(){
   <div class="create">
     <img class="create-logo" src="assets/brand/open2work-logo-v2.png" alt="OPEN2WORK">
     <h1>Tu carrera<em>.</em> Tu caos<em>.</em></h1>
-    <p class="sub">Ocho decisiones. Una vida profesional. Entre 60 y 90 segundos para descubrir en qué te conviertes.</p>
+    <p class="sub">Ocho etapas. Elige tu próximo proyecto, vive las consecuencias y descubre en qué te conviertes.</p>
     ${IS_CHALLENGE?'<div class="challenge-banner"><b>⚔️ Te han retado.</b> Jugarás con el mismo mercado y los mismos giros. Tus decisiones cambian el final.</div>':''}
     <div class="fl"><label>Tu nombre <span style="font-weight:500;text-transform:none;letter-spacing:0">(opcional)</span></label><input type="text" id="nm" placeholder="Alex" maxlength="18"></div>
     <button class="gobtn" id="quick">${IS_CHALLENGE?'Aceptar el reto':'Jugar una carrera aleatoria'}</button>
@@ -569,7 +576,7 @@ function renderRail(){
       <div class="pavatar ${G.otw?'otw':''}">${G.ini}</div>
       <div class="pname">${G.name}</div>
       <div class="phead">${levelName()} · ${G.track.n} en ${G.club.n}</div>
-      <div class="psub">${G.age} años · ${G.year} · turno ${G.turns}/${GAME_TURNS}</div>
+      <div class="psub">${G.age} años · ${G.year} · etapa ${G.turns}/${GAME_TURNS}</div>
       <div class="quickstats">
         <div class="quickstat"><span>Nivel</span><b>${L.lvl} · ${levelName()}</b></div>
         <div class="quickstat energy ${G.energy<32?'low':''}"><span>Energía</span><b class="num">${Math.round(G.energy)}%</b></div>
@@ -601,23 +608,77 @@ function renderRail(){
 }
 
 /* ═════════ CONTROLES ═════════ */
+function careerProjects(){
+  const candidates=EMPLEADORES.filter(e=>e.n!==G.club.n&&(!e.needPhd||G.phd)&&e.tier>=G.club.tier&&e.tier<=Math.min(4,G.club.tier+1));
+  const fallback=EMPLEADORES.filter(e=>e.n!==G.club.n&&(!e.needPhd||G.phd));
+  const target=pick(candidates.length?candidates:fallback);
+  return [
+    {id:'jump',ic:'🏆',kind:'Jugar a ganar',t:'Intentar el salto a '+target.n,
+      e:'Más nombre, más presión. La puerta está abierta; el resultado, no.',target},
+    {id:'stay',ic:'⚖️',kind:'Consolidar',t:'Seguir en '+G.club.n,
+      e:'Conoces el proyecto y sus grietas. La continuidad también compone.'},
+    {id:'build',ic:'🛠️',kind:'Construir',t:G.side?'Doblar la apuesta por '+G.side.n:'Lanzar algo con tu nombre',
+      e:'Menos organigrama, más exposición. Puede ser hobby o convertirse en tu carrera.'}
+  ];
+}
+function signed(v,suffix=''){const n=Math.round(v);return (n>0?'+':'')+n+suffix;}
+function chooseProject(i){
+  const route=G.routes&&G.routes[i];if(!route)return;
+  G.routes=null;document.getElementById('controls').onclick=null;
+  if(route.id==='stay'){
+    G.energy=clamp(G.energy+8,0,100);G.xp+=4;
+    post({author:AUTHORS.me,tag:'CONTINUIDAD',tagCls:'b',text:'He decidido seguir en <b>'+G.club.n+'</b>. No todo movimiento necesita un logo nuevo: a veces la apuesta es quedarse cuando ya conoces las grietas.'});
+  }
+  if(route.id==='jump'){
+    const o=route.target,gap=Math.max(0,o.tier-G.club.tier);
+    const p=clamp(48+(G.tec-o.minTec)*1.05+(G.rep-o.minRep)*.65-gap*7,14,90),win=roll(p);
+    if(win){
+      G.club=o;if(!G.clubs.includes(o.n))G.clubs.push(o.n);xpStart(o.n);
+      G.salary=Math.round(offerComp(o));G.equity+=o.eq;G.manager=pick(MANAGERS);G.energy=clamp(G.energy-7,0,100);G.red=clamp(G.red+5,0,100);
+      post({author:AUTHORS.me,tag:'NUEVO PROYECTO',tagCls:'g',text:'Me lancé a por <b>'+o.n+'</b> y conseguí el asiento. En LinkedIn lo llamaré una decisión meditada; hubo bastante vértigo.'+oddsLine(p,true)});
+    }else{
+      G.energy=clamp(G.energy-5,0,100);G.rep=clamp(G.rep+1,0,100);
+      post({author:AUTHORS.me,tag:'PUERTA CERRADA',tagCls:'r',text:'Intenté dar el salto a <b>'+o.n+'</b>. Llegué lejos, pero el correo terminó con «hemos decidido avanzar con otros perfiles».'+oddsLine(p,false)});
+    }
+  }
+  if(route.id==='build'){
+    G.energy=clamp(G.energy-7,0,100);G.rep=clamp(G.rep+3,0,100);G.red=clamp(G.red+6,0,100);
+    if(G.side){
+      const gained=Math.max(40,Math.round(G.side.subs*(.35+rand()*.55)));G.side.subs+=gained;
+      post({author:AUTHORS.me,tag:'CONSTRUIR EN PÚBLICO',tagCls:'p',text:'He decidido doblar la apuesta por <b>'+G.side.n+'</b>. +'+fmtK(gained)+' '+G.side.unit+'. Ya no sé si es un side project o mi plan de fuga.'});
+    }else{
+      G.side={...pick([
+        {n:'Tu micro-SaaS',type:'saas',subs:12,unit:'clientes'},
+        {n:'Tu librería OSS',type:'oss',subs:80,unit:'★'},
+        {n:'Tu newsletter',type:'news',subs:40,unit:'suscriptores'}])};
+      post({author:AUTHORS.me,tag:'CONSTRUIR EN PÚBLICO',tagCls:'p',text:'He lanzado <b>'+G.side.n.toLowerCase()+'</b>. Es pequeño, imperfecto y por primera vez el roadmap no lo decide un comité.'});
+    }
+  }
+  playYear();
+}
 function renderControls(){
   if(G.retired||!G.track)return;
-  if(G.pendingEvent||G.pendingOffers){document.getElementById('controls').innerHTML='';return;}
+  if(G.pendingEvent){document.getElementById('controls').innerHTML='';return;}
+  if(!G.routes)G.routes=careerProjects();
+  const s=G.lastCycle;
   document.getElementById('controls').innerHTML=`
-  <div class="advance">
-    <div class="av">${G.ini}</div>
-    <button id="sim"><b>Turno ${G.turns+1} de ${GAME_TURNS}</b> · Tentar al algoritmo<small>${G.year+1}–${G.year+TURN_YEARS}</small></button>
+  ${s?`<div class="cyclecard"><span class="years">${s.from}–${s.to}</span><span class="summary"><b>${s.club}</b><span class="deltas">${signed(s.tec,' técnica')} · ${signed(s.followers,' seguidores')} · ${signed(s.energy,' energía')}</span></span></div>`:''}
+  <div class="careerpick">
+    <div class="careerhead"><div><span>Etapa ${G.turns+1} de ${GAME_TURNS}</span><b>Elige tu próximo proyecto</b></div><em>${G.year+1}–${G.year+TURN_YEARS}</em></div>
+    <div class="careeropts">${G.routes.map((r,i)=>`<button class="careeropt" data-route="${i}">
+      <span class="ico">${r.ic}</span><span class="copy"><span class="kind">${r.kind}</span><b>${r.t}</b><small>${r.e}</small></span><span class="arr">→</span>
+    </button>`).join('')}</div>
   </div>
   ${G.turns>=6?'<div style="text-align:center"><button class="retirebtn" id="ret">Retirarte antes de tiempo</button></div>':''}`;
-  const s=document.getElementById('sim');if(s)s.onclick=playYear;
-  const r=document.getElementById('ret');if(r)r.onclick=finalCard;
+  document.getElementById('controls').onclick=e=>{const b=e.target.closest('[data-route]');if(b)chooseProject(+b.dataset.route);};
+  const retire=document.getElementById('ret');if(retire)retire.onclick=finalCard;
 }
 const renderAll=()=>{renderRail();renderControls();};
 const finishOrRender=()=>G.turns>=GAME_TURNS?finalCard():renderAll();
 
 /* ═════════ AÑO ═════════ */
 function playYear(){
+  const cycleStart={year:G.year,tec:G.tec,followers:G.followers,energy:G.energy};
   G.turns++;G.age+=TURN_YEARS;G.year+=TURN_YEARS;
   if(G.otw){G.otw=false;
     post({author:AUTHORS.sys,tag:'RECORDATORIO',tagCls:'g',mute:true,
@@ -722,10 +783,13 @@ function playYear(){
   // ruido del feed: la carrera de los demás también existe (y duele)
   if(roll(20))ambientPost();
 
-  if(roll(68))queueEvent();else queueOffers();
-  if(!G.pendingEvent&&!G.pendingOffers)queueEvent();
+  G.lastCycle={from:cycleStart.year+1,to:G.year,club:G.club.n,tec:G.tec-cycleStart.tec,
+    followers:G.followers-cycleStart.followers,energy:G.energy-cycleStart.energy};
 
-  if(G.turns>=GAME_TURNS&&!G.pendingEvent&&!G.pendingOffers)return finalCard();
+  // Los proyectos mueven la carrera; los eventos quedan como dilemas excepcionales.
+  if(G.turns<GAME_TURNS&&roll(42))queueEvent();
+
+  if(G.turns>=GAME_TURNS&&!G.pendingEvent)return finalCard();
   renderAll();renderPending();
 }
 
@@ -1034,7 +1098,6 @@ function queueEvent(){
 }
 function renderPending(){
   if(G.pendingEvent)return renderEvent();
-  if(G.pendingOffers)return renderOffers();
 }
 
 /* decisión como encuesta */
@@ -1111,72 +1174,8 @@ function resolveEvent(o){
   G.pendingEvent=null;finishOrRender();
 }
 
-/* ═════════ OFERTAS (InMail) + LOOP ═════════ */
+/* compensación estimada para los proyectos disponibles */
 function offerComp(o){return Math.round(o.base*(1+G.tec/140)*(1+G.levelIdx*.06)*MK().sal);}
-function queueOffers(){
-  const eligible=EMPLEADORES.filter(e=>
-    e.n!==G.club.n&&G.tec>=e.minTec&&G.rep>=e.minRep&&e.tier>=G.club.tier&&(!e.needPhd||G.phd));
-  const offers=eligible.length?[pick(eligible)]:[];
-  if(!offers.length)return;
-  G.pendingOffers=offers;
-}
-function renderOffers(){
-  const T={corp:'Corporación',startup:'Startup',bigtech:'Big tech',frontier:'Frontier lab',academia:'Academia'};
-  document.getElementById('controls').innerHTML=`
-  <div class="post poll inmail">
-    <div class="phd2">
-      <div class="pav" style="background:${AUTHORS.rec.col}">${AUTHORS.rec.ini}</div>
-      <div class="pwho"><div class="n">${AUTHORS.rec.n}</div>
-      <div class="h">InMail · "Vi tu perfil y encajas perfectamente"</div><div class="t">Ahora mismo</div></div>
-    </div>
-    <span class="ptag o">MENSAJE DIRECTO</span>
-    <div class="ptxt">¡Hola ${G.name}! 👋 Tu perfil ha llamado la atención de ${G.pendingOffers[0].n}. ¿Exploramos?</div>
-    <div class="pollopts">
-      ${G.pendingOffers.map((o,i)=>`
-        <button class="pollopt" data-f="${i}">
-          <span class="in"><span><b>${o.n}${o.stealth?' 🤫':''}</b>
-          <em>${T[o.type]} · ~${offerComp(o)}k€${o.eq?' + '+o.eq+'k€ equity/año':''}${o.tier>=3?' · con loop':''}</em></span>
-          <span class="pollpct">APLICAR</span></span>
-        </button>`).join('')}
-      <button class="pollopt" data-f="stay">
-        <span class="in"><span><b>«Gracias, estoy bien donde estoy»</b>
-        <em>La estabilidad también compone intereses</em></span>
-        <span class="pollpct" style="color:var(--green)">SEGUIR</span></span>
-      </button>
-    </div>
-  </div>`;
-  document.getElementById('controls').onclick=e=>{
-    const f=e.target.closest('[data-f]');if(!f)return;
-    if(f.dataset.f==='stay'){G.pendingOffers=null;finishOrRender();return;}
-    const o=G.pendingOffers[+f.dataset.f];
-    if(o.tier>=3)resolveApplication(o);
-    else signOffer(o,1);
-  };
-}
-
-function resolveApplication(o){
-  const p=clamp(30+G.tec*.55+G.rep*.2-(o.tier===4?12:0),15,92),win=roll(p);
-  G.pendingOffers=null;
-  if(win){
-    post({author:AUTHORS.me,tag:'LOOP SUPERADO',tagCls:'g',text:'Superé las seis entrevistas de '+o.n+'. El recruiter dice que fue una decisión unánime. Prefiero no preguntar cuánto tardaron.'+oddsLine(p,true)});
-    signOffer(o,1);
-  }else{
-    post({author:AUTHORS.me,tag:'LOOP SUSPENDIDO',tagCls:'r',text:'Suspendí el loop de '+o.n+' con un problema de grafos que jamás veré en el trabajo real. Publico esto por transparencia: también se suspende.'+oddsLine(p,false)});
-    G.energy=clamp(G.energy-6,0,100);finishOrRender();
-  }
-}
-
-function signOffer(o,mult){
-  G.club=o;if(!G.clubs.includes(o.n))G.clubs.push(o.n);
-  xpStart(o.n);
-  G.salary=Math.round(offerComp(o)*mult);G.equity+=o.eq;
-  G.manager=pick(MANAGERS);
-  G.energy=clamp(G.energy-8,0,100);G.red=clamp(G.red+5,0,100);
-  G.maxComp=Math.max(G.maxComp,comp());
-  post({author:AUTHORS.me,tag:'NUEVA ETAPA',tagCls:'b',
-    text:'¡Encantad'+(rand()<.5?'o':'a')+' de anunciar que me uno a <b>'+o.n+'</b>'+(o.tier===4?' — la primera división del sector':'')+'! 🚀\n\nEn el onboarding me han asignado a '+G.manager.n+' ('+G.manager.d.toLowerCase()+'). Gracias a todos los que lo habéis hecho posible. #NewJob'});
-  G.pendingOffers=null;finishOrRender();
-}
 
 function careerArchetype(score){
   if(G.scandals>=2)return {ic:'🃏',n:'Gurú cancelado',d:'Tu carrera sobrevivió a tus propias opiniones. Internet no olvida.'};
