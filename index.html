@@ -3,16 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OPEN2WORK — tu carrera en IA, post a post</title>
-<link rel="icon" type="image/svg+xml" href="assets/brand/open2work-icon.svg">
-<link rel="preload" as="image" href="assets/brand/open2work-logo-v2.png">
+<meta name="theme-color" content="#1E1930">
+<title>THE LADDER — sube, decide, sobrevive</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F4F2EE; --card:#FFFFFF; --line:#E0DFDC; --line2:#D6D4D0;
-  --text:#1B1F23; --dim:#666666; --dim2:#8C8C8C;
-  --blue:#16B86A; --blue2:#0E6B45; --green:#0E8A5F; --brand-green:#16B86A;
-  --brand-ink:#14201B; --red:#CC1016; --gold:#B7770D; --purple:#7A3FD1;
+  --bg:#F6F4FA; --card:#FFFFFF; --line:#E5E1EC; --line2:#D9D3E3;
+  --text:#211C2D; --dim:#6E6877; --dim2:#938C9D;
+  --blue:#6C4DFF; --blue2:#4326C7; --green:#6C4DFF; --brand-green:#6C4DFF;
+  --brand-ink:#1E1930; --red:#CC3551; --gold:#C97700; --purple:#9B5DE5; --amber:#FFB000;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);
@@ -39,15 +38,15 @@ button{font-family:inherit;cursor:pointer}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 22px rgba(20,32,27,.06)}
 
 /* ═══ PERFIL (rail) ═══ */
-.pcover{height:56px;background:linear-gradient(120deg,#0E8A5F,#43C987 60%,#8DDEB3)}
+.pcover{height:56px;background:linear-gradient(120deg,#4326C7,#7D63FF 62%,#FFB000)}
 .pbody{padding:0 16px 14px;margin-top:-26px}
 .pavatar{width:60px;height:60px;border-radius:50%;background:#fff;border:3px solid #fff;
   display:grid;place-items:center;font-weight:800;font-size:22px;color:#fff;
-  background:linear-gradient(135deg,#16B86A,#0E6B45)}
+  background:linear-gradient(135deg,#7D63FF,#4326C7)}
 .pname{font-weight:700;font-size:16.5px;margin-top:7px}
 .phead{font-size:12.5px;color:var(--text);margin-top:1px}
 .psub{font-size:11.5px;color:var(--dim);margin-top:2px}
-.pbadge{display:inline-block;background:#E7F5EE;color:var(--blue);border:1px solid #BFE3CF;
+.pbadge{display:inline-block;background:#F0ECFF;color:var(--blue);border:1px solid #D8CFFF;
   font-size:10.5px;font-weight:700;border-radius:5px;padding:1px 7px;margin-top:6px}
 .pbadge.mg{background:#FBF3E4;color:var(--gold);border-color:#EFDFB9}
 .pstats{border-top:1px solid var(--line);margin-top:11px;padding-top:9px;display:grid;gap:5px}
@@ -56,7 +55,7 @@ button{font-family:inherit;cursor:pointer}
 .pstat b{font-weight:700}
 .pstat b.gr{color:var(--green)}
 .ratingrow{display:flex;align-items:center;gap:11px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
-.ovrbox{width:66px;height:66px;flex:0 0 66px;border-radius:14px;background:linear-gradient(145deg,#16B86A,#0E6B45);color:#fff;display:grid;place-items:center;align-content:center;box-shadow:0 7px 15px rgba(22,184,106,.22)}
+.ovrbox{width:66px;height:66px;flex:0 0 66px;border-radius:14px;background:linear-gradient(145deg,#7D63FF,#4326C7);color:#fff;display:grid;place-items:center;align-content:center;box-shadow:0 7px 15px rgba(108,77,255,.24)}
 .ovrbox b{font-size:27px;line-height:1;font-weight:900}.ovrbox span{font-size:8px;font-weight:900;letter-spacing:.16em;margin-top:2px}
 .identitymeta{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:baseline;min-width:0}
 .identitymeta span{color:var(--dim2);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
@@ -93,20 +92,21 @@ button{font-family:inherit;cursor:pointer}
 .careerhead b{display:block;margin-top:2px;font-size:17px;line-height:1.2}
 .careerhead em{font-style:normal;color:var(--dim2);font-size:11px;white-space:nowrap}
 .careeropts{display:grid;gap:9px}
-.careeropt{display:flex;align-items:center;gap:10px;width:100%;background:#F2F8F5;border:1.5px solid #BFE3CF;border-left:5px solid var(--blue);
+.careeropt{display:flex;align-items:center;gap:10px;width:100%;background:#F7F5FF;border:1.5px solid #D8CFFF;border-left:5px solid var(--blue);
   border-radius:12px;padding:12px;text-align:left;transition:border-color .12s,transform .12s,box-shadow .12s;box-shadow:0 5px 14px rgba(20,32,27,.05)}
 .careeropt:hover{border-color:var(--blue);transform:translateY(-1px);box-shadow:0 8px 18px rgba(20,32,27,.1)}
 .careeropt.stay,.careeropt.stableJob{border-left-color:#14201B;background:#F5F6F5}
 .careeropt.build{border-left-color:#B7770D;background:#FFFBF2}
-.careeropt .ico{width:34px;height:34px;flex:0 0 34px;border-radius:8px;background:#E7F5EE;display:grid;place-items:center;font-size:18px}
+.careeropt.specialize,.careeropt.mentor{border-left-color:#9B5DE5;background:#FAF6FF}.careeropt.recover{border-left-color:#C97700;background:#FFF8E8}
+.careeropt .ico{width:34px;height:34px;flex:0 0 34px;border-radius:8px;background:#F0ECFF;display:grid;place-items:center;font-size:18px}
 .careeropt .copy{min-width:0;flex:1}
 .careeropt .kind{display:block;color:var(--green);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .careeropt b{display:block;font-size:13.5px;margin-top:1px}
 .careeropt small{display:block;color:var(--dim);font-size:11.5px;line-height:1.3;margin-top:1px}
-.careeropt .stars{display:block;color:#E6A400;font-size:12px;letter-spacing:1px;margin-top:4px}
+.careeropt .trade{display:inline-block;background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:10px;color:var(--dim);font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;margin-top:6px}
 .careeropt .arr{color:var(--blue);font-size:20px;font-weight:800}
 .cyclecard{background:#14201B;color:#fff;border-radius:9px;padding:9px 11px;margin-bottom:8px;display:flex;align-items:center;gap:9px}
-.cyclecard .years{font-size:11px;font-weight:800;color:#8DDEB3;white-space:nowrap}
+.cyclecard .years{font-size:11px;font-weight:800;color:#E2D9FF;white-space:nowrap}
 .cyclecard .summary{font-size:11.5px;line-height:1.35;min-width:0}
 .cyclecard .summary b{color:#fff}
 .cyclecard .deltas{display:block;color:#B9C7C0;font-size:10.5px;margin-top:1px}
@@ -123,10 +123,10 @@ button{font-family:inherit;cursor:pointer}
 .careerage{background:#F1F0EE;border-radius:7px;padding:6px 4px;text-align:center;font-weight:800;font-size:11px}
 .careerjob{min-width:0}.careerjob b{display:block;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.careerjob span{display:block;color:var(--dim);font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
 .levelpill,.comppill{border-radius:7px;text-align:center;padding:5px 4px;font-size:11px;font-weight:800}
-.levelpill{background:#E7F5EE;color:#0E6B45}.comppill{background:#14201B;color:#fff}.followpill{text-align:right;font-size:11px;font-weight:800;color:var(--green)}
+.levelpill{background:#F0ECFF;color:#4326C7}.comppill{background:#1E1930;color:#fff}.followpill{text-align:right;font-size:11px;font-weight:800;color:var(--blue)}
 .careerroute{margin:7px 0 0 78px;background:#F7F6F4;border-radius:7px;padding:6px 8px;color:var(--dim);font-size:10.5px}
 .careerevent{margin:6px 0 0 78px;background:#FFF7E2;border:1px solid #F0D899;border-radius:7px;padding:6px 8px;color:#70500A;font-size:10.5px}
-.worldpanel{background:#14201B;color:#fff;border-radius:14px;padding:12px 14px;margin-bottom:10px;box-shadow:0 8px 22px rgba(20,32,27,.12)}.marketline{display:flex;gap:10px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.12)}.marketline>span{font-size:18px}.marketline b{display:block;color:#8DDEB3;font-size:9px;letter-spacing:.1em;text-transform:uppercase}.marketline small{display:block;color:#D8E1DD;font-size:10.5px;line-height:1.4;margin-top:2px}.rival-head{display:flex;justify-content:space-between;margin:9px 0 6px}.rival-head b{font-size:10.5px}.rival-head span{font-size:8.5px;color:#91A29A}.rival-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.rival{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:6px;align-items:center;background:rgba(255,255,255,.07);border-radius:8px;padding:7px}.rival-avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:8px;font-weight:900;color:#fff}.rival-copy{min-width:0}.rival-copy b{display:block;font-size:9.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rival-copy span{display:block;font-size:8px;color:#AFC0B8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rival-ovr{text-align:right}.rival-ovr b{display:block;font-size:12px;color:#8DDEB3}.rival-ovr span{display:block;font-size:7px;color:#91A29A}
+.worldpanel{background:#1E1930;color:#fff;border-radius:14px;padding:12px 14px;margin-bottom:10px;box-shadow:0 8px 22px rgba(30,25,48,.15)}.marketline{display:flex;gap:10px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.12)}.marketline>span{font-size:18px}.marketline b{display:block;color:#D8CFFF;font-size:9px;letter-spacing:.1em;text-transform:uppercase}.marketline small{display:block;color:#E6E1F0;font-size:10.5px;line-height:1.4;margin-top:2px}.rival-head{display:flex;justify-content:space-between;margin:9px 0 6px}.rival-head b{font-size:10.5px}.rival-head span{font-size:8.5px;color:#ABA3BB}.rival-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.rival{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:6px;align-items:center;background:rgba(255,255,255,.07);border-radius:8px;padding:7px}.rival-avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:8px;font-weight:900;color:#fff}.rival-copy{min-width:0}.rival-copy b{display:block;font-size:9.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rival-copy span{display:block;font-size:8px;color:#BDB5CC;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rival-ovr{text-align:right}.rival-ovr b{display:block;font-size:12px;color:#FFCF66}.rival-ovr span{display:block;font-size:7px;color:#ABA3BB}
 @media(max-width:980px) and (min-width:821px){.wrap{grid-template-columns:340px minmax(0,1fr)}.careercols,.careerrow-main{grid-template-columns:62px minmax(120px,1fr) 48px 66px}.careercols span:last-child,.followpill{display:none}}
 @media(max-width:560px){.quickstats{grid-template-columns:1fr 1fr}.careercols,.careerrow-main{grid-template-columns:60px minmax(120px,1fr) 48px 62px}.careercols span:last-child,.followpill{display:none}.careerrow{padding:9px 10px}.careercols{padding:8px 10px}.careerroute,.careerevent{margin-left:68px}}
 
@@ -153,11 +153,11 @@ button{font-family:inherit;cursor:pointer}
 .ptxt{margin:9px 0 6px;font-size:13.5px;white-space:pre-line}
 .ptxt b{font-weight:700}
 .ptag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:1px 7px;margin-bottom:6px}
-.ptag.g{background:#E7F5EE;color:var(--green)}
+.ptag.g{background:#F0ECFF;color:#4326C7}
 .ptag.r{background:#FBE9EA;color:var(--red)}
 .ptag.o{background:#FBF3E4;color:var(--gold)}
 .ptag.p{background:#F1E9FC;color:var(--purple)}
-.ptag.b{background:#E7F5EE;color:var(--blue)}
+.ptag.b{background:#F0ECFF;color:var(--blue)}
 .preact{border-top:1px solid var(--line);margin-top:8px;padding-top:6px;
   display:flex;justify-content:space-between;font-size:11.5px;color:var(--dim2)}
 .preact .ic{letter-spacing:-2px;margin-right:4px}
@@ -185,22 +185,22 @@ button{font-family:inherit;cursor:pointer}
 .btn.sec{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
 
 /* ═══ CREACIÓN ═══ */
-.startscreen{min-height:100vh;display:grid;place-items:center;padding:52px 18px;background:radial-gradient(circle at 12% 12%,#DDF6E8 0,transparent 28%),radial-gradient(circle at 92% 80%,#E8F0EC 0,transparent 26%)}
+.startscreen{min-height:100vh;display:grid;place-items:center;padding:52px 18px;background:radial-gradient(circle at 12% 12%,#E9E2FF 0,transparent 30%),radial-gradient(circle at 92% 80%,#FFF0C9 0,transparent 27%)}
 .startinner{width:min(1100px,100%);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.8fr);gap:70px;align-items:center}
-.hero-copy{text-align:left}.hero-brand{display:flex;align-items:center;gap:10px;margin-bottom:30px}.hero-logo{display:block;width:190px;height:auto}.hero-kicker{display:inline-flex;align-items:center;gap:6px;border:1px solid #BFE3CF;background:#F4FBF7;color:#0E6B45;border-radius:18px;padding:5px 10px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.hero-copy{text-align:left}.hero-brand{display:flex;align-items:center;gap:14px;margin-bottom:30px}.hero-kicker{display:inline-flex;align-items:center;gap:6px;border:1px solid #D8CFFF;background:#F7F5FF;color:#4326C7;border-radius:18px;padding:5px 10px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
 .hero-title{font-size:clamp(44px,6vw,70px);line-height:1.02;letter-spacing:-.06em;margin:0;font-weight:850;color:var(--brand-ink);max-width:670px}
 .hero-title em{color:var(--blue);font-style:normal}
 .hero-sub{max-width:610px;margin:22px 0;color:var(--dim);font-size:clamp(14px,1.6vw,17px);line-height:1.65}
 .hero-cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:210px;background:var(--brand-ink);color:#fff;border:0;border-radius:10px;padding:14px 22px;font-weight:850;font-size:15px;box-shadow:0 10px 24px rgba(20,32,27,.16)}
-.hero-cta::after{content:'→';color:#8DDEB3;font-size:20px}.hero-cta:hover{background:#24342D;transform:translateY(-1px)}
+.hero-cta::after{content:'→';color:#FFCF66;font-size:20px}.hero-cta:hover{background:#302844;transform:translateY(-1px)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.hero-secondary{background:transparent;color:var(--brand-ink);border:1.5px solid var(--brand-ink);border-radius:10px;padding:13px 19px;font-weight:800;font-size:13px}.hero-secondary:hover{background:#fff}
 .hero-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.hero-facts span{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:7px;padding:6px 9px;color:var(--dim);font-size:11px}.hero-facts b{color:var(--text)}
-.era-picker{margin:18px 0 12px}.era-picker>span{display:block;color:var(--dim2);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}.era-options{display:flex;flex-wrap:wrap;gap:6px}.era-btn{background:rgba(255,255,255,.7);border:1.5px solid var(--line2);border-radius:8px;padding:7px 10px;text-align:left}.era-btn b{display:block;font-size:11px}.era-btn small{display:block;color:var(--dim2);font-size:8.5px}.era-btn.sel{border-color:var(--blue);background:#E7F5EE;color:#0E6B45}
-.challenge-banner{background:#E7F5EE;border:1px solid #BFE3CF;border-radius:10px;padding:10px 12px;margin:0 0 16px;font-size:12.5px;color:#0E6B45;text-align:left;max-width:560px}
+.era-picker{margin:18px 0 12px}.era-picker>span{display:block;color:var(--dim2);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}.era-options{display:flex;flex-wrap:wrap;gap:6px}.era-btn{background:rgba(255,255,255,.7);border:1.5px solid var(--line2);border-radius:8px;padding:7px 10px;text-align:left}.era-btn b{display:block;font-size:11px}.era-btn small{display:block;color:var(--dim2);font-size:8.5px}.era-btn.sel{border-color:var(--blue);background:#F0ECFF;color:#4326C7}
+.challenge-banner{background:#FFF8E8;border:1px solid #F1D48A;border-radius:10px;padding:10px 12px;margin:0 0 16px;font-size:12.5px;color:#7A4A00;text-align:left;max-width:560px}
 .career-teaser{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px rgba(20,32,27,.13);overflow:hidden;transform:rotate(1deg)}
-.career-teaser::before{content:'';position:absolute;right:-45px;top:-45px;width:150px;height:150px;border-radius:50%;background:#DFF7EA}
-.teaser-cover{height:82px;background:linear-gradient(125deg,#14201B,#0E6B45)}
-.teaser-body{position:relative;padding:0 22px 22px}.teaser-avatar{width:76px;height:76px;border:4px solid #fff;border-radius:50%;margin-top:-38px;background:linear-gradient(145deg,#16B86A,#0E6B45);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:900}.teaser-name{font-size:19px;font-weight:850;margin-top:8px}.teaser-headline{color:var(--dim);font-size:12px;margin-top:2px}.teaser-open{display:inline-block;margin-top:8px;border:1px solid #79C99F;color:#0E6B45;background:#E7F5EE;border-radius:14px;padding:3px 9px;font-size:9px;font-weight:900;letter-spacing:.05em}
+.career-teaser::before{content:'';position:absolute;right:-45px;top:-45px;width:150px;height:150px;border-radius:50%;background:#FFF0C9}
+.teaser-cover{height:82px;background:linear-gradient(125deg,#1E1930,#4326C7)}
+.teaser-body{position:relative;padding:0 22px 22px}.teaser-avatar{width:76px;height:76px;border:4px solid #fff;border-radius:50%;margin-top:-38px;background:linear-gradient(145deg,#7D63FF,#4326C7);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:900}.teaser-name{font-size:19px;font-weight:850;margin-top:8px}.teaser-headline{color:var(--dim);font-size:12px;margin-top:2px}.teaser-open{display:inline-block;margin-top:8px;border:1px solid #D8CFFF;color:#4326C7;background:#F0ECFF;border-radius:14px;padding:3px 9px;font-size:9px;font-weight:900;letter-spacing:.05em}
 .teaser-path{border-top:1px solid var(--line);margin-top:17px;padding-top:13px;display:grid;gap:8px}.teaser-row{display:grid;grid-template-columns:42px 1fr auto;gap:9px;align-items:center}.teaser-year{background:#F1F0EE;border-radius:6px;padding:5px 3px;text-align:center;font-size:10px;font-weight:800}.teaser-role b{display:block;font-size:11.5px}.teaser-role span{display:block;color:var(--dim2);font-size:9.5px}.teaser-level{color:var(--green);font-size:10px;font-weight:900}.teaser-dots{height:7px;margin-top:14px;background:radial-gradient(circle,var(--line2) 1.5px,transparent 1.6px) 0 0/10px 7px}
 .start-note{text-align:center;color:var(--dim2);font-size:11px;margin:7px 0 0}
 .realnames-note{max-width:460px;margin-top:10px;color:var(--dim2);font-size:9.5px;line-height:1.45}
@@ -208,8 +208,8 @@ button{font-family:inherit;cursor:pointer}
 .identity-head{margin-bottom:24px}.identity-head span{color:var(--blue);font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.identity-head h1{font-size:clamp(32px,4.5vw,50px);line-height:1.05;margin:6px 0 8px;letter-spacing:-.05em}.identity-head p{margin:0;color:var(--dim);font-size:14px}
 .identity-layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:18px;align-items:start}
 .identity-preview{position:sticky;top:20px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(20,32,27,.08)}
-.preview-cover{height:80px;background:linear-gradient(125deg,#14201B,#0E6B45 70%,#16B86A)}
-.preview-body{padding:0 18px 18px}.identity-avatar{width:78px;height:78px;border-radius:50%;border:4px solid #fff;background:linear-gradient(145deg,#16B86A,#0E6B45);display:grid;place-items:center;margin-top:-39px;color:#fff;font-size:25px;font-weight:900;box-shadow:0 6px 16px rgba(20,32,27,.15)}
+.preview-cover{height:80px;background:linear-gradient(125deg,#1E1930,#4326C7 70%,#FFB000)}
+.preview-body{padding:0 18px 18px}.identity-avatar{width:78px;height:78px;border-radius:50%;border:4px solid #fff;background:linear-gradient(145deg,#7D63FF,#4326C7);display:grid;place-items:center;margin-top:-39px;color:#fff;font-size:25px;font-weight:900;box-shadow:0 6px 16px rgba(30,25,48,.16)}
 .preview-name{font-size:18px;font-weight:850;margin-top:8px}.preview-headline{font-size:12px;color:var(--dim);margin-top:2px}.preview-meta{font-size:10.5px;color:var(--dim2);margin-top:4px}.preview-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border-top:1px solid var(--line);margin-top:14px;padding-top:12px}.preview-stat{background:#F7F6F4;border-radius:7px;padding:7px 5px;text-align:center}.preview-stat b{display:block;font-size:12px}.preview-stat span{display:block;color:var(--dim2);font-size:8px;text-transform:uppercase;letter-spacing:.05em;margin-top:1px}
 .profile-hint{border-top:1px solid var(--line);padding:11px 18px;color:var(--dim);font-size:10.5px}.profile-hint b{color:var(--green)}
 .identity-form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 12px 30px rgba(20,32,27,.06)}
@@ -222,7 +222,7 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .identity-tip{margin:-6px 0 0;color:var(--dim2);font-size:10.5px}
 .setup-list{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
 .setup-choice{width:100%;display:flex;gap:8px;align-items:flex-start;background:#F7F6F4;border:1.5px solid transparent;border-radius:10px;padding:11px;text-align:left;min-height:94px}
-.setup-choice:hover{border-color:#BFE3CF}.setup-choice.sel{border-color:var(--blue);background:#E7F5EE;box-shadow:inset 4px 0 0 var(--blue)}
+.setup-choice:hover{border-color:#D8CFFF}.setup-choice.sel{border-color:var(--blue);background:#F0ECFF;box-shadow:inset 4px 0 0 var(--blue)}
 .setup-choice .si{font-size:20px;width:27px;flex:0 0 27px;text-align:center}.setup-choice b{display:block;font-size:13px}.setup-choice em{display:block;font-style:normal;color:var(--dim);font-size:11.5px;line-height:1.4;margin-top:2px}
 .identity-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}
 .backbtn{background:#fff;border:1.5px solid var(--brand-ink);color:var(--brand-ink);border-radius:24px;padding:11px 24px;font-weight:800}
@@ -234,7 +234,7 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .cvfinal{grid-column:1/-1;max-width:520px;margin:0 auto;width:100%}
 .legadopost .ptxt{font-size:14.5px}
 .legadoline{font-size:17px;font-weight:800;margin:8px 0}
-.archetype{text-align:center;margin:12px 0;padding:18px 14px;border-radius:12px;background:#E7F5EE;border:1px solid #BFE3CF}
+.archetype{text-align:center;margin:12px 0;padding:18px 14px;border-radius:12px;background:#F0ECFF;border:1px solid #D8CFFF}
 .archetype em{display:block;font-style:normal;font-size:42px;line-height:1}
 .archetype b{display:block;margin-top:7px;font-size:21px;line-height:1.2}
 .archetype span{display:block;margin-top:5px;color:var(--dim);font-size:12px}
@@ -258,13 +258,13 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .hitolist{border-top:1px solid var(--line);margin-top:10px;padding-top:9px;font-size:12px;color:var(--dim);line-height:1.6}
 .sharebox{text-align:center;margin-top:10px}
 .shareactions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
-.final-trophies{border-top:1px solid var(--line);margin-top:12px;padding-top:11px}.final-trophies h3,.final-rivals h3{font-size:12px;margin:0 0 8px}.final-trophy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.final-trophy{background:#F7F6F4;border:1px solid var(--line);border-radius:9px;padding:7px;text-align:center}.final-trophy em{display:block;font-style:normal;font-size:20px}.final-trophy b{display:block;font-size:8.5px;line-height:1.2;margin-top:2px}.final-trophy.locked{opacity:.28;filter:grayscale(1)}.final-rivals{border-top:1px solid var(--line);margin-top:12px;padding-top:11px}.final-rival{display:grid;grid-template-columns:28px 1fr auto;gap:7px;align-items:center;padding:6px 0;border-top:1px solid var(--line)}.final-rival:first-of-type{border-top:0}.final-rival span{font-size:10px;color:var(--dim)}.final-rival b{font-size:11px}.weekly-result{margin:10px 0;background:#14201B;color:#fff;border-radius:9px;padding:10px;text-align:center;font-size:11px}.weekly-result b{color:#8DDEB3}
+.final-trophies{border-top:1px solid var(--line);margin-top:12px;padding-top:11px}.final-trophies h3,.final-rivals h3{font-size:12px;margin:0 0 8px}.final-trophy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.final-trophy{background:#F8F6FC;border:1px solid var(--line);border-radius:9px;padding:7px;text-align:center}.final-trophy em{display:block;font-style:normal;font-size:20px}.final-trophy b{display:block;font-size:8.5px;line-height:1.2;margin-top:2px}.final-trophy.locked{opacity:.28;filter:grayscale(1)}.final-rivals{border-top:1px solid var(--line);margin-top:12px;padding-top:11px}.final-rival{display:grid;grid-template-columns:28px 1fr auto;gap:7px;align-items:center;padding:6px 0;border-top:1px solid var(--line)}.final-rival:first-of-type{border-top:0}.final-rival span{font-size:10px;color:var(--dim)}.final-rival b{font-size:11px}.weekly-result{margin:10px 0;background:#1E1930;color:#fff;border-radius:9px;padding:10px;text-align:center;font-size:11px}.weekly-result b{color:#FFCF66}
 /* cabecera de marca */
 .topbar{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
 .topbar .in{max-width:1180px;margin:0 auto;padding:7px 16px;display:flex;align-items:center;gap:9px}
-.brand-logo{display:block;width:auto;height:36px;object-fit:contain}
+.brand-lockup{display:inline-flex;align-items:center;gap:9px;color:var(--brand-ink);font-weight:900;letter-spacing:-.045em;line-height:.9}.brand-lockup .wordmark{font-size:18px;white-space:nowrap}.brand-lockup .wordmark b{color:var(--blue)}.brand-lockup.hero-lockup .wordmark{font-size:27px}.ladder-mark{position:relative;display:inline-block;width:35px;height:33px;flex:0 0 35px}.ladder-mark i{position:absolute;display:block;width:17px;height:5px;border-radius:2px;background:var(--blue);transform:skewX(-12deg)}.ladder-mark i:nth-child(1){left:0;bottom:1px}.ladder-mark i:nth-child(2){left:7px;bottom:10px}.ladder-mark i:nth-child(3){left:14px;bottom:19px}.ladder-mark i:nth-child(4){width:8px;height:8px;left:27px;bottom:25px;border-radius:50%;background:var(--amber);transform:none}.brand-tagline{display:block;color:var(--dim2);font-size:8px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-top:4px}
 .topbar .tg{margin-left:auto;font-size:11px;color:var(--dim2);font-style:italic;text-align:right}
-@media(max-width:560px){.topbar .tg{display:none}.brand-logo{height:32px}}
+@media(max-width:560px){.topbar .tg{display:none}.brand-lockup .wordmark{font-size:16px}}
 
 /* insignias */
 .badges{border-top:1px solid var(--line);margin-top:11px;padding-top:10px}
@@ -274,7 +274,7 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
   border-radius:14px;padding:3px 10px 3px 7px;font-size:11px;font-weight:700}
 .bdg em{font-style:normal;font-size:13px}
 .bdg small{font-weight:600;color:var(--dim2);font-size:10px}
-.bdg.green{background:#E7F5EE;border-color:#BFE3CF;color:#0E6B45}
+.bdg.green{background:#FFF8E8;border-color:#F1D48A;color:#7A4A00}
 
 /* posts plegados: "…ver más" */
 .ptxt.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:2px}
@@ -283,10 +283,10 @@ input[type=text]:focus{outline:none;border-color:var(--blue)}
 .translatebtn{display:block;background:none;border:0;color:var(--blue2);font-size:11.5px;font-weight:750;padding:3px 0 7px;text-align:left}
 .translatebtn:hover{text-decoration:underline}
 
-/* aro verde open to work (se activa al quedarte sin trabajo) */
-.otw{position:relative;box-shadow:0 0 0 3px #fff,0 0 0 6.5px #46A758!important}
-.otw::after{content:'#OPENTOWORK';position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
-  background:#46A758;color:#fff;font-size:6.5px;font-weight:800;letter-spacing:.04em;
+/* aro ámbar de disponible (se activa al quedarte sin trabajo) */
+.otw{position:relative;box-shadow:0 0 0 3px #fff,0 0 0 6.5px #FFB000!important}
+.otw::after{content:'#AVAILABLE';position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
+  background:#C97700;color:#fff;font-size:6.5px;font-weight:800;letter-spacing:.04em;
   border-radius:6px;padding:1px 4px;white-space:nowrap}
 .pavatar.otw::after{font-size:8px;bottom:-8px}
 
@@ -306,8 +306,8 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-o
 </head>
 <body>
 <div class="topbar"><div class="in">
-  <img class="brand-logo" src="assets/brand/open2work-logo-v2.png" alt="OPEN2WORK">
-  <span class="tg">«Encantado de anunciar que estás<br>a punto de perderlo todo.»</span>
+  <span class="brand-lockup" aria-label="THE LADDER"><span class="ladder-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="wordmark">THE <b>LADDER</b></span></span>
+  <span class="tg">Sube. Decide. Sobrevive.</span>
 </div></div>
 <div class="wrap" id="wrap">
   <div class="leftcol">
@@ -334,7 +334,7 @@ function isoWeekStamp(date=new Date()){
   return d.getUTCFullYear()+'-W'+String(Math.ceil((((d-y)/86400000)+1)/7)).padStart(2,'0');
 }
 function hashText(value){let h=2166136261;for(const c of value){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0||1;}
-const WEEKLY_ID=isoWeekStamp(),WEEKLY_SEED=hashText('open2work-'+WEEKLY_ID);
+const WEEKLY_ID=isoWeekStamp(),WEEKLY_SEED=hashText('the-ladder-'+WEEKLY_ID);
 const freshSeed=()=>{
   if(globalThis.crypto&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]||1;}
   return (Date.now()>>>0)||1;
@@ -346,6 +346,14 @@ function rand(){
   let t=rngState+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);
   return ((t^t>>>14)>>>0)/4294967296;
 }
+function installFavicon(){
+  if(!document.head||typeof document.createElement!=='function')return;
+  const c=document.createElement('canvas');c.width=64;c.height=64;const x=c.getContext('2d');if(!x)return;
+  x.fillStyle='#1E1930';x.fillRect(0,0,64,64);x.fillStyle='#6C4DFF';x.fillRect(8,45,25,7);x.fillRect(18,32,25,7);x.fillRect(28,19,25,7);
+  x.fillStyle='#FFB000';x.beginPath();x.arc(52,11,6,0,Math.PI*2);x.fill();
+  const link=document.createElement('link');link.rel='icon';link.type='image/png';link.href=c.toDataURL('image/png');document.head.appendChild(link);
+}
+installFavicon();
 
 /* ═════════ CONSTANTES (mecánica v16) ═════════ */
 const LEVELS=[
@@ -367,9 +375,9 @@ const ERAS=[
  {id:'2020',n:'2020',label:'Todo remoto',d:'Videollamadas, rondas enormes y oficinas vacías.',trend:'El trabajo remoto deja de ser un beneficio y se convierte en infraestructura.'},
  {id:'2026',n:'2026',label:'Era de agentes',d:'IA generativa, creators y carreras sin manual.',trend:'Los agentes de IA redibujan equipos y puestos antes de que RRHH actualice las ofertas.'}];
 const FORMACION=[
- {n:'IE University + prácticas',kind:'Proyecto ganador',ic:'🏆',d:'Universidad privada de élite. Prestigio, contactos y mucha presión por destacar.',tec:24,red:18,rep:9,followers:180},
- {n:'UPM + beca',kind:'Proyecto estable',ic:'⚖️',d:'Universidad pública sólida, menos focos y una ruta que no depende de un golpe de suerte.',tec:22,red:11,rep:5,followers:120},
- {n:'Ironhack AI Bootcamp',kind:'Programa de desarrollo',ic:'🎓',d:'Bootcamp intensivo y proyectos públicos. Creces construyendo antes de pedir permiso.',tec:28,red:8,rep:3,followers:150}];
+ {n:'IE University + prácticas',kind:'Universidad privada',ic:'🏛️',d:'Más contactos y prestigio; también más presión por destacar.',tec:24,red:18,rep:9,followers:180},
+ {n:'UPM + beca',kind:'Universidad pública',ic:'🎓',d:'Formación técnica sólida, una red más pequeña y menos necesidad de venderte.',tec:22,red:11,rep:5,followers:120},
+ {n:'Ironhack AI Bootcamp',kind:'Bootcamp intensivo',ic:'🛠️',d:'Aprendes construyendo y sales antes al mercado, con menos credenciales académicas.',tec:28,red:8,rep:3,followers:150}];
 const TRAINING={id:'training',n:'En formación',sector:'Formación',tier:0,minTec:0,minRep:0,base:0,eq:0,type:'academia'};
 const EMPLEADORES=[
  {id:'consulting',n:'Accenture',sector:'Consultoría tecnológica y de IA',tier:1,minTec:0,minRep:0,base:26,eq:0,type:'corp',since:1989},
@@ -396,19 +404,19 @@ const MANAGERS=[
 
 /* autores de posts */
 const AUTHORS={
- me:()=>({n:G.name,h:levelName()+' · '+G.track.n+' en '+G.club.n,ini:G.ini,col:'linear-gradient(135deg,#16B86A,#0E6B45)'}),
+ me:()=>({n:G.name,h:levelName()+' · '+G.track.n+' en '+G.club.n,ini:G.ini,col:'linear-gradient(135deg,#7D63FF,#4326C7)'}),
  news:{n:'IA News Diario',h:'Medio · 412.030 seguidores',ini:'IA',col:'linear-gradient(135deg,#1B1F23,#444)',sq:1},
  rec:{n:'Recruiter de talento tech',h:'Talent Partner · "¡Oportunidad única!"',ini:'RC',col:'linear-gradient(135deg,#B7770D,#8A5A0A)'},
  hr:{n:'People & Culture',h:'RRHH · Tu empresa',ini:'PC',col:'linear-gradient(135deg,#7A3FD1,#5A2BA0)',sq:1},
- guru:{n:'Gurú del Networking',h:'Top Voice · Vendo un curso',ini:'GN',col:'linear-gradient(135deg,#0E8A5F,#0A6647)'},
+ guru:{n:'Gurú del Networking',h:'Top Voice · Vendo un curso',ini:'GN',col:'linear-gradient(135deg,#9B5DE5,#5B2EA6)'},
  chema:{n:'Chema R.',h:'Tu excompañero · siempre un paso por delante',ini:'CH',col:'linear-gradient(135deg,#CC1016,#8A0A0E)'},
  founder:{n:'Vero Fundadora',h:'CEO de la startup que dejaste',ini:'VF',col:'linear-gradient(135deg,#7A3FD1,#4A2380)'},
  noreply:{n:'no-reply@talent',h:'Correo automático · No responder',ini:'✉',col:'linear-gradient(135deg,#8C8C8C,#5A5A5A)',sq:1},
- sys:{n:'OPEN2WORK',h:'El juego de tu carrera',ini:'O2W',col:'linear-gradient(135deg,#16B86A,#0E8A5F)',sq:1}};
+ sys:{n:'THE LADDER',h:'Sube. Decide. Sobrevive.',ini:'TL',col:'linear-gradient(135deg,#6C4DFF,#4326C7)',sq:1}};
 
 /* comentaristas */
 const COMMENTERS=[
- ['MG','#0E8A5F'],['LP','#B7770D'],['AS','#7A3FD1'],['JR','#16B86A'],['TB','#CC1016'],['NK','#444']];
+ ['MG','#6C4DFF'],['LP','#C97700'],['AS','#9B5DE5'],['JR','#FF8A3D'],['TB','#CC3551'],['NK','#444']];
 const NICE_COMMENTS=['¡Enhorabuena crack! 💪','Grande 👏👏','Muy merecido, a por más 🚀','Interesante 🤔','Un placer verte crecer','Esto hay que celebrarlo 🍾','Inspirador, de verdad','👏'];
 const HATER_COMMENTS=['¿Y esto qué aporta exactamente?','Te lo dije en 2019 y no me hiciste caso','Con IA cualquiera hace eso','En mi época esto se hacía sin tanto postureo','Fuente: confía en mí','Discrepo. Hilo 🧵 (no hay hilo)','Yo lo habría hecho distinto','*ha editado este comentario*'];
 
@@ -419,7 +427,7 @@ const G={name:'',ini:'',track:null,age:18,year:2026,turns:0,
   manager:null,side:null,otw:false,followers:90,peakFollowers:90,
   papers:0,products:0,citas:0,hindex:0,stars:0,talks:0,
   hitos:[],clubs:[],history:[],burnouts:0,layoffs:0,scandals:0,exits:0,twists:0,
-  pendingEvent:null,routes:null,lastCycle:null,lastRoute:null,seasons:[],cycleStart:null,collectingCycle:false,cycleNotes:[],retired:false,used:{},
+  pendingEvent:null,routes:null,lastCycle:null,lastRoute:null,seasons:[],cycleStart:null,cycleEvent:'',collectingCycle:false,cycleNotes:[],retired:false,used:{},
   rivals:[],marketHeadline:'',marketHistory:[]};
 
 /* experiencia estilo LinkedIn */
@@ -434,7 +442,7 @@ function xpRole(){ // al promocionar, refresca el rol de la etapa actual
 /* insignias: se derivan del estado, nada que mantener */
 function computeBadges(){
   const b=[];
-  if(G.layoffs>0)b.push({ic:'🟢',n:'Open to Work',x:G.layoffs,green:1});
+  if(G.layoffs>0)b.push({ic:'🟠',n:'Disponible',x:G.layoffs,green:1});
   if(G.rep>=70)b.push({ic:'🏅',n:'Top Voice'});
   if(G.talks>=10)b.push({ic:'🎤',n:'Speaker'});
   if(G.exits>0)b.push({ic:'🦄',n:'Exit'});
@@ -457,7 +465,7 @@ function computeTrophies(){
   const longest=Math.max(0,...Object.values(counts));
   const workedTypes=new Set(G.clubs.map(n=>EMPLEADORES.find(e=>e.n===n)?.type).filter(Boolean));
   return [
-    {ic:'🟢',n:'Vuelta al mercado',d:'Sobreviviste a un despido.',earned:G.layoffs>0},
+    {ic:'🟠',n:'Vuelta al mercado',d:'Sobreviviste a un despido.',earned:G.layoffs>0},
     {ic:'🦄',n:'Unicornio accidental',d:'Cobraste un exit.',earned:G.exits>0},
     {ic:'📣',n:'El algoritmo te conoce',d:'Superaste 10.000 seguidores.',earned:G.peakFollowers>=10000},
     {ic:'⚡',n:'Constructor de domingo',d:'Tu proyecto propio superó 2.000 usuarios.',earned:!!(G.side&&G.side.subs>=2000)},
@@ -475,7 +483,7 @@ function computeTrophies(){
 const RIVAL_PROFILES=[
  {n:'Claudia Martín',ini:'CM',style:'Técnica',pace:1.08,col:'#7A3FD1'},
  {n:'Diego Salas',ini:'DS',style:'Ambicioso',pace:1.16,col:'#B7770D'},
- {n:'Nuria Vega',ini:'NV',style:'Consistente',pace:.98,col:'#0E8A5F'}
+ {n:'Nuria Vega',ini:'NV',style:'Consistente',pace:.98,col:'#FF8A3D'}
 ];
 function initRivals(){
   G.rivals=RIVAL_PROFILES.map((r,i)=>({...r,level:0,ovr:36+i*2,followers:80+i*45,club:'En formación',energy:96,score:0}));
@@ -538,7 +546,7 @@ function buildCycleSummary(from,to){
   const linkedin=[`<b>${opener}</b>`,`En ${from}–${to} decidí apostar por <b>${route}</b>. No fue una decisión fácil, pero las mejores trayectorias rara vez son lineales.`,`${spin} ${result}`];
   if(progress&&progress!==result)linkedin.push(`También me llevo este aprendizaje: ${progress}`);
   if(notable)linkedin.push(`El ecosistema tampoco se detuvo: ${concise(notable.text,125)}`);
-  linkedin.push('Gracias a todas las personas que han formado parte del camino. Seguimos. 💚\n\n#CareerGrowth #InteligenciaArtificial #AprendizajeContinuo #Open2Work');
+  linkedin.push('Gracias a todas las personas que han formado parte del camino. Seguimos. 🪜\n\n#CareerGrowth #InteligenciaArtificial #AprendizajeContinuo #TheLadder');
   const normal=[`<b>Lo que pasó de verdad (${from}–${to}):</b>`,`Elegí <b>${route}</b>.`,`Resultado: ${result}`];
   if(progress&&progress!==result)normal.push(`Además: ${progress}`);
   if(notable)normal.push(`También ocurrió: ${concise(notable.text,125)}`);
@@ -676,7 +684,7 @@ function startCareer(){
   G.salary=0;G.equity=0;G.vested=0;G.maxComp=0;G.manager=null;G.side=null;G.otw=false;
   G.papers=0;G.products=0;G.citas=0;G.hindex=0;G.stars=0;G.talks=0;G.hitos=[];G.history=[];
   G.burnouts=0;G.layoffs=0;G.scandals=0;G.exits=0;G.twists=0;G.pendingEvent=null;G.routes=null;
-  G.lastCycle=null;G.lastRoute=null;G.seasons=[];G.cycleStart=null;G.collectingCycle=false;G.cycleNotes=[];G.retired=false;G.used={};
+  G.lastCycle=null;G.lastRoute=null;G.seasons=[];G.cycleStart=null;G.cycleEvent='';G.collectingCycle=false;G.cycleNotes=[];G.retired=false;G.used={};
   G.marketHeadline=eraInfo().trend;G.marketHistory=[];initRivals();
   document.getElementById('feed').innerHTML='';xpStart(TRAINING.n);
   post({author:AUTHORS.me,tag:'18 AÑOS',tagCls:'b',
@@ -697,7 +705,7 @@ function creation(){
   clearForCreation();
   document.getElementById('controls').innerHTML=`<main class="startscreen"><div class="startinner">
     <section class="hero-copy">
-      <div class="hero-brand"><img class="hero-logo" src="assets/brand/open2work-logo-v2.png" alt="OPEN2WORK"><span class="hero-kicker">🟢 Career simulator</span></div>
+      <div class="hero-brand"><span class="brand-lockup hero-lockup" aria-label="THE LADDER"><span class="ladder-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><span class="wordmark">THE <b>LADDER</b></span><span class="brand-tagline">Sube. Decide. Sobrevive.</span></span></span><span class="hero-kicker">Career simulator</span></div>
       <h1 class="hero-title">Tu carrera no será lineal.<br><em>Haz que cuente.</em></h1>
       <p class="hero-sub">Empiezas con 18 años y un perfil vacío. Cada dos años eliges un proyecto, descubres sus consecuencias y publicas el resumen. Tu carrera termina a los 66; tu reputación, quién sabe.</p>
       ${IS_CHALLENGE?`<div class="challenge-banner"><b>⚔️ Te han retado.</b> Misma semilla, decisiones distintas.${TARGET_SCORE?' Objetivo: '+TARGET_SCORE+' puntos.':''}</div>`:'<div class="challenge-banner"><b>📅 Reto '+WEEKLY_ID+'.</b> Una misma carrera para todo el mundo durante esta semana.</div>'}
@@ -707,11 +715,11 @@ function creation(){
       <div class="hero-actions"><button class="hero-cta" id="weekly">${IS_CHALLENGE?'Aceptar el reto':'Jugar reto semanal'}</button><button class="hero-secondary" id="free">Carrera libre</button></div>
       <div class="hero-facts"><span><b>24</b> ciclos</span><span>decisiones <b>a ciegas</b></span><span>final <b>compartible</b></span></div>
       <div class="start-note" style="text-align:left">Sin registro · una partida dura pocos minutos</div>
-      <div class="realnames-note">Organizaciones reales dentro de una simulación ficticia y satírica. OPEN2WORK no está afiliado ni patrocinado por ellas.</div>
+      <div class="realnames-note">Organizaciones reales dentro de una simulación ficticia y satírica. THE LADDER no está afiliado ni patrocinado por ellas.</div>
     </section>
     <aside class="career-teaser" aria-label="Vista previa de una carrera">
       <div class="teaser-cover"></div><div class="teaser-body"><div class="teaser-avatar">TÚ</div>
-        <div class="teaser-name">Tu próxima versión</div><div class="teaser-headline">De perfil junior a leyenda, burnout o gurú accidental</div><span class="teaser-open">#OPEN2WORK</span>
+        <div class="teaser-name">Tu próxima versión</div><div class="teaser-headline">De perfil junior a leyenda, burnout o gurú accidental</div><span class="teaser-open">#THELADDER</span>
         <div class="teaser-path">
           <div class="teaser-row"><span class="teaser-year">18</span><span class="teaser-role"><b>Eliges cómo empezar</b><span>La probabilidad permanece oculta</span></span><span class="teaser-level">L1</span></div>
           <div class="teaser-row"><span class="teaser-year">34</span><span class="teaser-role"><b>La carrera se complica</b><span>Eventos, seguidores y decisiones</span></span><span class="teaser-level">?</span></div>
@@ -821,28 +829,45 @@ function renderRail(){
 }
 
 /* ═════════ CONTROLES ═════════ */
+function careerStage(){
+  if(G.turns===0)return {n:'Formación',q:'Elige cómo invertir tus primeros dos años'};
+  if(G.age<26)return {n:'Primeros pasos',q:'Elige qué necesitas construir durante los próximos dos años'};
+  if(G.age<36)return {n:'Aceleración',q:'Elige dónde poner los próximos dos años de tu carrera'};
+  if(G.age<48)return {n:'Influencia',q:'Elige entre alcance, estabilidad y autonomía'};
+  if(G.age<58)return {n:'Madurez',q:'Elige qué quieres proteger y qué todavía quieres conquistar'};
+  return {n:'Legado',q:'Elige cómo quieres cerrar los próximos dos años'};
+}
 function careerProjects(){
-  if(G.turns===0)return FORMACION.map((f,i)=>({id:'formation',form:i,ic:f.ic,kind:f.kind,t:f.n,e:f.d,stars:[5,4,3][i]}));
+  if(G.turns===0)return FORMACION.map((f,i)=>({id:'formation',form:i,ic:f.ic,kind:f.kind,t:f.n,e:f.d,trade:['Red y prestigio','Base técnica','Salida rápida'][i]}));
   if(G.club.tier===0){
     const available=availableEmployers(),startups=available.filter(e=>e.type==='startup'&&e.tier===1);
     const startup=startups[startups.length-1]||available.find(e=>e.tier===1),consulting=available.find(e=>e.id==='consulting')||available[0];
+    const independent=G.side
+      ?{id:'founder',ic:'⚡',kind:'Trabajo independiente',t:'Convertir '+G.side.n+' en tu primer trabajo',e:'Empiezas con menos sueldo y estructura, pero ganas autonomía, clientes y experiencia real.',trade:'Autonomía'}
+      :{id:'specialize',ic:'🛠️',kind:'Portfolio y especialización',t:'Seguir dos años construyendo experiencia pública',e:'Renuncias a un sueldo inmediato para mejorar técnica, red y pruebas visibles de tu trabajo.',trade:'Aprendizaje'};
     return [
-      {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Ir a por '+startup.n,e:startup.sector+' · Más posibilidades de destacar; también de que todo desaparezca.',target:startup,stars:5},
-      {id:'stableJob',ic:'⚖️',kind:'Proyecto estable',t:'Empezar en '+consulting.n,e:consulting.sector+' · Primer contrato, aprendizaje previsible y una nómina que llega cada mes.',target:consulting,stars:4},
-      {id:'build',ic:'🎓',kind:'Programa de desarrollo',t:G.side?'Seguir desarrollando '+G.side.n:'Construir un portfolio público',e:'Sin gran logo todavía. Cada proyecto hace más difícil que te ignoren.',stars:2}
+      {id:'jump',ic:'🚀',kind:'Primera apuesta',t:'Intentar entrar en '+startup.n,e:'Más responsabilidad, equity y aprendizaje rápido; menos estabilidad y un proceso exigente.',target:startup,trade:'Alta varianza'},
+      {id:'stableJob',ic:'🏢',kind:'Primer empleo',t:'Empezar en '+consulting.n,e:'Sueldo estable, proyectos variados y una progresión más previsible durante dos años.',target:consulting,trade:'Estabilidad'},
+      independent
     ];
   }
   const available=availableEmployers();
-  const candidates=available.filter(e=>e.n!==G.club.n&&e.tier>=G.club.tier&&e.tier<=Math.min(4,G.club.tier+1));
-  const fallback=available.filter(e=>e.n!==G.club.n);
-  const target=pick(candidates.length?candidates:fallback);
+  const reachable=available.filter(e=>e.n!==G.club.n&&e.tier>=Math.max(1,G.club.tier)&&e.tier<=Math.min(4,G.club.tier+1)&&e.minTec<=G.tec+14&&e.minRep<=G.rep+14);
+  const fallback=available.filter(e=>e.n!==G.club.n&&e.tier<=Math.min(4,G.club.tier+1));
+  const target=pick(reachable.length?reachable:fallback.length?fallback:available.filter(e=>e.n!==G.club.n));
+  const jumpTitle=G.age<30?'Acelerar con un cambio a ':G.age<46?'Competir por un puesto en ':G.age<58?'Aceptar un proceso senior en ':'Cerrar tu carrera con un reto en ';
+  const stayTitle=G.age<30?'Pedir más responsabilidad en ':G.age<48?'Negociar una promoción interna en ':'Consolidar tu influencia en ';
+  let third;
+  if(G.energy<35)third={id:'recover',ic:'🧘',kind:'Salud y continuidad',t:'Bajar el ritmo durante dos años',e:'Recuperas energía y reduces riesgo de burnout; la promoción y la visibilidad tendrán que esperar.',trade:'Recuperación'};
+  else if(G.age>=52)third={id:'mentor',ic:'🌱',kind:'Legado profesional',t:'Mentorizar a la siguiente generación',e:'Ganas influencia y red sin perseguir otro logo; el crecimiento salarial será menor.',trade:'Influencia'};
+  else if(G.side)third={id:'build',ic:'⚡',kind:'Proyecto propio',t:'Invertir dos años en '+G.side.n,e:'Más autonomía y potencial futuro a cambio de energía y foco en tu empleo principal.',trade:'Autonomía'};
+  else third={id:'specialize',ic:G.track.id==='res'?'🔬':G.track.id==='ing'?'🧩':'📦',kind:'Especialización visible',
+    t:G.track.id==='res'?'Abrir una línea de investigación propia':G.track.id==='ing'?'Construir un producto open source':'Lanzar un producto pequeño con usuarios',
+    e:'Creces en técnica, reputación y red; sacrificas energía y velocidad de promoción interna.',trade:'Especialización'};
   return [
-    {id:'jump',ic:'🏆',kind:'Proyecto ganador',t:'Intentar el salto a '+target.n,
-      e:target.sector+' · Una estructura para ganar ya. Si sale mal, el logo no te salva.',target,stars:5},
-    {id:'stay',ic:'⚖️',kind:'Proyecto estable',t:G.club.tier===0?'Continuar formándote':'Seguir en '+G.club.n,
-      e:'Menos épica, más continuidad. Crecer sin quemar todos los neumáticos.',stars:4},
-    {id:'build',ic:'🎓',kind:'Programa de desarrollo',t:G.side?'Desarrollar '+G.side.n:'Lanzar tu primer proyecto público',
-      e:'Peor escaparate hoy, más aprendizaje para lo que venga después.',stars:3}
+    {id:'jump',ic:'↗️',kind:'Cambio de empresa',t:jumpTitle+target.n,e:target.sector+' · Más compensación y alcance; vuelves a demostrar tu valor desde cero.',target,trade:'Riesgo alto'},
+    {id:'stay',ic:'🏢',kind:'Crecimiento interno',t:stayTitle+G.club.n,e:'Conservas contexto, equipo y vesting. El resultado dependerá de tu rendimiento y de tu manager.',trade:'Riesgo medio'},
+    third
   ];
 }
 function signed(v,suffix=''){const n=Math.round(v);return (n>0?'+':'')+n+suffix;}
@@ -859,13 +884,23 @@ function chooseProject(i){
       text:'He elegido <b>'+F.n+'</b>. '+F.d+' No sé adónde lleva todavía. Esa es exactamente la gracia.'});
   }
   if(route.id==='stay'){
-    G.energy=clamp(G.energy+4,0,100);if(G.club.tier>0)G.xp+=2;
-    post({author:AUTHORS.me,tag:'PROYECTO ESTABLE',tagCls:'b',text:G.club.tier===0?'Sigo formándome dos años más. Todavía no hay cargo que anunciar, pero cada vez entiendo mejor qué quiero construir.':'He decidido seguir en <b>'+G.club.n+'</b>. No todo movimiento necesita un logo nuevo: a veces la apuesta es quedarse cuando ya conoces las grietas.'});
+    const managerBoost=G.manager?.q==='good'?12:G.manager?.q==='bad'?-16:0;
+    const p=clamp(52+(G.tec-50)*.45+G.red*.12+managerBoost,25,88),win=roll(p);
+    if(win){G.xp+=7+G.club.tier;G.salary=Math.round(G.salary*1.1);G.rep=clamp(G.rep+3,0,100);G.energy=clamp(G.energy+2,0,100);
+      post({author:AUTHORS.me,tag:'CRECIMIENTO INTERNO',tagCls:'g',text:'Aposté por quedarme en <b>'+G.club.n+'</b>, pedí más responsabilidad y la conversación terminó en promoción y ajuste salarial.'+oddsLine(p,true)});
+    }else{G.xp+=2;G.energy=clamp(G.energy+6,0,100);G.rep=clamp(G.rep+1,0,100);
+      post({author:AUTHORS.me,tag:'PROMOCIÓN APLAZADA',tagCls:'r',text:'Decidí crecer dentro de <b>'+G.club.n+'</b>, pero el presupuesto, el headcount y el famoso «todavía no» ganaron esta ronda.'+oddsLine(p,false)});
+    }
   }
   if(route.id==='stableJob'){
     const o=route.target;G.club=o;if(!G.clubs.includes(o.n))G.clubs.push(o.n);xpStart(o.n);
     G.salary=o.base;G.manager=pick(MANAGERS);G.energy=clamp(G.energy+2,0,100);G.red=clamp(G.red+2,0,100);
     post({author:AUTHORS.me,tag:'PRIMER CONTRATO',tagCls:'b',text:'Empiezo en <b>'+o.n+'</b>. No es el titular más espectacular, pero es un asiento real, un equipo real y el comienzo de una carrera que por fin deja de ser teórica.'});
+  }
+  if(route.id==='founder'){
+    const ownName=G.side.n;G.club={id:'own',n:ownName,sector:'Proyecto propio',tier:2,type:'startup',base:24,eq:0};
+    if(!G.clubs.includes(ownName))G.clubs.push(ownName);G.salary=24;G.manager=null;G.xp+=5;xpStart(ownName);G.energy=clamp(G.energy-5,0,100);
+    post({author:AUTHORS.me,tag:'PRIMER TRABAJO · POR CUENTA PROPIA',tagCls:'p',text:'Convertí <b>'+ownName+'</b> en mi trabajo. Los primeros clientes pagan menos que una gran empresa, pero cada decisión y cada problema ya son reales.'});
   }
   if(route.id==='jump'){
     const o=route.target,gap=Math.max(0,o.tier-G.club.tier);
@@ -880,17 +915,22 @@ function chooseProject(i){
     }
   }
   if(route.id==='build'){
-    G.energy=clamp(G.energy-4,0,100);G.tec=clamp(G.tec+2,10,99);G.rep=clamp(G.rep+2,0,100);G.red=clamp(G.red+3,0,100);
-    if(G.side){
-      const gained=Math.max(40,Math.round(G.side.subs*(.35+rand()*.55)));G.side.subs+=gained;
-      post({author:AUTHORS.me,tag:'CONSTRUIR EN PÚBLICO',tagCls:'p',text:'He decidido doblar la apuesta por <b>'+G.side.n+'</b>. +'+fmtK(gained)+' '+G.side.unit+'. Ya no sé si es un side project o mi plan de fuga.'});
-    }else{
-      G.side={...pick([
-        {n:'SignalStack',type:'saas',subs:12,unit:'clientes'},
-        {n:'OpenMesh',type:'oss',subs:80,unit:'★'},
-        {n:'Latent Weekly',type:'news',subs:40,unit:'suscriptores'}])};
-      post({author:AUTHORS.me,tag:'CONSTRUIR EN PÚBLICO',tagCls:'p',text:'He lanzado <b>'+G.side.n+'</b>. Es pequeño, imperfecto y por primera vez el roadmap no lo decide un comité.'});
-    }
+    G.energy=clamp(G.energy-6,0,100);G.tec=clamp(G.tec+2,10,99);G.rep=clamp(G.rep+2,0,100);G.red=clamp(G.red+3,0,100);
+    const gained=Math.max(40,Math.round(G.side.subs*(.35+rand()*.55)));G.side.subs+=gained;
+    post({author:AUTHORS.me,tag:'PROYECTO PROPIO',tagCls:'p',text:'Reservé una parte real de estos dos años para <b>'+G.side.n+'</b>. Sumó +'+fmtK(gained)+' '+G.side.unit+', aunque mi energía notó cada noche de trabajo.'});
+  }
+  if(route.id==='specialize'){
+    G.energy=clamp(G.energy-7,0,100);G.tec=clamp(G.tec+4,10,99);G.rep=clamp(G.rep+2,0,100);G.red=clamp(G.red+4,0,100);G.xp+=2;
+    if(!G.side)G.side={...({res:{n:'Latent Research Notes',type:'news',subs:40,unit:'lectores'},ing:{n:'OpenMesh',type:'oss',subs:80,unit:'★'},pro:{n:'SignalStack',type:'saas',subs:12,unit:'clientes'}}[G.track.id])};
+    post({author:AUTHORS.me,tag:'ESPECIALIZACIÓN',tagCls:'p',text:'Dediqué dos años a convertir <b>'+G.side.n+'</b> en una prueba pública de lo que sé hacer. Gané criterio, red y algo que enseñar sin depender del logo de mi empresa.'});
+  }
+  if(route.id==='recover'){
+    G.energy=clamp(G.energy+24,0,100);G.rep=clamp(G.rep-1,0,100);G.red=clamp(G.red+1,0,100);G.xp+=1;
+    post({author:AUTHORS.me,tag:'BAJAR EL RITMO',tagCls:'b',text:'Durante estos dos años protegí horarios, salud y vida fuera del trabajo. No hubo gran titular ni ascenso, pero volví a tener energía para decidir con claridad.'});
+  }
+  if(route.id==='mentor'){
+    G.energy=clamp(G.energy+3,0,100);G.rep=clamp(G.rep+6,0,100);G.red=clamp(G.red+8,0,100);G.xp+=4;G.talks++;
+    post({author:AUTHORS.me,tag:'LEGADO',tagCls:'g',text:'Elegí dedicar dos años a mentorizar, documentar lo aprendido y abrir puertas a otras personas. Menos carrera hacia arriba; más impacto que permanece.'});
   }
   playYear();
 }
@@ -898,13 +938,13 @@ function renderControls(){
   if(G.retired||!G.track)return;
   if(G.pendingEvent){document.getElementById('controls').innerHTML='';return;}
   if(!G.routes)G.routes=careerProjects();
-  const s=G.lastCycle;
+  const s=G.lastCycle,stage=careerStage();
   document.getElementById('controls').innerHTML=`
   ${s?`<div class="cyclecard"><span class="years">${s.from}–${s.to}</span><span class="summary"><b>Tu último ciclo · ${s.club}</b><span class="deltas">${signed(s.tec,' técnica')} · ${signed(s.followers,' seguidores')} · ${signed(s.energy,' energía')}</span></span></div>`:''}
   <div class="careerpick">
-    <div class="careerhead"><div><span>Ciclo ${G.turns+1} de ${GAME_TURNS} · ${G.age} años</span><b>${G.turns===0?'Elige cómo empieza tu carrera':'Elige tu proyecto para los próximos dos años'}</b></div><em>${G.year+1}–${G.year+TURN_YEARS}</em></div>
+    <div class="careerhead"><div><span>Ciclo ${G.turns+1} de ${GAME_TURNS} · ${G.age} años · ${stage.n}</span><b>${stage.q}</b></div><em>${G.year+1}–${G.year+TURN_YEARS} · 2 años</em></div>
     <div class="careeropts">${G.routes.map((r,i)=>`<button class="careeropt ${r.id}" data-route="${i}">
-      <span class="ico">${r.ic}</span><span class="copy"><span class="kind">${r.kind}</span><b>${r.t}</b><small>${r.e}</small><span class="stars" aria-label="${r.stars} de 5">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span></span><span class="arr">→</span>
+      <span class="ico">${r.ic}</span><span class="copy"><span class="kind">${r.kind}</span><b>${r.t}</b><small>${r.e}</small><span class="trade">${r.trade}</span></span><span class="arr">→</span>
     </button>`).join('')}</div>
   </div>
   ${G.turns>=18?'<div style="text-align:center"><button class="retirebtn" id="ret">Retirarte antes de tiempo</button></div>':''}`;
@@ -937,7 +977,7 @@ function playYear(){
   G.turns++;G.age+=TURN_YEARS;G.year+=TURN_YEARS;
   if(G.otw){G.otw=false;
     post({author:AUTHORS.sys,tag:'RECORDATORIO',tagCls:'g',mute:true,
-      text:'Llevabas un tiempo con el aro verde puesto. Ya tienes trabajo. Te lo quitamos nosotros, no pasa nada, le pasa a todo el mundo. 🟢✂️'});}
+      text:'Llevabas un tiempo con el aro de disponible puesto. Ya tienes trabajo. Te lo quitamos nosotros, no pasa nada, le pasa a todo el mundo. 🟠✂️'});}
   let ownLines=[];      // se agrupan en UN post tuyo
   let ownTag=null,ownTagCls='b';
 
@@ -1043,8 +1083,8 @@ function playYear(){
   G.lastCycle={from:cycleStart.year+1,to:G.year,club:G.club.n,tec:G.tec-cycleStart.tec,
     followers:G.followers-cycleStart.followers,energy:G.energy-cycleStart.energy};
   G.seasons.push({from:G.lastCycle.from,to:G.lastCycle.to,age:G.age,club:G.club.n,role:levelName(),
-    sector:G.club.sector||'',level:LEVELS[G.levelIdx].lvl,comp:comp(),followers:G.followers,kind:G.lastRoute?.kind,route:G.lastRoute?.t,summary:cycleSummary.log,event:''});
-  G.cycleStart=null;G.cycleNotes=[];
+    sector:G.club.sector||'',level:LEVELS[G.levelIdx].lvl,comp:comp(),followers:G.followers,kind:G.lastRoute?.kind,route:G.lastRoute?.t,summary:cycleSummary.log,event:G.cycleEvent||''});
+  G.cycleStart=null;G.cycleEvent='';G.cycleNotes=[];
 
   // Los proyectos mueven la carrera; los eventos quedan como dilemas excepcionales.
   if(G.turns>=3&&G.turns<GAME_TURNS&&roll(22))queueEvent();
@@ -1366,7 +1406,7 @@ function renderEvent(){
   const eventTitle=typeof ev.h==='function'?ev.h():ev.h,eventCopy=typeof ev.p==='function'?ev.p():ev.p;
   document.getElementById('controls').innerHTML=`
   <div class="eventcard poll">
-    <span class="eventeyebrow">⚡ Evento inesperado · elige sin saber</span>
+    <span class="eventeyebrow">⚡ Ciclo ${G.turns+1} de ${GAME_TURNS} · ${G.year+1}–${G.year+TURN_YEARS} · 2 años</span>
     <div class="phd2">
       <div class="pav sq" style="background:${AUTHORS.sys.col}">${AUTHORS.sys.ini}</div>
       <div class="pwho"><div class="n">${AUTHORS.sys.n}</div>
@@ -1379,7 +1419,7 @@ function renderEvent(){
         <span class="choice-arrow">→</span></span>
       </button>`).join('')}
     </div>
-    <div class="pollnote">Decide por instinto. Las consecuencias no avisan.</div>
+    <div class="pollnote">Esta elección sustituye a las ofertas del ciclo y hace avanzar dos años. Las consecuencias se revelan después.</div>
   </div>`;
   document.getElementById('controls').onclick=e=>{
     const b=e.target.closest('[data-e]');if(!b)return;
@@ -1387,9 +1427,12 @@ function renderEvent(){
   };
 }
 function resolveEvent(o){
+  G.cycleStart={year:G.year,tec:G.tec,followers:G.followers,energy:G.energy};
+  G.collectingCycle=true;G.cycleNotes=[];G.routes=null;
   const win=roll(o.pr);
   const r=win?o.ok:(o.ko||o.ok);
   const eventName=G.pendingEvent?.k||'Evento de carrera';
+  G.lastRoute={id:'event',kind:'Evento · '+eventName,t:o.t};
   const eventLead=`<b>Elegí: ${o.t}.</b>\n${r.txt}${oddsLine(o.pr,win)}`;
   if(r.tec)G.tec=clamp(G.tec+r.tec,10,99);
   if(r.energy)G.energy=clamp(G.energy+r.energy,0,100);
@@ -1434,13 +1477,13 @@ function resolveEvent(o){
       transition='Nueva etapa: convierto <b>'+ownName+'</b> en mi trabajo.';
     }
     const eventPost=eventLead+'\n\n'+transition;
-    if(G.seasons.length)G.seasons[G.seasons.length-1].event=`${eventName} · Elegiste ${o.t}. ${concise(r.txt,145)} ${concise(transition,90)}`;
+    G.cycleEvent=`${eventName} · Elegiste ${o.t}. ${concise(r.txt,145)} ${concise(transition,90)}`;
     post({author:AUTHORS.me,tag:'EVENTO · '+tag,tagCls,text:eventPost});
-    G.pendingEvent=null;finishOrRender();return;
+    G.pendingEvent=null;playYear();return;
   }
-  if(G.seasons.length)G.seasons[G.seasons.length-1].event=`${eventName} · Elegiste ${o.t}. ${concise(r.txt,160)}`;
+  G.cycleEvent=`${eventName} · Elegiste ${o.t}. ${concise(r.txt,160)}`;
   post({author:AUTHORS.me,tag:'EVENTO · '+tag,tagCls,text:eventLead});
-  G.pendingEvent=null;finishOrRender();
+  G.pendingEvent=null;playYear();
 }
 
 /* compensación estimada para los proyectos disponibles */
@@ -1450,13 +1493,13 @@ function careerArchetype(score){
   if(G.scandals>=2)return {ic:'🃏',n:'Gurú cancelado',d:'Tu carrera sobrevivió a tus propias opiniones. Internet no olvida.'};
   if(G.exits>0)return {ic:'🦄',n:'Millonario accidental',d:'Dijiste que era visión. También hubo una cantidad obscena de suerte.'};
   if(G.followers>=10000)return {ic:'📣',n:'Monstruo del algoritmo',d:'Cada cambio de empleo fue también una campaña de contenidos. La audiencia vino por el drama y se quedó por el CV.'};
-  if(G.layoffs>=3)return {ic:'🟢',n:'Eterno Open to Work',d:'Te echaron varias veces. Volviste todas. El aro ya forma parte de tu marca.'};
+  if(G.layoffs>=3)return {ic:'🟠',n:'Eterno disponible',d:'Te echaron varias veces. Volviste todas. El aro ya forma parte de tu marca.'};
   if(G.burnouts>=2)return {ic:'🔥',n:'Talento en combustión',d:'Llegaste lejos, aunque tu calendario y tu sistema nervioso pagaron el viaje.'};
   if(G.side&&G.side.subs>8000)return {ic:'⚡',n:'Imperio de domingo',d:'Lo que empezó fuera de horario terminó siendo lo más importante.'};
   if(G.clubs.length>=6)return {ic:'🧳',n:'Nómada del organigrama',d:'Tu mayor habilidad fue saber exactamente cuándo cambiar de logo.'};
   if(G.mgmt&&G.levelIdx>=8)return {ic:'👔',n:'Criatura del comité',d:'Ya no escribes código: escribes documentos que deciden quién lo escribe.'};
   if(G.track.id==='res'&&G.hindex>=25)return {ic:'🎓',n:'Eminencia con Reviewer 2',d:'Te citan miles. El revisor 2 sigue pidiendo otro experimento.'};
-  if(G.vested>=500)return {ic:'💰',n:'Excel con libertad financiera',d:'Convertiste decisiones de carrera en celdas sorprendentemente verdes.'};
+  if(G.vested>=500)return {ic:'💰',n:'Excel con libertad financiera',d:'Convertiste decisiones de carrera en celdas sorprendentemente positivas.'};
   if(G.levelIdx>=8)return {ic:'🧠',n:'Leyenda técnica',d:'Subiste sin fingir que tu pasión eran las reuniones de presupuesto.'};
   if(G.energy>=70&&score>=120)return {ic:'🧘',n:'Carrera sospechosamente sana',d:'Progresaste y conservaste energía. Recursos Humanos quiere estudiar tu caso.'};
   if(score>=180)return {ic:'🚀',n:'Cohete profesional',d:'Promociones, visibilidad y una relación peligrosamente buena con el algoritmo.'};
@@ -1476,19 +1519,20 @@ function challengeLink(score=0){
 function buildShareCard({arch,score,url}){
   const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
   const x=canvas.getContext('2d'),grad=x.createLinearGradient(0,0,1080,1080);
-  grad.addColorStop(0,'#14201B');grad.addColorStop(1,'#0E6B45');x.fillStyle=grad;x.fillRect(0,0,1080,1080);
-  x.fillStyle='#16B86A';x.beginPath();x.arc(910,130,210,0,Math.PI*2);x.fill();
-  x.fillStyle='#FFFFFF';x.font='900 58px Inter, Arial';x.fillText('OPEN2WORK',72,100);
-  x.fillStyle='#8DDEB3';x.font='700 24px Inter, Arial';x.fillText('TU CARRERA EN IA',75,145);
+  grad.addColorStop(0,'#1E1930');grad.addColorStop(1,'#4326C7');x.fillStyle=grad;x.fillRect(0,0,1080,1080);
+  x.fillStyle='#FFB000';x.beginPath();x.arc(920,120,205,0,Math.PI*2);x.fill();
+  x.fillStyle='#1E1930';[[815,190],[845,155],[875,120]].forEach(([sx,sy])=>x.fillRect(sx,sy,82,18));x.beginPath();x.arc(970,82,18,0,Math.PI*2);x.fill();
+  x.fillStyle='#FFFFFF';x.font='900 58px Inter, Arial';x.fillText('THE LADDER',72,100);
+  x.fillStyle='#FFCF66';x.font='700 24px Inter, Arial';x.fillText('SUBE. DECIDE. SOBREVIVE.',75,145);
   x.textAlign='center';x.font='110px Arial';x.fillText(arch.ic,540,340);
   x.fillStyle='#FFFFFF';x.font='900 64px Inter, Arial';x.fillText(arch.n,540,430);
-  x.fillStyle='#8DDEB3';x.font='900 170px Inter, Arial';x.fillText(String(score),540,640);
+  x.fillStyle='#FFCF66';x.font='900 170px Inter, Arial';x.fillText(String(score),540,640);
   x.fillStyle='#FFFFFF';x.font='800 26px Inter, Arial';x.fillText('PUNTOS',540,685);
   const stats=[[fmtK(G.followers),'SEGUIDORES'],[G.maxComp+'k€','COMP. MÁXIMA'],[String(G.layoffs),'DESPIDOS']];
-  stats.forEach((s,i)=>{const cx=220+i*320;x.fillStyle='rgba(255,255,255,.10)';x.fillRect(cx-125,745,250,120);x.fillStyle='#FFFFFF';x.font='900 38px Inter, Arial';x.fillText(s[0],cx,795);x.fillStyle='#8DDEB3';x.font='700 17px Inter, Arial';x.fillText(s[1],cx,835);});
+  stats.forEach((s,i)=>{const cx=220+i*320;x.fillStyle='rgba(255,255,255,.10)';x.fillRect(cx-125,745,250,120);x.fillStyle='#FFFFFF';x.font='900 38px Inter, Arial';x.fillText(s[0],cx,795);x.fillStyle='#D8CFFF';x.font='700 17px Inter, Arial';x.fillText(s[1],cx,835);});
   x.fillStyle='#FFFFFF';x.font='800 28px Inter, Arial';x.fillText('¿PUEDES HACERLO MEJOR?',540,950);
-  x.fillStyle='#8DDEB3';x.font='500 18px Inter, Arial';x.fillText(url?new URL(url).host:'open2work',540,995);
-  return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(new File([blob],'open2work-'+score+'.png',{type:'image/png'})):reject(new Error('No se pudo crear la tarjeta')),'image/png'));
+  x.fillStyle='#D8CFFF';x.font='500 18px Inter, Arial';x.fillText(url?new URL(url).host:'theladder',540,995);
+  return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(new File([blob],'the-ladder-'+score+'.png',{type:'image/png'})):reject(new Error('No se pudo crear la tarjeta')),'image/png'));
 }
 
 /* ═════════ TARJETA FINAL ═════════ */
@@ -1511,20 +1555,20 @@ function finalCard(){
   else legado='Un CV honesto en un sector ruidoso';
 
   const arch=careerArchetype(score),shareUrl=challengeLink(score);
-  const cohort=[{n:G.name,ini:G.ini,col:'#16B86A',club:G.club.n,score,me:true},...G.rivals].sort((a,b)=>b.score-a.score);
+  const cohort=[{n:G.name,ini:G.ini,col:'#6C4DFF',club:G.club.n,score,me:true},...G.rivals].sort((a,b)=>b.score-a.score);
   const cohortRank=cohort.findIndex(r=>r.me)+1,wonTrophies=computeTrophies().filter(t=>t.earned);
   const targetLine=TARGET_SCORE?(score>TARGET_SCORE?`Superaste el reto por <b>${score-TARGET_SCORE} puntos</b>.`:score===TARGET_SCORE?'<b>Empate exacto.</b> Ni un punto de margen.':`Te faltaron <b>${TARGET_SCORE-score} puntos</b> para superar el reto.`):'';
-  const shareText=`Me salió ${arch.ic} ${arch.n} con ${score} puntos, ${fmtK(G.followers)} seguidores y el puesto ${cohortRank}/4 de mi promoción en OPEN2WORK. ¿Puedes superar mi carrera?`;
+  const shareText=`Me salió ${arch.ic} ${arch.n} con ${score} puntos, ${fmtK(G.followers)} seguidores y el puesto ${cohortRank}/4 de mi promoción en THE LADDER. ¿Puedes superar mi carrera?`;
   const share=shareText+(shareUrl?'\n'+shareUrl:'');
-  let previousBest=0;try{previousBest=Number(localStorage.getItem('open2work-best'))||0;}catch(err){}
+  let previousBest=0;try{previousBest=Number(localStorage.getItem('the-ladder-best')||localStorage.getItem('open2work-best'))||0;}catch(err){}
   const isRecord=score>previousBest,best=Math.max(score,previousBest);
-  if(isRecord)try{localStorage.setItem('open2work-best',String(score));}catch(err){}
+  if(isRecord)try{localStorage.setItem('the-ladder-best',String(score));}catch(err){}
 
   document.getElementById('wrap').innerHTML=`
   <div class="cvfinal">
     <div class="post legadopost" style="border-left:4px solid var(--blue)">
       <div class="phd2">
-        <div class="pav" style="background:linear-gradient(135deg,#16B86A,#0E6B45)">${G.ini}</div>
+        <div class="pav" style="background:linear-gradient(135deg,#7D63FF,#4326C7)">${G.ini}</div>
         <div class="pwho"><div class="n">${G.name} <small>· ${G.age>=66?'Jubilación':'Fin de carrera'}</small></div>
         <div class="h">${L.lvl} · ${levelName()} — ${G.track.n}</div><div class="t">Resultado final · semilla ${RUN_SEED}</div></div>
       </div>
@@ -1562,7 +1606,7 @@ function finalCard(){
     try{
       const card=await cardPromise;
       if(navigator.share){
-        const payload={title:'OPEN2WORK',text:shareText};if(shareUrl)payload.url=shareUrl;
+        const payload={title:'THE LADDER',text:shareText};if(shareUrl)payload.url=shareUrl;
         if(navigator.canShare&&navigator.canShare({files:[card]}))payload.files=[card];
         await navigator.share(payload);
       }else{
@@ -1575,17 +1619,17 @@ function finalCard(){
   };
   const replayProfile={name:G.name,track:C.track,style:C.style,era:C.era};
   document.getElementById('same').onclick=()=>{
-    sessionStorage.setItem('open2work-replay',JSON.stringify(replayProfile));
+    sessionStorage.setItem('the-ladder-replay',JSON.stringify(replayProfile));
     const next=new URL(location.href);next.search='';next.hash='';next.searchParams.set('seed',String(RUN_SEED));next.searchParams.set('era',String(C.era));next.searchParams.set('track',C.track);if(GAME_MODE==='weekly')next.searchParams.set('mode','weekly');location.assign(next.toString());
   };
   document.getElementById('again').onclick=()=>{
-    sessionStorage.setItem('open2work-replay',JSON.stringify(replayProfile));
+    sessionStorage.setItem('the-ladder-replay',JSON.stringify(replayProfile));
     const next=new URL(location.href);next.search='';next.hash='';next.searchParams.set('era',String(C.era));location.assign(next.toString());
   };
 }
 
 let replay=null;
-try{replay=JSON.parse(sessionStorage.getItem('open2work-replay'));sessionStorage.removeItem('open2work-replay');}catch(err){}
+try{replay=JSON.parse(sessionStorage.getItem('the-ladder-replay')||sessionStorage.getItem('open2work-replay'));sessionStorage.removeItem('the-ladder-replay');sessionStorage.removeItem('open2work-replay');}catch(err){}
 if(replay&&typeof replay.name==='string'){
   C.name=replay.name;
   if(TRACKS.some(t=>t.id===replay.track))C.track=replay.track;
