@@ -1,46 +1,64 @@
-# THE LADDER 🪜
+<p align="center">
+  <img src="assets/brand/the-ladder-readme.png" alt="THE LADDER — Sube. Decide. Sobrevive." width="100%">
+</p>
 
-> **Sube. Decide. Sobrevive.**
+<p align="center">
+  <strong>Tu carrera profesional, decisión a decisión.</strong><br>
+  Un juego gratuito en español que convierte una vida laboral completa en un muro de LinkedIn.
+</p>
 
-Un juego de navegador gratuito y en español que simula una carrera completa en el mundo de la IA, contada como lo que realmente es hoy una carrera: **un muro de LinkedIn**. Una partida dura unos minutos y termina en un arquetipo y una tarjeta compartible.
+<p align="center">
+  <img src="https://img.shields.io/badge/24_CICLOS-6C4DFF?style=for-the-badge" alt="24 ciclos">
+  <img src="https://img.shields.io/badge/18_%E2%86%92_66-1E1930?style=for-the-badge" alt="De 18 a 66 años">
+  <img src="https://img.shields.io/badge/SIN_REGISTRO-FFB000?style=for-the-badge&labelColor=1E1930" alt="Sin registro">
+</p>
 
-**Jugar:** abre `index.html` en el navegador. Sin registro, sin dependencias ni build. Funciona en móvil y escritorio.
+## Una vida laboral en pocos minutos
 
-## Cómo se juega
+Empiezas con 18 años y una decisión de formación. Después avanzas en ciclos de dos años hasta los 66: eliges sin conocer todas las consecuencias, sobrevives a managers, despidos, promociones y giros inesperados, y ves cómo cada etapa se convierte en una publicación de LinkedIn.
 
-1. Elige una época —**2016, 2020 o 2026**— y entra en una carrera libre o en el **reto semanal**, compartido por semilla.
-2. Crea tu identidad: nombre, especialización y estilo **Ambicioso, Técnico o Consistente**. Cada estilo modifica tus estadísticas iniciales.
-3. En el primer ciclo eliges cómo formarte: universidad privada, universidad pública o bootcamp intensivo.
-4. Juega **24 ciclos de dos años**, desde los 18 hasta la jubilación a los 66. Cada elección hace avanzar exactamente un ciclo y genera un único post-resumen con tu decisión y todo lo que ocurrió.
-5. Los grandes dilemas aparecen de forma ocasional y **sustituyen la decisión profesional de ese ciclo**. Nunca hay dos decisiones diferentes en el mismo año.
-6. Descubre tu arquetipo, vitrina, posición frente a tu promoción y récord personal. Comparte una tarjeta y reta a otra persona con la misma semilla y puntuación objetivo.
+Al terminar recibes un arquetipo profesional, tu posición frente a la promoción y una tarjeta para compartir o retar a otra persona con la misma partida.
 
-## Mecánicas
+## Cómo funciona
 
-- Escalera **L1 Becario → L10 Chief AI Officer**, con bifurcación vía técnica / vía gestión
-- Formación y empleadores reales: **IE University, UPM, Ironhack, Accenture, Glovo, Luzia, Mistral AI, BBVA, NVIDIA, Google, Meta, Microsoft, Hugging Face, Google DeepMind, Anthropic, OpenAI y Barcelona Supercomputing Center**
-- **Reto semanal** reproducible y retos entre amigos con una puntuación concreta que superar
-- **Modo retro**: empieza en 2016, 2020 o 2026; las empresas solo entran en el mercado cuando corresponde
-- Tres **rivales ficticios** de tu promoción avanzan cada ciclo y forman una clasificación final de cuatro
-- **Mercado laboral vivo** con contrataciones, reorganizaciones y cambios de empresa integrados en el resumen del ciclo
-- **Vitrina de 12 logros**, incluidos objetivos secretos, y botones para repetir exactamente la misma semilla o empezar otra vida
-- Managers aleatorios (incluido el tóxico), side projects con vida propia, burnout, PIPs, escándalos y ~29 eventos del sector
-- Bucle de carrera **elige proyecto → simula dos años → revisa el resultado**, con tres rutas cualitativas y probabilidades ocultas
-- Decisiones contextuales según edad, energía, empresa, nivel y manager: cambio alcanzable, promoción interna, especialización, recuperación, proyecto propio o legado
-- Cada ciclo se publica como una sola recapitulación cargada de jerga de LinkedIn; un botón permite traducirla al instante a lenguaje normal con la decisión y el resultado reales
-- Hasta dos **giros de guion** raros por partida: virales accidentales, reply-all catastróficos, equity olvidado y otras sorpresas
-- Los **seguidores** suben o bajan con cada publicación, amplifican tus reacciones y también cuentan para la puntuación final
-- Al ser despedido, tu avatar se pone un **aro ámbar de disponible** y coleccionas la insignia
-- Pantalla inspirada en un mánager de carrera: perfil y ofertas a la izquierda, historial completo a la derecha, con lenguaje visual de LinkedIn
-- Identidad propia de **THE LADDER**: icono de peldaños, paleta violeta y ámbar, portada editorial y perfil estilo LinkedIn
-- Final con puntuación, récord local, arquetipo, tarjeta PNG y enlace de reto reproducible: *¿Puedes hacerlo mejor?*
+| 1. Decide | 2. Descubre | 3. Publica |
+|:--|:--|:--|
+| Elige entre tres caminos con probabilidades ocultas. | Simulamos dos años de carrera, mercado y vida profesional. | Recibes un resumen con jerga de LinkedIn y su traducción a lenguaje normal. |
 
-## Stack
+1. Escoge una época —**2016, 2020 o 2026**— y juega libremente o entra en el **reto semanal**.
+2. Crea tu perfil y elige un estilo: **Ambicioso, Técnico o Consistente**.
+3. Toma una decisión cada dos años. Los grandes dilemas sustituyen la decisión normal de ese ciclo.
+4. Llega a la jubilación, descubre tu resultado y comparte el reto: **¿puedes subir más alto?**
 
-HTML + CSS + JavaScript vanilla. Cero dependencias y cero build. Fuente: Inter (Google Fonts).
+## Qué hay dentro
+
+- **Una escalera completa:** de L1 Becario a L10 Chief AI Officer, con rutas técnica y de gestión.
+- **Un mundo que se mueve:** mercado laboral, tres rivales, managers, reorganizaciones, PIPs, burnout, side projects y giros raros.
+- **Decisiones con contexto:** las opciones cambian según edad, energía, empresa, nivel, reputación y momento de la carrera.
+- **Empresas reconocibles:** IE University, UPM, Ironhack, Accenture, Glovo, Luzia, Mistral AI, BBVA, NVIDIA, Google, Meta, Microsoft, Hugging Face, DeepMind, Anthropic, OpenAI y BSC.
+- **Partidas rejugables:** semillas reproducibles, reto semanal, objetivos secretos, 12 logros y récord local.
+- **Final compartible:** puntuación, arquetipo, clasificación, tarjeta PNG y enlace de desafío.
+
+## Jugar en local
+
+No hay instalación, dependencias ni build:
+
+```bash
+open index.html
+```
+
+También puedes abrir `index.html` directamente en cualquier navegador. Funciona en móvil y escritorio.
+
+## Tecnología
+
+HTML, CSS y JavaScript vanilla. La interfaz y toda la simulación viven en un único archivo; la tipografía es Inter.
 
 ---
 
-Hecho con sátira y cariño por el LinkedIn español. Las probabilidades se revelan después; el burnout, no.
+<p align="center">
+  <img src="assets/brand/the-ladder-icon.png" alt="Icono de THE LADDER" width="72"><br>
+  <strong>Sube. Decide. Sobrevive.</strong><br>
+  <sub>Hecho con sátira y cariño por el LinkedIn español. Las probabilidades se revelan después; el burnout, no.</sub>
+</p>
 
-Los nombres de organizaciones reales se utilizan únicamente dentro de una simulación ficticia y satírica. THE LADDER no está afiliado, avalado ni patrocinado por ninguna de ellas.
+<sub>Los nombres de organizaciones reales se utilizan únicamente dentro de una simulación ficticia y satírica. THE LADDER no está afiliado, avalado ni patrocinado por ninguna de ellas.</sub>
