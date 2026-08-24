@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
-  <title id="title">OPEN2WORK</title>
-  <path d="M91 22A49 49 0 1 0 108 59" fill="none" stroke="#16B86A" stroke-width="12" stroke-linecap="round"/>
-  <path d="M20 75 39 57l13 12 30-32" fill="none" stroke="#16B86A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="m71 38 13-3-2 14" fill="none" stroke="#16B86A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="58" cy="55" r="16" fill="#14201B"/>
-  <path d="M31 96c2-17 12-27 27-27s25 10 27 27" fill="#14201B"/>
-</svg>
